@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import axios from 'axios';
 import 'normalize.css/normalize.css'
 import 'element-ui/lib/theme-chalk/index.css'
 import {
@@ -148,7 +149,9 @@ Vue.prototype.$confirm = MessageBox.confirm;
 Vue.prototype.$prompt = MessageBox.prompt;
 Vue.prototype.$notify = Notification;
 Vue.prototype.$message = Message;
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
+
+Vue.prototype.$axios = axios;
 
 /* eslint-disable no-new */
 new Vue({

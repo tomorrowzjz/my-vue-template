@@ -5,29 +5,43 @@ import HelloWorld from '@/components/HelloWorld'
 Vue.use(Router)
 
 export default new Router({
-    routes: [
-        {
-            path: '/index',
-            name: 'index',
-            component: ()=>import("../pagers/index"),
-            children:[
-                {
-                    path: '/helloworld',
-                    name: 'HelloWorld',
-                    component: HelloWorld
-                },
-                {
-                    path: '/table',
-                    name: 'table',
-                    component: ()=>import("../pagers/BaseTable"),
-                },
-                {
-                    path: '/form',
-                    name: 'form',
-                    component: ()=>import("../pagers/form"),
-                }
-            ]
-        },
+  routes: [
+    {
+      path: '/',
+      redirect: '/index'
 
-    ]
+    },
+    {
+      path: '/index',
+      name: 'index',
+      component: () => import("../pagers/index"),
+      children: [
+        {
+          path: '/helloworld',
+          name: 'HelloWorld',
+          component: HelloWorld
+        },
+        {
+          path: '/echarts',
+          name: 'echarts',
+          component: () => import("../pagers/echarts"),
+        },
+        {
+          path: '/waterfall',
+          name: 'waterfall',
+          component: () => import("../pagers/waterfall"),
+        },
+        {
+          path: '/table',
+          name: 'table',
+          component: () => import("../pagers/BaseTable"),
+        },
+        {
+          path: '/form',
+          name: 'form',
+          component: () => import("../pagers/form"),
+        }
+      ]
+    }
+  ]
 })

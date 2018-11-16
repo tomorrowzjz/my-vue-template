@@ -48,7 +48,6 @@
                 <el-form-item label="地址">
                     <el-input v-model="form.address"></el-input>
                 </el-form-item>
-
             </el-form>
             <span slot="footer" class="dialog-footer">
                 <el-button @click="editVisible = false">取 消</el-button>
@@ -72,7 +71,7 @@
         name: 'basetable',
         data() {
             return {
-                url: './static/vuetable.json',
+                url: '../static/vuetable.json',
                 tableData: [],
                 cur_page: 1,
                 multipleSelection: [],
@@ -129,8 +128,58 @@
 //                this.$axios.post(this.url, {
 //                    page: this.cur_page
 //                }).then((res) => {
-//                    this.tableData = res.data.list;
+////                    this.tableData = res.data.list;
+//                    this.tableData = {
+//                      "date": "1997-11-11",
+//                      "name": "林丽",
+//                      "address": "吉林省 辽源市 龙山区"
+//                    }, {
+//                      "date": "1987-09-24",
+//                      "name": "文敏",
+//                      "address": "江西省 萍乡市 芦溪县"
+//                    }, {
+//                      "date": "1996-08-08",
+//                      "name": "杨秀兰",
+//                      "address": "黑龙江省 黑河市 五大连池市"
+//                    }, {
+//                      "date": "1978-06-18",
+//                      "name": "魏强",
+//                      "address": "广东省 韶关市 始兴县"
+//                    }, {
+//                      "date": "1977-07-09",
+//                      "name": "石秀兰",
+//                      "address": "江苏省 宿迁市 宿豫区"
+//                    }, {
+//                      "date": "1994-09-20",
+//                      "name": "朱洋",
+//                      "address": "海外 海外 -"
+//                    };
 //                })
+              this.tableData = [{
+                "date": "1997-11-11",
+                "name": "林丽",
+                "address": "吉林省 辽源市 龙山区"
+              }, {
+                "date": "1987-09-24",
+                "name": "文敏",
+                "address": "江西省 萍乡市 芦溪县"
+              }, {
+                "date": "1996-08-08",
+                "name": "杨秀兰",
+                "address": "黑龙江省 黑河市 五大连池市"
+              }, {
+                "date": "1978-06-18",
+                "name": "魏强",
+                "address": "广东省 韶关市 始兴县"
+              }, {
+                "date": "1977-07-09",
+                "name": "石秀兰",
+                "address": "江苏省 宿迁市 宿豫区"
+              }, {
+                "date": "1994-09-20",
+                "name": "朱洋",
+                "address": "海外 海外 -"
+              }];
             },
             search() {
                 this.is_search = true;
