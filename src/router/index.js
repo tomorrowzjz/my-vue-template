@@ -12,6 +12,12 @@ export default new Router({
 
     },
     {
+      path: '/login',
+      name: 'login',
+      component: () => import("../pagers/Login"),
+
+    },
+    {
       path: '/index',
       name: 'index',
       component: () => import("../pagers/index"),

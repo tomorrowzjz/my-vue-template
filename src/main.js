@@ -3,8 +3,11 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import NProgress from 'nprogress' // progress bar
+import 'nprogress/nprogress.css'// progress bar style
 import axios from 'axios';
 import 'normalize.css/normalize.css'
+import '../static/scrollbar.css'
 import 'element-ui/lib/theme-chalk/index.css'
 import {
     Pagination,
@@ -152,6 +155,15 @@ Vue.prototype.$message = Message;
 Vue.config.productionTip = false;
 
 Vue.prototype.$axios = axios;
+NProgress.configure({ showSpinner: false })
+router.beforeEach((to, from, next) => {
+  NProgress.start()
+  next();
+})
+
+router.afterEach(() => {
+  NProgress.done()
+})
 
 /* eslint-disable no-new */
 new Vue({
