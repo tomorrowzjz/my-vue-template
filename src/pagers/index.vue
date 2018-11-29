@@ -20,6 +20,7 @@
                         <!--<el-menu-item-group>-->
                         <el-menu-item index="echarts">echarts</el-menu-item>
                         <el-menu-item index="waterfall">waterfall</el-menu-item>
+                        <el-menu-item index="enlarge">enlarge</el-menu-item>
                     </el-menu-item-group>
                     <el-submenu index="1-4">
                         <template slot="title">选项4</template>

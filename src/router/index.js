@@ -46,6 +46,11 @@ export default new Router({
           path: '/form',
           name: 'form',
           component: () => import("../pagers/form"),
+        },
+        {
+          path: '/enlarge',
+          name: 'enlarge',
+          component: () => import("../pagers/enlarge"),
         }
       ]
     }

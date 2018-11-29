@@ -6,7 +6,137 @@
     <title>my-vue-template</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <div class="init-box">
+        <style type="text/css">
+          .svg-icon{
+            width: 40px;
+            height: 40px;
+            stroke: #343640;
+            stroke-width: 2;
+            stroke-linecap: round;
+          }
+          .svg-icon .path{
+            fill: none;
+          }
+          .m-wipe{
+            background: none;
+            animation: loading-rotate 2s linear infinite;
+          }
+          .m-wipe .path{
+            background: none;
+            stroke-dasharray: 90,150;
+            stroke-dashoffset: 0;
+            stroke-linecap: round;
+            stroke-width: 2px;
+            stroke: #20a0ff;
+            stroke-linecap: round;
+            animation: loading-wipe 1.5s ease-in-out infinite;
+          }
+          .m-loading{
+            background: none;
+            animation: loading-rotate 0.8s linear infinite;
+          }
+          @keyframes loading-rotate{
+            to{transform:rotate(1turn)}
+          }
+          @keyframes loading-wipe{
+            0%{
+              stroke-dasharray:1,200;
+              stroke-dashoffset:0;
+            }
+            50%{
+              stroke-dasharray:90,150;
+              stroke-dashoffset:-40px;
+            }
+            to{
+              stroke-dasharray:90,150;
+              stroke-dashoffset:-120px;
+            }
+          }
+          .init-box{
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            display: flex;
+            background-color: #515a6e;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+          }
+          .init-box .init-loading{
+            width: 128px;
+            height: 128px;
+          }
+          .init-box .init-tips{
+            color: #ffffff;
+          }
+        </style>
+        <div>
+          <svg viewBox="0 0 50 50" class="svg-icon m-loading init-loading">
+            <circle cx="25" cy="25" r="20" fill="none" stroke="#F2F2F2" class="path"></circle>
+            <circle cx="25" cy="25" r="20" fill="none" stroke="#24A2FF" stroke-dasharray="60,150" class="path"></circle>
+          </svg>
+        </div>
+
+        <p class="init-tips">加载中...</p>
+      </div>
+      <!--<style>
+      #Loading {
+      top:50%;
+      left:50%;
+      position: absolute;
+      -webkit-transform: translateY(-50%)  translateX(-50%);
+      transform: translateY(-50%)  translateX(-50%);
+      z-index:100;
+      }
+      @-webkit-keyframes ball-beat {
+      50% {
+      opacity: 0.2;
+      -webkit-transform: scale(0.75);
+      transform: scale(0.75); }
+
+      100% {
+      opacity: 1;
+      -webkit-transform: scale(1);
+      transform: scale(1); } }
+
+      @keyframes ball-beat {
+      50% {
+      opacity: 0.2;
+      -webkit-transform: scale(0.75);
+      transform: scale(0.75); }
+
+      100% {
+      opacity: 1;
+      -webkit-transform: scale(1);
+      transform: scale(1); } }
+
+      .ball-beat > div {
+      background-color: #279fcf;
+      width: 15px;
+      height: 15px;
+      border-radius: 100% !important;
+      margin: 2px;
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
+      display: inline-block;
+      -webkit-animation: ball-beat 0.7s 0s infinite linear;
+      animation: ball-beat 0.7s 0s infinite linear; }
+      .ball-beat > div:nth-child(2n-1) {
+      -webkit-animation-delay: 0.35s !important;
+      animation-delay: 0.35s !important; }
+      </style>
+      <div id="Loading">
+        <div class="loader-inner ball-beat">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    </div>-->
     <!-- built files will be auto injected -->
   </body>
 </html>
