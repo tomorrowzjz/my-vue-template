@@ -165,6 +165,9 @@ router.afterEach(() => {
   NProgress.done()
 })
 
+// 引入mockjs
+require('./mock.js')
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
@@ -172,3 +175,7 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
+
+// Vue.filter('getYMD', function(input) {
+//   return input.split(' ')[0];
+// })

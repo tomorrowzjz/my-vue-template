@@ -51,6 +51,11 @@ export default new Router({
           path: '/enlarge',
           name: 'enlarge',
           component: () => import("../pagers/enlarge"),
+        },
+        {
+          path: '/mock',
+          name: 'mock',
+          component: () => import("../pagers/testmock"),
         }
       ]
     }
