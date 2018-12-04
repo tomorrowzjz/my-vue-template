@@ -80,6 +80,7 @@
         </a>
       </li>
     </ul>
+    <el-button @click="test">test</el-button>
   </div>
 </template>
 
@@ -89,6 +90,18 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
+    }
+  },
+  mounted (){
+//    console.log(1);
+    console.log(this.$store.state.count);
+    this.$store.commit('increment');
+    console.log(this.$store.state.count);
+  },
+  methods:{
+    test(){
+      this.$store.commit('increment');
+      console.log(this.$store.state.count);
     }
   }
 }

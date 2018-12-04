@@ -1,6 +1,7 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
+// import Vuex from 'vuex'
 import App from './App'
 import router from './router'
 import NProgress from 'nprogress' // progress bar
@@ -9,6 +10,8 @@ import axios from 'axios';
 import 'normalize.css/normalize.css'
 import '../static/scrollbar.css'
 import 'element-ui/lib/theme-chalk/index.css'
+
+import store from './store/index'
 import {
     Pagination,
     Dialog,
@@ -145,6 +148,8 @@ Vue.use(Footer);
 
 Vue.use(Loading.directive);
 
+// Vue.use(Vuex)
+
 Vue.prototype.$loading = Loading.service;
 Vue.prototype.$msgbox = MessageBox;
 Vue.prototype.$alert = MessageBox.alert;
@@ -172,6 +177,7 @@ require('./mock.js')
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

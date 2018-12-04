@@ -56,6 +56,11 @@ export default new Router({
           path: '/mock',
           name: 'mock',
           component: () => import("../pagers/testmock"),
+        },
+        {
+          path: '/directive',
+          name: 'directive',
+          component: () => import("../pagers/directive"),
         }
       ]
     }
