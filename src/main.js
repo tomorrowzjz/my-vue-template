@@ -171,7 +171,7 @@ router.afterEach(() => {
 })
 
 // 引入mockjs
-require('./mock.js')
+// require('./mock.js')
 
 /* eslint-disable no-new */
 new Vue({

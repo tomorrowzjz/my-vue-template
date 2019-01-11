@@ -23,6 +23,8 @@
                         <el-menu-item index="enlarge">enlarge</el-menu-item>
                         <el-menu-item index="mock">mock</el-menu-item>
                         <el-menu-item index="directive">directive</el-menu-item>
+                        <el-menu-item index="imageEditor">imageEditor</el-menu-item>
+                        <el-menu-item index="imagecropper">imagecropper</el-menu-item>
                     </el-menu-item-group>
                     <el-submenu index="1-4">
                         <template slot="title">选项4</template>
@@ -66,9 +68,9 @@
         </el-aside>
 
         <el-container>
-            <el-header style="text-align: right; font-size: 12px;display: flex;justify-content: space-between">
+            <el-header style="text-align: right; font-size: 12px;display: flex;justify-content: space-between;">
                 <!--<el-button >dianji</el-button>-->
-                <div style="line-height: 100%; display: flex;align-items: center; cursor:pointer; width:50px;"
+                <div style="line-height: 100%; display: flex;align-items: center;justify-content: center; cursor:pointer; width:50px;"
                      @click="isCollapseMethod">
                     <i class="el-icon-menu"></i>
                 </div>
@@ -119,6 +121,7 @@
     .el-header {
         background-color: #FFFFFF;
         color: #333;
+        padding-right: 20px;
         line-height: 60px;
         border-bottom: solid 1px #e6e6e6;
     }

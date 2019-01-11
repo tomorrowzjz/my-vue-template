@@ -48,6 +48,16 @@ export default new Router({
           component: () => import("../pagers/form"),
         },
         {
+          path: '/imageEditor',
+          name: 'imageEditor',
+          component: () => import("../pagers/imageEditor"),
+        },
+        {
+          path: '/imagecropper',
+          name: 'imagecropper',
+          component: () => import("../pagers/imagecropper"),
+        },
+        {
           path: '/enlarge',
           name: 'enlarge',
           component: () => import("../pagers/enlarge"),
