@@ -25,6 +25,11 @@
                         <el-menu-item index="directive">directive</el-menu-item>
                         <el-menu-item index="imageEditor">imageEditor</el-menu-item>
                         <el-menu-item index="imagecropper">imagecropper</el-menu-item>
+                        <el-menu-item index="vuedraggable">vuedraggable</el-menu-item>
+                        <el-menu-item index="menu">menu</el-menu-item>
+                        <el-menu-item index="caneditortable">caneditortable</el-menu-item>
+                        <el-menu-item index="eleeditortable">eleeditortable</el-menu-item>
+                        <el-menu-item index="better-scroll">better-scroll</el-menu-item>
                     </el-menu-item-group>
                     <el-submenu index="1-4">
                         <template slot="title">选项4</template>

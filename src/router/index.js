@@ -43,6 +43,11 @@ export default new Router({
           component: () => import("../pagers/BaseTable"),
         },
         {
+          path: '/vuedraggable',
+          name: 'vuedraggable',
+          component: () => import("../pagers/vuedraggable"),
+        },
+        {
           path: '/form',
           name: 'form',
           component: () => import("../pagers/form"),
@@ -53,9 +58,29 @@ export default new Router({
           component: () => import("../pagers/imageEditor"),
         },
         {
+          path: '/caneditortable',
+          name: 'caneditortable',
+          component: () => import("../pagers/caneditortable"),
+        },
+        {
+          path: '/better-scroll',
+          name: 'better-scroll',
+          component: () => import("../pagers/better-scroll"),
+        },
+        {
+          path: '/eleeditortable',
+          name: 'eleeditortable',
+          component: () => import("../pagers/eleeditortable"),
+        },
+        {
           path: '/imagecropper',
           name: 'imagecropper',
           component: () => import("../pagers/imagecropper"),
+        },
+        {
+          path: '/menu',
+          name: 'menu',
+          component: () => import("../pagers/menu"),
         },
         {
           path: '/enlarge',

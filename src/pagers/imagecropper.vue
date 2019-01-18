@@ -11,6 +11,7 @@
                     :autoCropWidth="option.autoCropWidth"
                     :autoCropHeight="option.autoCropHeight"
                     :fixed="option.fixed"
+                    :centerBox="option.centerBox"
                     :fixedNumber="option.fixedNumber"
                     style="position: absolute;z-index: 999; width:1000px;height: 500px"
                         ></vueCropper>
@@ -50,8 +51,10 @@
           outputType: 'jpeg',              //裁剪生成图片的格式
           canScale: false,                 // 图片是否允许滚轮缩放
           autoCrop: true,                  // 是否默认生成截图框
-          autoCropWidth: 150,              // 默认生成截图框宽度
-          autoCropHeight: 150,             // 默认生成截图框高度
+          //autoCropWidth: '100%',              // 默认生成截图框宽度
+          //autoCropHeight: '100%',             // 默认生成截图框高度
+          fixedBox:true,
+          centerBox:true,
           fixed: false,                    //是否开启截图框宽高固定比例
           fixedNumber: [4, 4]              //截图框的宽高比例
         },

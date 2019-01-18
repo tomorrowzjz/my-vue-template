@@ -12,6 +12,7 @@
   "dependencies": {
     "@toast-ui/vue-image-editor": "^1.0.2",
     "axios": "^0.18.0",
+    "better-scroll": "^1.13.4",
     "echarts": "^4.2.0-rc.2",
     "element-ui": "^2.4.8",
     "normalize.css": "^8.0.0",
@@ -22,6 +23,7 @@
     "vue-router": "^3.0.1",
     "vue-waterfall-easy": "^2.4.3",
     "vue2.0-zoom": "^2.1.1",
+    "vuedraggable": "^2.17.0",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
@@ -43,6 +45,7 @@
     "file-loader": "^1.1.4",
     "friendly-errors-webpack-plugin": "^1.6.1",
     "html-webpack-plugin": "^2.30.1",
+    "jquery": "^3.3.1",
     "mockjs": "^1.0.1-beta3",
     "node-notifier": "^5.1.2",
     "node-sass": "^4.10.0",
