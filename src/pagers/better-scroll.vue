@@ -1,138 +1,260 @@
 <template>
-    <div>
-        <div class="menu-wrapper" ref="menuWrapper">
-            <ul style="display: flex;list-style: none;justify-content: space-between">
-                <li v-for="index in 8" class="menu-item"  @click="selectMenu(index, $event)">
-                  <span class="text">
-                    <span class="sign"  ></span>11111
-                  </span>
-                </li>
+  <div>
+    <div class="goods">
+      <div class="menu-wrapper" ref="menuWrapper">
+          <li v-for="(item,index) in 8" class="menu-item"
+              :class="{'current': currentIndex === index}"
+              @click="selectMenu(index,$event)" ref="menuList">
+                你好
+          </li>
+        </ul>
+      </div>
+      <div class="foods-wrapper" ref="foodsWrapper">
+        <ul class="ul">
+          <li class="demo"  ref="foodList">
+            <ul>
+                <li>11111111111111111111111111</li>
+                <li>11111111111111111111111111</li>
+                <li>11111111111111111111111111</li>
+                <li>11111111111111111111111111</li>
+                <li>11111111111111111111111111</li>
+                <li>11111111111111111111111111</li>
+                <li>11111111111111111111111111</li>
+                <li>11111111111111111111111111</li>
+                <li>11111111111111111111111111</li>
+                <li>11111111111111111111111111</li>
+                <li>11111111111111111111111111</li>
+                <li>11111111111111111111111111</li>
+                <li>11111111111111111111111111</li>
+                <li>11111111111111111111111111</li>
+                <li>11111111111111111111111111</li>
             </ul>
-        </div>
-        <div class="bscroll" ref="bscroll">
-            <div class="bscroll-container">
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-                <div class="demo">placeholder</div>
-
-            </div>
-        </div>
+          </li>
+          <li class="demo"  ref="foodList">
+            <ul>
+                <li>22222222222222222222222222</li>
+                <li>22222222222222222222222222</li>
+                <li>22222222222222222222222222</li>
+                <li>22222222222222222222222222</li>
+                <li>22222222222222222222222222</li>
+                <li>22222222222222222222222222</li>
+                <li>22222222222222222222222222</li>
+                <li>22222222222222222222222222</li>
+                <li>22222222222222222222222222</li>
+                <li>22222222222222222222222222</li>
+                <li>22222222222222222222222222</li>
+                <li>22222222222222222222222222</li>
+                <li>22222222222222222222222222</li>
+                <li>22222222222222222222222222</li>
+                <li>22222222222222222222222222</li>
+            </ul>
+          </li>
+          <li class="demo"  ref="foodList">
+            <ul>
+                <li>333333333333333333333333333</li>
+                <li>333333333333333333333333333</li>
+                <li>333333333333333333333333333</li>
+                <li>333333333333333333333333333</li>
+                <li>333333333333333333333333333</li>
+                <li>333333333333333333333333333</li>
+                <li>333333333333333333333333333</li>
+                <li>333333333333333333333333333</li>
+                <li>333333333333333333333333333</li>
+                <li>333333333333333333333333333</li>
+                <li>333333333333333333333333333</li>
+                <li>333333333333333333333333333</li>
+                <li>333333333333333333333333333</li>
+                <li>333333333333333333333333333</li>
+                <li>333333333333333333333333333</li>
+            </ul>
+          </li>
+          <li class="demo"  ref="foodList">
+            <ul>
+                <li>444444444444444444444444444444444</li>
+                <li>444444444444444444444444444444444</li>
+                <li>444444444444444444444444444444444</li>
+                <li>444444444444444444444444444444444</li>
+                <li>444444444444444444444444444444444</li>
+                <li>444444444444444444444444444444444</li>
+                <li>444444444444444444444444444444444</li>
+                <li>444444444444444444444444444444444</li>
+                <li>444444444444444444444444444444444</li>
+                <li>444444444444444444444444444444444</li>
+                <li>444444444444444444444444444444444</li>
+                <li>444444444444444444444444444444444</li>
+                <li>444444444444444444444444444444444</li>
+                <li>444444444444444444444444444444444</li>
+                <li>444444444444444444444444444444444</li>
+            </ul>
+          </li>
+          <li class="demo"  ref="foodList">
+            <ul>
+                <li>5555555555555555555555555555555555555</li>
+                <li>5555555555555555555555555555555555555</li>
+                <li>5555555555555555555555555555555555555</li>
+                <li>5555555555555555555555555555555555555</li>
+                <li>5555555555555555555555555555555555555</li>
+                <li>5555555555555555555555555555555555555</li>
+                <li>5555555555555555555555555555555555555</li>
+                <li>5555555555555555555555555555555555555</li>
+                <li>5555555555555555555555555555555555555</li>
+                <li>5555555555555555555555555555555555555</li>
+                <li>5555555555555555555555555555555555555</li>
+                <li>5555555555555555555555555555555555555</li>
+                <li>5555555555555555555555555555555555555</li>
+                <li>5555555555555555555555555555555555555</li>
+                <li>5555555555555555555555555555555555555</li>
+            </ul>
+          </li>
+          <li class="demo"  ref="foodList">
+            <ul>
+                <li>6666666666666666666666666666666666</li>
+                <li>6666666666666666666666666666666666</li>
+                <li>6666666666666666666666666666666666</li>
+                <li>6666666666666666666666666666666666</li>
+                <li>6666666666666666666666666666666666</li>
+                <li>6666666666666666666666666666666666</li>
+                <li>6666666666666666666666666666666666</li>
+                <li>6666666666666666666666666666666666</li>
+                <li>6666666666666666666666666666666666</li>
+                <li>6666666666666666666666666666666666</li>
+                <li>6666666666666666666666666666666666</li>
+                <li>6666666666666666666666666666666666</li>
+                <li>6666666666666666666666666666666666</li>
+                <li>6666666666666666666666666666666666</li>
+                <li>6666666666666666666666666666666666</li>
+            </ul>
+          </li>
+          <li class="demo"  ref="foodList">
+            <ul>
+                <li>777777777777777777777777777777777777</li>
+                <li>777777777777777777777777777777777777</li>
+                <li>777777777777777777777777777777777777</li>
+                <li>777777777777777777777777777777777777</li>
+                <li>777777777777777777777777777777777777</li>
+                <li>777777777777777777777777777777777777</li>
+                <li>777777777777777777777777777777777777</li>
+                <li>777777777777777777777777777777777777</li>
+                <li>777777777777777777777777777777777777</li>
+                <li>777777777777777777777777777777777777</li>
+                <li>777777777777777777777777777777777777</li>
+                <li>777777777777777777777777777777777777</li>
+                <li>777777777777777777777777777777777777</li>
+                <li>777777777777777777777777777777777777</li>
+                <li>777777777777777777777777777777777777</li>
+            </ul>
+          </li>
+          <li class="demo"  ref="foodList">
+            <ul>
+                <li>888888888888888888888888888888888888888888888888888</li>
+                <li>888888888888888888888888888888888888888888888888888</li>
+                <li>888888888888888888888888888888888888888888888888888</li>
+                <li>888888888888888888888888888888888888888888888888888</li>
+                <li>888888888888888888888888888888888888888888888888888</li>
+                <li>888888888888888888888888888888888888888888888888888</li>
+                <li>888888888888888888888888888888888888888888888888888</li>
+                <li>888888888888888888888888888888888888888888888888888</li>
+                <li>888888888888888888888888888888888888888888888888888</li>
+                <li>888888888888888888888888888888888888888888888888888</li>
+                <li>888888888888888888888888888888888888888888888888888</li>
+                <li>888888888888888888888888888888888888888888888888888</li>
+                <li>888888888888888888888888888888888888888888888888888</li>
+                <li>888888888888888888888888888888888888888888888888888</li>
+                <li>888888888888888888888888888888888888888888888888888</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
-  import BScroll from "better-scroll";
+  import BScroll from 'better-scroll';
+//   import shopcart from 'components/shopcart/shopcart';
+//   import cartcontrol from 'components/cartcontrol/cartcontrol';
+//   import food from 'components/food/food';
+
+  const ERR_OK = 0;
+//   const debug = process.env.NODE_ENV !== 'production';
+
   export default {
-    name: '',
-    data () {
+    data() {
       return {
-        msg: 'Welcome to Your Vue.js App',
-        menuScroll: "",
-        scroll:""
-      }
+        listHeight: [],
+        scrollY: 0,
+        selectedFood: {}
+      };
     },
-    mounted() {
-      this.$nextTick(() => {
-//        this.menuScroll = new BScroll(this.$refs.menuWrapper, {
-//          click: true
-//        })
-        this.scroll = new BScroll(this.$refs.bscroll, {
+    created() {
+          this.$nextTick(() => {
+            this._initScroll();
+            this._calculateHeight();
+          });
+    },
+    computed:{
+      currentIndex () {
+        for (let i = 0; i < this.listHeight.length; i++) {
+          let height1 = this.listHeight[i]
+          let height2 = this.listHeight[i + 1]
+          if (this.scrollY >= height1 && this.scrollY < height2) {
+            return i
+          }
+        }
+        return 0
+      },
+    },
+    methods: {
+      selectMenu(index, event) {
+        let foodList = document.querySelectorAll('.demo')
+        let el = foodList[index];
+        this.foodScroll.scrollToElement(el, 300);
+      },
+      _initScroll() {
+        this.foodScroll = new BScroll(this.$refs.foodsWrapper, {
           click: true,
-          probeType: 3
+          probeType: 3,
+          mouseWheel: true,
+        });
+        this.foodScroll.on('scroll', (pos) => {
+          this.scrollY = Math.abs(Math.round(pos.y))
         })
-      })
-    },
-    methods:{
-      selectMenu (index, event) {
-        console.log(index);
-        let foodList = this.$refs.bscroll.getElementsByClassName('demo');
-//        console.log(foodList);
-        let el = foodList[index+5]
-        console.log(el);
-        console.log(this.scroll);
-        this.scroll.scrollToElement(el, 0)
+      },
+      _calculateHeight () {
+        let foodList = this.$refs.foodsWrapper.getElementsByClassName('demo')
+        let height = 0
+        this.listHeight.push(height)
+        for (var i = 0; i < foodList.length; i++) {
+          let item = foodList[i]
+          height += item.clientHeight
+          this.listHeight.push(height)
+        }
       },
     }
-  }
+  };
 </script>
-
-<style scoped>
-    .bscroll{
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-    }
-    .menu-wrapper{
-        height: 50px;
-        width: 100%;
-        /*overflow: hidden;*/
-        z-index: 10001;
-        position: fixed;
-        top:100px;
-    }
+<style>
+.menu-wrapper{
+    height: 100px;
+    /*overflow: hidden;*/
+}
+.menu-wrapper li{
+    list-style: none;
+    margin-left: 100px;
+    float: left;
+}
+.foods-wrapper{
+/*必须要有定位*/
+    position: absolute;
+    width: 80%;
+    height: 500px;
+    overflow: hidden;
+}
+.ul{
+    overflow: hidden;
+}
+.current{
+    background-color: #cccccc;
+}
 </style>
+

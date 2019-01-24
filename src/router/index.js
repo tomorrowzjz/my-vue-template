@@ -96,7 +96,12 @@ export default new Router({
           path: '/directive',
           name: 'directive',
           component: () => import("../pagers/directive"),
-        }
+        },
+        {
+          path: '/handsontable',
+          name: 'handsontable',
+          component: () => import("../pagers/handsontable"),
+        },
       ]
     }
   ]
