@@ -1,5 +1,5 @@
 <template id="vtable">
-    <table>
+    <table id="sss">
         <thead>
         <tr v-for="(i,index) in rownum">
             <th v-for="label in thlabel[index]">{{label.label}}</th>
@@ -67,8 +67,7 @@
                 }
               }
             }
-        }
-      )
+        })
     },
     methods:{
       tdEdit:function(event){

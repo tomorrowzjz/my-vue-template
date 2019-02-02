@@ -31,6 +31,7 @@
                         <el-menu-item index="eleeditortable">eleeditortable</el-menu-item>
                         <el-menu-item index="better-scroll">better-scroll</el-menu-item>
                         <el-menu-item index="handsontable">handsontable</el-menu-item>
+                        <el-menu-item index="fatherdrag">fatherdrag</el-menu-item>
                     </el-menu-item-group>
                     <el-submenu index="1-4">
                         <template slot="title">选项4</template>

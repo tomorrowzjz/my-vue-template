@@ -102,6 +102,11 @@ export default new Router({
           name: 'handsontable',
           component: () => import("../pagers/handsontable"),
         },
+        {
+          path: '/fatherdrag',
+          name: 'fatherdrag',
+          component: () => import("../pagers/fatherdrag"),
+        },
       ]
     }
   ]

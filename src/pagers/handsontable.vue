@@ -15,8 +15,35 @@
       return {
         hotSettings: {
           data: Handsontable.helper.createSpreadsheetData(5, 5),
-          colHeaders: true,
+          colHeaders:['Car model', 'Year of manufacture', 'Available'],
+          columns: [
+            {
+              data: 'car',
+              //只读
+              readOnly: true
+            },
+            {
+              data: 'year'
+            },
+            {
+              data: 'chassis'
+            },
+            {
+              data: 'bumper'
+            }
+          ],
+          //自动填充
+          fillHandle: true,
           contextMenu: true,
+          //调整大小
+          manualColumnResize: true,
+          manualRowResize: true,
+          //移动
+          manualColumnMove: true,
+          manualRowMove: true,
+          stretchH: 'last',
+          currentRowClassName: 'currentRow',
+          currentColClassName: 'currentCol',
           language: 'zh-CN'
         }
       }
