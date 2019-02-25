@@ -1,47 +1,41 @@
 <template>
   <div class="app-container">
     <el-form ref="form" :model="form" label-width="120px">
-      <el-form-item label="Activity name">
-        <el-input v-model="form.name"/>
-      </el-form-item>
-      <el-form-item label="Activity zone">
-        <el-select v-model="form.region" placeholder="please select your zone">
-          <el-option label="Zone one" value="shanghai"/>
-          <el-option label="Zone two" value="beijing"/>
-        </el-select>
-      </el-form-item>
-      <el-form-item label="Activity time">
-        <el-col :span="11">
-          <el-date-picker v-model="form.date1" type="date" placeholder="Pick a date" style="width: 100%;"/>
-        </el-col>
-        <el-col :span="2" class="line">-</el-col>
-        <el-col :span="11">
-          <el-time-picker v-model="form.date2" type="fixed-time" placeholder="Pick a time" style="width: 100%;"/>
-        </el-col>
-      </el-form-item>
-      <el-form-item label="Instant delivery">
-        <el-switch v-model="form.delivery"/>
-      </el-form-item>
       <el-form-item label="Activity type">
         <el-checkbox-group v-model="form.type">
-          <el-checkbox label="Online activities" name="type"/>
-          <el-checkbox label="Promotion activities" name="type"/>
-          <el-checkbox label="Offline activities" name="type"/>
-          <el-checkbox label="Simple brand exposure" name="type"/>
+          <el-checkbox label="S" name="type"/>
+          <el-checkbox label="L" name="type"/>
+          <el-checkbox label="XL" name="type"/>
+          <el-checkbox label="XXl" name="type"/>
+        </el-checkbox-group>
+      </el-form-item>
+
+      <el-form-item label="Resources">
+        <el-checkbox-group v-model="form.resource">
+          <el-checkbox label="红色" name="type"/>
+          <el-checkbox label="蓝色" name="type"/>
+          <el-checkbox label="绿色" name="type"/>
         </el-checkbox-group>
       </el-form-item>
       <el-form-item label="Resources">
-        <el-radio-group v-model="form.resource">
-          <el-radio label="Sponsor"/>
-          <el-radio label="Venue"/>
-        </el-radio-group>
-      </el-form-item>
-      <el-form-item label="Activity form">
-        <el-input v-model="form.desc" type="textarea"/>
+        <table border="1">
+          <thead>
+          <tr>
+            <th v-for="ln in tableHeader" class="td">{{ln}}</th>
+          </tr>
+          </thead>
+          <tbody>
+          <template v-for="(item,index) in tableData">
+            <tr>
+              <td v-for="(ite,ind) in item" class="td">{{ite}}</td>
+            </tr>
+          </template>
+          </tbody>
+        </table>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="onSubmit">Create</el-button>
-        <el-button @click="onCancel">Cancel</el-button>
+        <el-button type="primary" @click="onSubmit">创建</el-button>
+        <!--<el-button @click="onCancel">Cancel</el-button>-->
       </el-form-item>
     </el-form>
   </div>
@@ -58,13 +52,17 @@ export default {
         date2: '',
         delivery: false,
         type: [],
-        resource: '',
+        resource: [],
         desc: ''
-      }
+      },
+      tableData:[[1,1,1,1],[2,2,2,2],[3,3,3,3],[4,4,4,4]],
+      tableHeader:['test1','test2','test3','test4']
     }
   },
   methods: {
     onSubmit() {
+      console.log(this.form.type);
+      console.log(this.form.resource);
       this.$message('submit!')
     },
     onCancel() {

@@ -48,6 +48,21 @@ export default new Router({
           component: () => import("../pagers/vuedraggable"),
         },
         {
+          path: '/vuedraggable_test',
+          name: 'vuedraggable_test',
+          component: () => import("../pagers/vuedraggable_test"),
+        },
+        {
+          path: '/mergeTable',
+          name: 'mergeTable',
+          component: () => import("../pagers/mergeTable"),
+        },
+        {
+          path: '/SKU',
+          name: 'SKU',
+          component: () => import("../pagers/SKU"),
+        },
+        {
           path: '/form',
           name: 'form',
           component: () => import("../pagers/form"),
@@ -106,6 +121,11 @@ export default new Router({
           path: '/fatherdrag',
           name: 'fatherdrag',
           component: () => import("../pagers/fatherdrag"),
+        },
+        {
+          path: '/scrollTo',
+          name: 'scrollTo',
+          component: () => import("../pagers/scrollTo"),
         },
       ]
     }

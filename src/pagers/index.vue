@@ -32,6 +32,10 @@
                         <el-menu-item index="better-scroll">better-scroll</el-menu-item>
                         <el-menu-item index="handsontable">handsontable</el-menu-item>
                         <el-menu-item index="fatherdrag">fatherdrag</el-menu-item>
+                        <el-menu-item index="scrollTo">scrollTo</el-menu-item>
+                        <el-menu-item index="vuedraggable_test">vuedraggable_test</el-menu-item>
+                        <el-menu-item index="mergeTable">mergeTable</el-menu-item>
+                        <el-menu-item index="SKU">SKU</el-menu-item>
                     </el-menu-item-group>
                     <el-submenu index="1-4">
                         <template slot="title">选项4</template>
