@@ -9,11 +9,11 @@
         </el-checkbox-group>
       </el-form-item>
       <el-form-item label="Activity type">
-        <el-checkbox-group v-model="form.type">
-          <el-checkbox label="S" name="type"/>
-          <el-checkbox label="L" name="type"/>
-          <el-checkbox label="XL" name="type"/>
-          <el-checkbox label="XXl" name="type"/>
+        <el-checkbox-group v-model="form.type" @change="size">
+          <el-checkbox label='{"size":"S","index":1}' name="type">S</el-checkbox>
+          <el-checkbox label='{"size":"L","index":2}' name="type">L</el-checkbox>
+          <el-checkbox label='{"size":"XL","index":3}' name="type">XL</el-checkbox>
+          <el-checkbox label='{"size":"XXL","index":4}' name="type">XXL</el-checkbox>
         </el-checkbox-group>
       </el-form-item>
 
@@ -29,7 +29,12 @@
           <template v-for="(item,index) in form.type.length*form.resource.length">
             <tr>
               <td v-if="index%form.type.length==0" :rowspan="form.type.length" class="td">{{form.resource[index/form.type.length]}}</td>
-              <td v-for="(ln,ind) in tableHeader.length-1" class="td">{{ind==0?form.type[index%form.type.length]:''}}</td>
+              <td v-for="(ln,ind) in tableHeader.length-1" class="td">
+                <span v-if="ind==0">{{form.type[index%form.type.length]}}</span>
+                <el-input v-else v-model="model[index][ind-1]" placeholder="test"></el-input>
+                <!--{{index}}-->
+                <!--{{ind}}-->
+              </td>
             </tr>
           </template>
           </tbody>
@@ -58,13 +63,42 @@ export default {
         desc: ''
       },
       tableData:[[1,1,1,1,1,1],[2,2,2,2,1,1],[3,3,3,3,1,1],[4,4,4,4,1,1]],
-      tableHeader:['颜色','尺码','价格','数量','商家编码','商品条形码']
+      tableHeader:['颜色','尺码','价格','数量','商家编码','商品条形码'],
+    }
+  },
+  computed:{
+    model(){
+      let arr = [];
+      for(let i = 0;i < this.form.type.length*this.form.resource.length;i++){
+        arr[i] = [];
+        for (let j = 0 ;j < this.tableHeader.length-2;j++){
+          arr[i][j] = 1;
+        }
+      }
+      return arr;
     }
   },
   methods: {
+    size(e){
+      console.log(e);
+//      let temparr = [];
+//      e.map((item,index) => {
+//
+//        item = JSON.parse(item);
+//        console.log(item.index * 1 + 1);
+//        console.log(index);
+//        console.log(item.index * 1 + 1 == index);
+//        if (item.index*1 + 1 == index) {
+//          temparr.push(item.size);
+//        }
+//
+//      })
+//      console.log(temparr);
+    },
     onSubmit() {
       console.log(this.form.type);
       console.log(this.form.resource);
+      console.log(this.model);
       this.$message('submit!')
     },
     onCancel() {

@@ -1,12 +1,13 @@
 <template>
     <el-container>
-        <el-aside width="" style="background-color: rgb(84 , 92, 100); transition: width 2s;" :style="isCollapse?'width: auto':'width:216px'" ref="aside">
+        <el-aside width="" style="background-color: rgb(84 , 92, 100); transition: width 2s;" ref="aside">
             <!--<el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">-->
             <!--<el-radio-button :label="false">展开</el-radio-button>-->
             <!--<el-radio-button :label="true">收起</el-radio-button>-->
             <!--</el-radio-group>-->
             <!--<el-menu :default-openeds="['1', '3']" :default-active="this.$router.path" router :collapse="isCollapse">-->
-            <el-menu :default-active="activeNav" router :collapse="isCollapse" class="el-menu-vertical-demo"
+            <el-scrollbar wrap-class="scrollbar-wrapper" style="height: 100%">
+                <el-menu :default-active="activeNav" router :collapse="isCollapse" class="el-menu-vertical-demo"
                      background-color="#545c64"
                      text-color="#fff" active-text-color="#ffd04b" style="border: none">
                 <el-submenu index="1">
@@ -36,6 +37,12 @@
                         <el-menu-item index="vuedraggable_test">vuedraggable_test</el-menu-item>
                         <el-menu-item index="mergeTable">mergeTable</el-menu-item>
                         <el-menu-item index="SKU">SKU</el-menu-item>
+                        <el-menu-item index="betterTables">betterTables</el-menu-item>
+                        <el-menu-item index="testv-model">testv-model</el-menu-item>
+                        <el-menu-item index="testcascader">testcascader</el-menu-item>
+                        <el-menu-item index="brotherone">brotherone</el-menu-item>
+                        <el-menu-item index="brothertwo">brothertwo</el-menu-item>
+                        <el-menu-item index="image-lazy">image-lazy</el-menu-item>
                     </el-menu-item-group>
                     <el-submenu index="1-4">
                         <template slot="title">选项4</template>
@@ -76,6 +83,7 @@
                     </el-submenu>
                 </el-submenu>
             </el-menu>
+            </el-scrollbar>
         </el-aside>
 
         <el-container>
@@ -117,7 +125,9 @@
 
             <el-main>
                 <transition name="fade-transform" mode="out-in">
-                    <router-view/>
+                    <keep-alive>
+                        <router-view/>
+                    </keep-alive>
                 </transition>
             </el-main>
             <el-footer>Footer</el-footer>
@@ -166,6 +176,10 @@
 
     .el-menu-vertical-demo {
         width: 56px;
+    }
+
+    .el-scrollbar .el-scrollbar__wrap {
+        overflow-x: hidden;
     }
 </style>
 

@@ -28,6 +28,15 @@ export default new Router({
           component: HelloWorld
         },
         {
+          path: '/testv-model',
+          name: 'testv-model',
+          component: () => import("../pagers/testv-model"),
+        },{
+          path: '/testcascader',
+          name: 'testcascader',
+          component: () => import("../pagers/testcascader"),
+        },
+        {
           path: '/echarts',
           name: 'echarts',
           component: () => import("../pagers/echarts"),
@@ -41,6 +50,11 @@ export default new Router({
           path: '/table',
           name: 'table',
           component: () => import("../pagers/BaseTable"),
+        },
+        {
+          path: '/betterTables',
+          name: 'betterTables',
+          component: () => import("../pagers/betterTables"),
         },
         {
           path: '/vuedraggable',
@@ -126,6 +140,21 @@ export default new Router({
           path: '/scrollTo',
           name: 'scrollTo',
           component: () => import("../pagers/scrollTo"),
+        },
+        {
+          path: '/brotherone',
+          name: 'brotherone',
+          component: () => import("../pagers/brotherone"),
+        },
+        {
+          path: '/brothertwo',
+          name: 'brothertwo',
+          component: () => import("../pagers/brothertwo"),
+        },
+        {
+          path: '/image-lazy',
+          name: 'image-lazy',
+          component: () => import("../pagers/image-lazy"),
         },
       ]
     }

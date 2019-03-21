@@ -6,13 +6,16 @@ import App from './App'
 import router from './router'
 import NProgress from 'nprogress' // progress bar
 import 'nprogress/nprogress.css'// progress bar style
+// import '@/styles/sidebar.scss' // global css
 import axios from 'axios';
 import 'normalize.css/normalize.css'
 // import '../static/scrollbar.css'
 import 'element-ui/lib/theme-chalk/index.css'
+import 'babel-polyfill'
 
 import store from './store/index'
 import {
+    Scrollbar,
     Pagination,
     Dialog,
     Autocomplete,
@@ -82,7 +85,19 @@ import {
     Notification
 } from 'element-ui';
 
+
+import VueLazyLoad from 'vue-lazyload'
+Vue.use(VueLazyLoad,{
+  error:'./logo.png',
+  loading:'./img-big.png'
+})
+
+//父子组件传值总线
+let bus = new Vue()
+Vue.prototype.bus = bus
+
 Vue.use(Pagination);
+Vue.use(Scrollbar);
 Vue.use(Dialog);
 Vue.use(Autocomplete);
 Vue.use(Dropdown);

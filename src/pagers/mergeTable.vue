@@ -1,44 +1,10 @@
 <template>
     <div class="table-wrapper" >
-        <div class="table" @click="test">
-            <!--<el-table-->
-                    <!--:data="tableData"-->
-                    <!--:span-method="objectSpanMethod"-->
-                    <!--border-->
-                    <!--style="width: 100%; margin-top: 20px">-->
-                <!--<el-table-column-->
-                        <!--label="ID"-->
-                        <!--width="180">-->
-                    <!--<template slot-scope="scope">-->
-                        <!--{{scope.row[0]}}-->
-                    <!--</template>-->
-                <!--</el-table-column>-->
-                <!--<el-table-column-->
-                        <!--label="姓名">-->
-                    <!--<template slot-scope="scope">-->
-                        <!--{{scope.row[1]}}-->
-                    <!--</template>-->
-                <!--</el-table-column>-->
-                <!--<el-table-column-->
-                        <!--label="数值 1（元）">-->
-                    <!--<template slot-scope="scope">-->
-                        <!--{{scope.row[2]}}-->
-                    <!--</template>-->
-                <!--</el-table-column>-->
-                <!--<el-table-column-->
-                        <!--label="数值 2（元）">-->
-                    <!--<template slot-scope="scope">-->
-                        <!--{{scope.row[2]}}-->
-                    <!--</template>-->
-                <!--</el-table-column>-->
-                <!--&lt;!&ndash;<el-table-column&ndash;&gt;-->
-                        <!--&lt;!&ndash;label="数值 3（元）">&ndash;&gt;-->
-                    <!--&lt;!&ndash;<template slot-scope="scope">&ndash;&gt;-->
-                        <!--&lt;!&ndash;{{scope.row[1]}}&ndash;&gt;-->
-                    <!--&lt;!&ndash;</template>&ndash;&gt;-->
-                <!--&lt;!&ndash;</el-table-column>&ndash;&gt;-->
-            <!--</el-table>-->
-            <table border="1">
+        <el-radio  v-model="radio1" :label="false">禁用</el-radio>
+        <el-radio  v-model="radio1" :label="true">启用</el-radio>
+        <div class="table" @click="test" v-show="radio1">
+
+            <table border="1" >
                 <thead>
                     <tr>
                         <th v-for="ln in tableHeader" class="td">{{ln}}</th>
@@ -53,9 +19,10 @@
                 </tbody>
             </table>
         </div>
+        <div>test</div>
         <el-dialog title="收货地址" :visible.sync="dialogTableVisible" class="dialog">
             <!--<hot-table :settings="hotSettings1"></hot-table>-->
-            <hot-table :settings="hotSettings"></hot-table>
+            <hot-table :settings="hotSettings" :style="style"></hot-table>
             <div slot="footer" class="dialog-footer">
                 <el-button @click="dialogTableVisible = false">取 消</el-button>
                 <el-button type="primary" @click="dialogTableConfirm">确 定</el-button>
@@ -76,6 +43,7 @@
         dialogTableVisible:false,
         tableData:[[1,1,1,1],[2,2,2,2],[3,3,3,3],[4,4,4,4]],
         tableHeader:['test1','test2','test3','test4'],
+        radio1:false,
         tableData6: [{
           id: '12987122',
           name: '王小虎',
@@ -119,6 +87,7 @@
           contextMenu: true,
           language: 'zh-CN'
         },
+        style: 'width: 800px; height: auto; overflow: hidden; border: none;margin: 0 auto;',
         tableDataTemp:[]
       }
     },
@@ -173,6 +142,9 @@
     .dialog .htContextMenu:not(.htGhostTable){
         position: absolute;
         z-index: 2060;
+    }
+    .table{
+        margin: 20px;
     }
 </style>
 <style>
