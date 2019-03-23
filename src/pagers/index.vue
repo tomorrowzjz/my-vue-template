@@ -43,6 +43,7 @@
                         <el-menu-item index="brotherone">brotherone</el-menu-item>
                         <el-menu-item index="brothertwo">brothertwo</el-menu-item>
                         <el-menu-item index="image-lazy">image-lazy</el-menu-item>
+                        <el-menu-item index="mixins">mixins</el-menu-item>
                     </el-menu-item-group>
                     <el-submenu index="1-4">
                         <template slot="title">选项4</template>

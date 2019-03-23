@@ -156,6 +156,11 @@ export default new Router({
           name: 'image-lazy',
           component: () => import("../pagers/image-lazy"),
         },
+        {
+          path: '/mixins',
+          name: 'mixins',
+          component: () => import("../pagers/mixins"),
+        },
       ]
     }
   ]
