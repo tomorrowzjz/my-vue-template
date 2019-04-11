@@ -161,6 +161,16 @@ export default new Router({
           name: 'mixins',
           component: () => import("../pagers/mixins"),
         },
+        {
+          path: '/html2canvas',
+          name: 'html2canvas',
+          component: () => import("../pagers/html2canvas"),
+        },
+        {
+          path: '/loading',
+          name: 'loading',
+          component: () => import("../pagers/loading"),
+        },
       ]
     }
   ]

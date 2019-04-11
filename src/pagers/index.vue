@@ -44,6 +44,8 @@
                         <el-menu-item index="brothertwo">brothertwo</el-menu-item>
                         <el-menu-item index="image-lazy">image-lazy</el-menu-item>
                         <el-menu-item index="mixins">mixins</el-menu-item>
+                        <el-menu-item index="html2canvas">html2canvas</el-menu-item>
+                        <el-menu-item index="loading">loading</el-menu-item>
                     </el-menu-item-group>
                     <el-submenu index="1-4">
                         <template slot="title">选项4</template>

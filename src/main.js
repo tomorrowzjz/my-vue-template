@@ -181,9 +181,13 @@ router.beforeEach((to, from, next) => {
   next();
 })
 
+
 router.afterEach(() => {
   NProgress.done()
 })
+
+import VueClipboard from 'vue-clipboard2'
+Vue.use(VueClipboard)
 
 // 引入mockjs
 // require('./mock.js')
