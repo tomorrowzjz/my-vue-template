@@ -170,6 +170,10 @@ export default new Router({
           path: '/loading',
           name: 'loading',
           component: () => import("../pagers/loading"),
+        },{
+          path: '/validtorForm',
+          name: 'validtorForm',
+          component: () => import("../pagers/validatorForm"),
         },
       ]
     }

@@ -10,7 +10,7 @@
                 <div v-for="o in 4" :key="o" class="text item">
                     {{'列表内容 ' + o }}
                 </div>
-                <!--<img src="../assets/img-big.jpg" height="600" width="410"/>-->
+                <img src="../assets/img-big.jpg" height="600" width="410"/>
             </el-card>
 
 
@@ -40,9 +40,23 @@
       }
     },
     methods: {
-      toImage() {
+//      let opts = {
+//        scale: scale, // 添加的scale 参数
+//        canvas: canvas, //自定义 canvas
+//        logging: false, //日志开关，便于查看html2canvas的内部执行流程
+//        width: width, //dom 原始宽度   canvas窗口的宽度
+//        height: height, //canvas窗口的高度
+//        windowsHeight: document.body.scrollHeight, //获取X方向滚动条的内容
+//        windowsWidth: document.body.scrollWidth, //获取Y方向滚动条的内容
+//        x: 0, //获取Y方向滚动条的内容
+//        y: window.pageYOffset, //页面在垂直方向的滚动距离
+//        useCORS: true // 【重要】开启跨域配置
+//      };
+
+  toImage() {
         html2canvas(this.$refs.imageWrapper,{
-          backgroundColor: null
+          backgroundColor: null,
+          userCORS:true,//保证跨域图片的显示
         }).then((canvas) => {
           let dataURL = canvas.toDataURL("image/png");
           this.dataURL = dataURL;
