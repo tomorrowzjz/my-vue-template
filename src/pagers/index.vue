@@ -47,6 +47,8 @@
                         <el-menu-item index="html2canvas">html2canvas</el-menu-item>
                         <el-menu-item index="loading">loading</el-menu-item>
                         <el-menu-item index="validtorForm">validtorForm</el-menu-item>
+                        <el-menu-item index="xmForm">xmForm</el-menu-item>
+                        <el-menu-item index="sync">sync</el-menu-item>
                     </el-menu-item-group>
                     <el-submenu index="1-4">
                         <template slot="title">选项4</template>

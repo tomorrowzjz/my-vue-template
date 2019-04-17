@@ -2,13 +2,16 @@
     <div class="index">
         <div>
             <test :test="test" @testmodel="testmodel"></test>
+            <testone v-model="testone"></testone>
         </div>
+        <el-button @click="hello">111</el-button>
     </div>
 </template>
 
 <script>
   import api from '../api/api.js'
   import test from './test.vue'
+  import testone from './test1.vue'
 
   export default {
     name: 'index',
@@ -16,11 +19,13 @@
     data () {
       return {
         newsListShow: [],
-        test:3
+        test:3,
+        testone:666
       }
     },
     components: {
-      test
+      test,
+      testone
     },
     created() {
 
@@ -31,8 +36,17 @@
       testmodel(e){
         console.log(e);
         this.test = e;
+      },
+
+      hello(){
+        console.log(this.testone);
       }
-    }
+    },
+//    watch:{
+//      testone(val,old){
+//        console.log(val, old);
+//      }
+//    }
   }
 </script>
 

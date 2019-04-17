@@ -175,6 +175,16 @@ export default new Router({
           name: 'validtorForm',
           component: () => import("../pagers/validatorForm"),
         },
+        {
+          path: '/xmForm',
+          name: 'xmForm',
+          component: () => import("../pagers/form/xmForm"),
+        },
+        {
+          path: '/sync',
+          name: 'sync',
+          component: () => import("../pagers/sync"),
+        },
       ]
     }
   ]

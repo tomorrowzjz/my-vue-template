@@ -13,6 +13,7 @@
     "@handsontable-pro/vue": "^3.1.0",
     "@handsontable/vue": "^3.1.0",
     "@toast-ui/vue-image-editor": "^1.0.2",
+    "async-validator": "^1.11.0",
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
     "better-scroll": "^1.13.4",
