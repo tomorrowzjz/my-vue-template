@@ -7,7 +7,9 @@
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
-    "build": "node build/build.js"
+    "build": "node build/build.js",
+    "new:view": "node ./scripts/generateView/index",
+    "new": "plop"
   },
   "dependencies": {
     "@handsontable-pro/vue": "^3.1.0",
@@ -17,12 +19,14 @@
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
     "better-scroll": "^1.13.4",
+    "drop-console-webpack-plugin": "^3.0.2",
     "echarts": "^4.2.0-rc.2",
     "element-ui": "^2.4.8",
     "handsontable-pro": "^6.2.2",
     "html2canvas": "^1.0.0-alpha.12",
     "normalize.css": "^8.0.0",
     "nprogress": "^0.2.0",
+    "plop": "^2.3.0",
     "vue": "^2.5.2",
     "vue-clipboard2": "^0.3.0",
     "vue-cropper": "^0.4.8",

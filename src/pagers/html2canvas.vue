@@ -26,6 +26,7 @@
                        v-clipboard:success="onCopy"
                        v-clipboard:error="onError">点击复制</el-button>
         </div>
+        <el-button @click="backTop">回到顶部</el-button>
     </div>
 </template>
 
@@ -40,6 +41,24 @@
       }
     },
     methods: {
+      backTop(){
+        console.log(1);
+//        let top = document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset
+//        console.log(top);
+//
+//        document.documentElement.scrollTop = 0;
+//        console.dir(document.documentElement);
+        let total = 100
+        let top = document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset
+        document.body.scrollTop = 0
+        // Firefox
+        document.documentElement.scrollTop = 0
+        // Safari
+        window.pageYOffset = 0
+
+        console.log(top);
+//        console.log(document.body);
+      },
 //      let opts = {
 //        scale: scale, // 添加的scale 参数
 //        canvas: canvas, //自定义 canvas

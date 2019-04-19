@@ -1,11 +1,11 @@
 <template>
     <div>
-        <input type="text" v-focus>
+        <!--<input type="text" v-focus>-->
         <!--<span v-demo:foo.a.b="message"> </span>-->
         <div v-zjz="flag">
             zjzjzjzj
         </div>
-        <el-button @click="toggle">test</el-button>
+        <el-button @click.native="toggle">test</el-button>
     </div>
 </template>
 
@@ -15,17 +15,17 @@
     data () {
       return {
         message: 'Welcome to Your Vue.js App',
-        flag:true
+        flag:false
       }
     },
     directives: {
-      focus: {
-        // 指令的定义
-        inserted: function (el) {
-          el.focus()
-          console.log(el);
-        }
-      },
+//      focus: {
+//        // 指令的定义
+//        inserted: function (el) {
+//          el.focus()
+//          console.log(el);
+//        }
+//      },
       demo: {
         bind: function (el, binding, vnode) {
           console.log('bind');
@@ -44,12 +44,24 @@
       },
 
       zjz: {
+        inserted: function (el) {
+//          el.style.display = 'block';
+//          if(binding.value){
+//            el.style.display = 'none';
+//          }else {
+//            el.style.display = 'block';
+//          }
+        },
         bind: function (el, binding, vnode) {
           console.log('bind');
           console.log(el);
           console.log(binding.value);
           console.log(vnode);
-
+//          if(binding.value){
+//            el.style.display = 'block';
+//          }else {
+//            el.style.display = 'none';
+//          }
         },
         update(el, binding){
           if(binding.value){
@@ -64,6 +76,7 @@
     methods:{
       toggle(){
         this.flag = !this.flag
+        console.log(this.flag);
       }
     }
   }

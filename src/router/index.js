@@ -184,6 +184,10 @@ export default new Router({
           path: '/sync',
           name: 'sync',
           component: () => import("../pagers/sync"),
+        },{
+          path: '/transitions',
+          name: 'transitions',
+          component: () => import("../pagers/transitiontest/demo"),
         },
       ]
     }

@@ -8,6 +8,8 @@ const baseWebpackConfig = require('./webpack.base.conf')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+// const DropConsoleWebpackPlugin = require('drop-console-webpack-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const portfinder = require('portfinder')
 
 const HOST = process.env.HOST
@@ -64,7 +66,22 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         to: config.dev.assetsSubDirectory,
         ignore: ['.*']
       }
-    ])
+    ]),
+    // new DropConsoleWebpackPlugin()
+    // new webpack.optimize.UglifyJsPlugin({
+    //
+    // }),
+    new UglifyJsPlugin({
+      uglifyOptions: {
+        compress: {
+          warnings: false,
+          drop_debugger: true,
+          drop_console: true
+        },
+      },
+      sourceMap: config.build.productionSourceMap,
+      parallel: true
+    }),
   ]
 })
 
