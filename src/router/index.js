@@ -189,6 +189,11 @@ export default new Router({
           name: 'transitions',
           component: () => import("../pagers/transitiontest/demo"),
         },
+        {
+          path: '/two-lists',
+          name: 'two-lists',
+          component: () => import("../pagers/VueDraggable/two-lists"),
+        },
       ]
     }
   ]

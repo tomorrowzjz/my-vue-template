@@ -64,6 +64,19 @@ export default {
       },
       tableData:[[1,1,1,1,1,1],[2,2,2,2,1,1],[3,3,3,3,1,1],[4,4,4,4,1,1]],
       tableHeader:['颜色','尺码','价格','数量','商家编码','商品条形码'],
+      routes11:[
+        {
+          path: '/theme',
+        },
+
+        {
+          children: [
+            {
+              path: 'index',
+            }
+          ]
+        },
+      ]
     }
   },
   computed:{
@@ -77,6 +90,12 @@ export default {
       }
       return arr;
     }
+  },
+  mounted(){
+//    let test = {...this.routes11}
+//    test[1].zjz = "test"
+//    console.log(test);
+//    console.log(this.routes11);
   },
   methods: {
     size(e){

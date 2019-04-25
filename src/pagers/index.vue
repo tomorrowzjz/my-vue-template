@@ -50,6 +50,7 @@
                         <el-menu-item index="xmForm">xmForm</el-menu-item>
                         <el-menu-item index="sync">sync</el-menu-item>
                         <el-menu-item index="transitions">transitions</el-menu-item>
+                        <el-menu-item index="two-lists">two-lists</el-menu-item>
                     </el-menu-item-group>
                     <el-submenu index="1-4">
                         <template slot="title">选项4</template>
