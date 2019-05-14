@@ -1,11 +1,14 @@
 <template>
     <el-container>
         <el-aside width="" class="aside" style="background-color: rgb(84 , 92, 100); transition: width 2s;" ref="aside">
-            <Sidebar></Sidebar>
+            <Sidebar :isCollapse="isCollapse"
+                     :activeNav="activeNav"></Sidebar>
         </el-aside>
         <el-container>
             <el-header>
-                <Navbar class="header" @isCollapseMethod="isCollapseMethod" @logOut="logOut"></Navbar>
+                <Navbar class="header"
+                        @isCollapseMethod="isCollapseMethod"
+                        @logOut="logOut"></Navbar>
             </el-header>
             <el-main>
                 <AppMain></AppMain>

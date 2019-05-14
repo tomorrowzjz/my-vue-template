@@ -2,6 +2,7 @@
   <el-scrollbar wrap-class="scrollbar-wrapper" style="height: 100%">
     <el-menu :default-active="activeNav" router :collapse="isCollapse" class="el-menu-vertical-demo"
              background-color="#545c64"
+             unique-opened
              text-color="#fff" active-text-color="#ffd04b" style="border: none">
       <el-submenu index="1">
         <template slot="title"><i class="el-icon-message navigation"></i><span slot="title">VUE</span>
@@ -13,6 +14,8 @@
           <el-menu-item index="sync">sync</el-menu-item>
           <el-menu-item index="transitions">transitions</el-menu-item>
           <el-menu-item index="directive">directive</el-menu-item>
+          <el-menu-item index="provideInject">provideInject</el-menu-item>
+          <el-menu-item index="attrListener">attrListener</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
       <el-submenu index="2">
@@ -60,12 +63,14 @@
         </el-menu-item-group>
       </el-submenu>
       <el-submenu index="5">
-        <template slot="title"><i class="el-icon-postcard navigation"></i><span slot="title">EXAMPLE</span>
+        <template slot="title"><i class="el-icon-postcard navigation"></i><span slot="title">Example</span>
         </template>
         <el-menu-item-group>
           <el-menu-item index="menu">menu</el-menu-item>
           <el-menu-item index="brotherone">brotherone</el-menu-item>
           <el-menu-item index="brothertwo">brothertwo</el-menu-item>
+          <el-menu-item index="render">render</el-menu-item>
+          <el-menu-item index="renderindex">renderindex</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
     </el-menu>
@@ -74,7 +79,11 @@
 
 <script>
   export default {
-    name: '',
+    name: 'Sidebar',
+    props:{
+      activeNav:String,
+      isCollapse:Boolean
+    },
     data () {
       return {
         msg: 'Welcome to Your Vue.js App'

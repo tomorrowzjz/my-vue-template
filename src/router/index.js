@@ -200,6 +200,26 @@ export default new Router({
           name: 'qrcode',
           component: () => import("../pagers/qrcode/index"),
         },
+        {
+          path: '/provideInject',
+          name: 'provideInject',
+          component: () => import("../pagers/vue-demo/provideInject/index"),
+        },
+        {
+          path: '/attrListener',
+          name: 'attrListener',
+          component: () => import("../pagers/vue-demo/attrListener/index"),
+        },
+        {
+          path: '/render',
+          name: 'render',
+          component: () => import("../pagers/field/index"),
+        },
+        {
+          path: '/renderindex',
+          name: 'renderindex',
+          component: () => import("../pagers/field/renderindex"),
+        },
       ]
     }
   ]
