@@ -1,11 +1,6 @@
 <template>
     <el-container>
-        <el-aside width="" style="background-color: rgb(84 , 92, 100); transition: width 2s;" ref="aside">
-            <!--<el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">-->
-            <!--<el-radio-button :label="false">展开</el-radio-button>-->
-            <!--<el-radio-button :label="true">收起</el-radio-button>-->
-            <!--</el-radio-group>-->
-            <!--<el-menu :default-openeds="['1', '3']" :default-active="this.$router.path" router :collapse="isCollapse">-->
+        <el-aside width="" class="aside" style="background-color: rgb(84 , 92, 100); transition: width 2s;" ref="aside">
             <el-scrollbar wrap-class="scrollbar-wrapper" style="height: 100%">
                 <el-menu :default-active="activeNav" router :collapse="isCollapse" class="el-menu-vertical-demo"
                      background-color="#545c64"
@@ -14,11 +9,8 @@
                     <template slot="title"><i class="el-icon-message navigation"></i><span slot="title">导航一</span>
                     </template>
                     <el-menu-item-group>
-                        <!--<template slot="title">分组一</template>-->
                         <el-menu-item index="/table">table</el-menu-item>
                         <el-menu-item index="/form">form</el-menu-item>
-                        <!--</el-menu-item-group>-->
-                        <!--<el-menu-item-group>-->
                         <el-menu-item index="echarts">echarts</el-menu-item>
                         <el-menu-item index="waterfall">waterfall</el-menu-item>
                         <el-menu-item index="enlarge">enlarge</el-menu-item>
@@ -52,42 +44,16 @@
                         <el-menu-item index="transitions">transitions</el-menu-item>
                         <el-menu-item index="two-lists">two-lists</el-menu-item>
                     </el-menu-item-group>
-                    <el-submenu index="1-4">
-                        <template slot="title">选项4</template>
-                        <el-menu-item index="1-4-1">选项4-1</el-menu-item>
-                    </el-submenu>
                 </el-submenu>
                 <el-submenu index="2">
                     <template slot="title"><i class="el-icon-menu navigation"></i><span slot="title">导航二</span>
                     </template>
                     <el-menu-item-group>
-                        <template slot="title">分组一</template>
                         <el-menu-item index="2-1">选项1</el-menu-item>
                         <el-menu-item index="2-2">选项2</el-menu-item>
                     </el-menu-item-group>
-                    <el-menu-item-group title="分组2">
-                        <el-menu-item index="2-3">选项3</el-menu-item>
-
-                    </el-menu-item-group>
                     <el-submenu index="2-4">
-                        <template slot="title">选项4</template>
                         <el-menu-item index="2-4-1">选项4-1</el-menu-item>
-                    </el-submenu>
-                </el-submenu>
-                <el-submenu index="3">
-                    <template slot="title"><i class="el-icon-setting navigation"></i><span slot="title">导航三</span>
-                    </template>
-                    <el-menu-item-group>
-                        <template slot="title">分组一</template>
-                        <el-menu-item index="3-1">选项1</el-menu-item>
-                        <el-menu-item index="3-2">选项2</el-menu-item>
-                    </el-menu-item-group>
-                    <el-menu-item-group title="分组2">
-                        <el-menu-item index="3-3">选项3</el-menu-item>
-                    </el-menu-item-group>
-                    <el-submenu index="3-4">
-                        <template slot="title">选项4</template>
-                        <el-menu-item index="3-4-1">选项4-1</el-menu-item>
                     </el-submenu>
                 </el-submenu>
             </el-menu>
@@ -95,22 +61,12 @@
         </el-aside>
 
         <el-container>
-            <el-header style="text-align: right; font-size: 12px;display: flex;justify-content: space-between;">
-                <!--<el-button >dianji</el-button>-->
-                <div style="line-height: 100%; display: flex;align-items: center;justify-content: center; cursor:pointer; width:50px;"
+            <el-header class="header">
+                <div class="isCollapse"
                      @click="isCollapseMethod">
                     <i class="el-icon-menu"></i>
                 </div>
                 <div>
-                    <!--<el-dropdown>
-                        <i class="el-icon-setting" style="margin-right: 15px"></i>
-                        <el-dropdown-menu slot="dropdown">
-                            <el-dropdown-item>查看</el-dropdown-item>
-                            <el-dropdown-item>新增</el-dropdown-item>
-                            <el-dropdown-item>删除</el-dropdown-item>
-                        </el-dropdown-menu>
-                    </el-dropdown>
-                    <span>王小虎</span>-->
                     <el-dropdown trigger="click" style="cursor:pointer">
                         <span class="el-dropdown-link">
                             王小虎<i class="el-icon-arrow-down el-icon--right"></i>
@@ -189,6 +145,22 @@
     .el-scrollbar .el-scrollbar__wrap {
         overflow-x: hidden;
     }
+
+    .isCollapse{
+        line-height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor:pointer;
+        width:50px;
+    }
+
+    .header{
+        text-align: right;
+        font-size: 12px;
+        display: flex;
+        justify-content: space-between;
+    }
 </style>
 
 <script>
@@ -219,6 +191,7 @@
       }
     },
     mounted(){
+
       console.log(this.$router.history.current.path);
 //      console.log(this.$route);
 //      this.activeNav = this.$route.path;

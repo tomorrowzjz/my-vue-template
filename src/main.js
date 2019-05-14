@@ -13,6 +13,7 @@ import 'normalize.css/normalize.css'
 import 'element-ui/lib/theme-chalk/index.css'
 import 'babel-polyfill'
 
+
 import store from './store/index'
 import {
     Scrollbar,

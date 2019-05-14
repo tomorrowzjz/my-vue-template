@@ -20,7 +20,8 @@ export default new Router({
     {
       path: '/index',
       name: 'index',
-      component: () => import("../pagers/index"),
+      redirect: '/helloworld',
+      component: () => import("../pagers/layout/index"),
       children: [
         {
           path: '/helloworld',
@@ -193,6 +194,11 @@ export default new Router({
           path: '/two-lists',
           name: 'two-lists',
           component: () => import("../pagers/VueDraggable/two-lists"),
+        },
+        {
+          path: '/qrcode',
+          name: 'qrcode',
+          component: () => import("../pagers/qrcode/index"),
         },
       ]
     }
