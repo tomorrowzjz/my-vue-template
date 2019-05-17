@@ -50,11 +50,11 @@
       console.log(uuidv1());
       console.log(uuidv1());
       console.log(uuidv1());
-      console.log(this.$router.history.current.path);
+//      console.log(this.$router.history.current.path);
 //      console.log(this.$route);
 //      this.activeNav = this.$route.path;
-      this.activeNav = this.$router.history.current.path;
-      console.log(this.$router.path);
+      /*this.activeNav = this.$router.history.current.path||this.$router.path;
+      console.log(this.$router.path);*/
     },
     components:{
       Navbar,

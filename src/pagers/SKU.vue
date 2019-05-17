@@ -61,6 +61,7 @@
                 </tr>
                 </thead>
                 <tbody>
+                {{specification}}
                 <tr v-for="(item, index) in countSum(0)" :key="index">
                     <td
                             v-for="(n, specIndex) in specification.length"

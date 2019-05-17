@@ -4,7 +4,10 @@
             <test :test="test" @testmodel="testmodel"></test>
             <testone v-model="testone"></testone>
         </div>
-        <el-button @click="hello">111</el-button>
+        <el-button @click="hello">testv-model</el-button>
+        <el-divider content-position="center">双向绑定 vuex</el-divider>
+        {{testbind}}
+        <el-input v-model="testbind"></el-input>
     </div>
 </template>
 
@@ -23,6 +26,16 @@
         testone:666
       }
     },
+    computed:{
+      testbind:{
+        get(){
+          return this.$store.state.testbind;
+        },
+        set(val){
+          this.$store.commit("TESTBIND",val)
+        }
+      }
+    },
     components: {
       test,
       testone
@@ -31,6 +44,8 @@
 
     },
     mounted() {
+//      console.log(this.testbind);
+//      console.log(this.$store.state);
     },
     methods:{
       testmodel(e){

@@ -25,7 +25,11 @@
       initImgsArr(n, m) {   //初始化图片数组的方法，把要加载的图片装入
         var arr = []
         for (var i = n; i < m; i++) {
-          arr.push({src: `../static/img/${i + 1}.jpg`, link: '', info: '一些图片描述文字'}) //src为加载的图片的地址、link为超链接的链接地址、
+          if (process.env.NODE_ENV === "development") {
+            arr.push({src: `../static/img/${i + 1}.jpg`, link: '', info: '一些图片描述文字'}) //src为加载的图片的地址、link为超链接的链接地址、
+          }else {
+            arr.push({src: `/my-vue-template-zjz/static/img/${i + 1}.jpg`, link: '', info: '一些图片描述文字'})
+          }
         }
         return arr
       }

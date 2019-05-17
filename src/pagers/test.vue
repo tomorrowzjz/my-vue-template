@@ -1,7 +1,7 @@
 <template>
     <div>
         <div>{{test}}</div>
-        <el-button @click="testmethod">testbtn</el-button>
+        <el-button @click="testmethod">emitbtn</el-button>
     </div>
 </template>
 

@@ -89,10 +89,18 @@ import {
 
 
 import VueLazyLoad from 'vue-lazyload'
-Vue.use(VueLazyLoad,{
-  error:'./logo.png',
-  loading:'./img-big.png'
-})
+if (process.env.NODE_ENV === "development") {
+  Vue.use(VueLazyLoad,{
+    error:'./logo.png',
+    loading:'./img-big.png'
+  })
+}else {
+  Vue.use(VueLazyLoad,{
+    error:'/my-vue-template-zjz/static/img/logo.png',
+    loading:'/my-vue-template-zjz/static/img/img-big.png'
+  })
+}
+
 
 //父子组件传值总线
 let bus = new Vue()
