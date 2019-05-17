@@ -22,8 +22,9 @@
         <template slot="title"><i class="el-icon-eleme navigation"></i><span slot="title">ELEMENTUI</span>
         </template>
         <el-menu-item-group>
-          <el-menu-item index="//table">table</el-menu-item>
-          <el-menu-item index="//form">form</el-menu-item>
+          <el-menu-item index="/table">table</el-menu-item>
+          <el-menu-item index="/form">form</el-menu-item>
+          <el-menu-item index="/transfer">transfer</el-menu-item>
           <el-menu-item index="/validtorForm">validtorForm</el-menu-item>
           <el-menu-item index="/mock">mock</el-menu-item>
           <el-menu-item index="/caneditortable">caneditortable</el-menu-item>
@@ -77,6 +78,13 @@
             <el-menu-item index="/render">render</el-menu-item>
             <el-menu-item index="/renderindex">renderindex</el-menu-item>
           </el-submenu>
+        </el-menu-item-group>
+      </el-submenu>
+      <el-submenu index="/6">
+        <template slot="title"><i class="el-icon-postcard navigation"></i><span slot="title">编辑器</span>
+        </template>
+        <el-menu-item-group>
+          <el-menu-item index="/jsonEditor">jsonEditor</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
     </el-menu>

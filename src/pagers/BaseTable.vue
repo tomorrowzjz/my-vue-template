@@ -1,19 +1,71 @@
 <template>
     <div class="table">
         <div class="crumbs">
-            <el-breadcrumb separator="/">
-                <el-breadcrumb-item><i class="el-icon-tickets"></i> 基础表格</el-breadcrumb-item>
-            </el-breadcrumb>
+            <!--<el-breadcrumb separator="/">-->
+                <!--<el-breadcrumb-item><i class="el-icon-tickets"></i> 基础表格</el-breadcrumb-item>-->
+            <!--</el-breadcrumb>-->
         </div>
         <div class="container">
+            <!--<div class="handle-box">-->
+                <!--<el-button type="primary" icon="delete" class="handle-del mr10" @click="delAll">批量删除</el-button>-->
+                <!--<el-select v-model="select_cate" placeholder="筛选省份" class="handle-select mr10">-->
+                    <!--<el-option key="1" label="广东省" value="广东省"></el-option>-->
+                    <!--<el-option key="2" label="湖南省" value="湖南省"></el-option>-->
+                <!--</el-select>-->
+                <!--<el-input v-model="select_word" placeholder="筛选关键词" class="handle-input mr10"></el-input>-->
+                <!--<el-button type="primary" icon="search" @click="search">搜索</el-button>-->
+            <!--</div>-->
             <div class="handle-box">
-                <el-button type="primary" icon="delete" class="handle-del mr10" @click="delAll">批量删除</el-button>
-                <el-select v-model="select_cate" placeholder="筛选省份" class="handle-select mr10">
-                    <el-option key="1" label="广东省" value="广东省"></el-option>
-                    <el-option key="2" label="湖南省" value="湖南省"></el-option>
-                </el-select>
-                <el-input v-model="select_word" placeholder="筛选关键词" class="handle-input mr10"></el-input>
-                <el-button type="primary" icon="search" @click="search">搜索</el-button>
+                <div class="query">
+                    <el-row >
+                        <el-col :span="1" class="row-bg text-size"><span>名称:</span></el-col>
+                        <el-col :span="7" class="row-bg">
+                            <el-input placeholder="请输入内容" v-model="query"  @keyup.enter.native="exeQuery"></el-input>
+                        </el-col>
+                        <div v-show="isExpand">
+                            <el-col :span="4" class="row-bg">
+                                <el-select v-model="type" placeholder="类型"  clearable>
+                                    <el-option label="商品基础信息" value="metadata"></el-option>
+                                    <el-option label="商品销售规格" value="option"></el-option>
+                                    <el-option label="商品属性" value="attribute"></el-option>
+                                    <el-option label="商品图片" value="image"></el-option>
+                                </el-select>
+                            </el-col>
+                            <el-col :span="4" class="row-bg">
+                                <el-select v-model="status" placeholder="状态"  clearable>
+                                    <el-option label="创建" value="created"></el-option>
+                                    <el-option label="启用" value="enabled"></el-option>
+                                    <el-option label="禁用" value="disabled"></el-option>
+                                    <el-option label="废弃" value="deprecated"></el-option>
+                                </el-select>
+                            </el-col>
+                        </div>
+                        <el-col :span="8" class="row-bg">
+                            <el-button type="primary" @click="exeQuery">查询</el-button>
+                            <el-button type="primary" @click="reset">重置</el-button>
+                            <span class="expand" @click="handleExpand">
+                        <template v-if="isExpand">
+                            收起 <i class="el-icon-arrow-up"></i>
+                        </template>
+                        <template v-else>
+                            展开 <i class="el-icon-arrow-down"></i>
+                        </template>
+                    </span>
+                        </el-col>
+                    </el-row>
+                    <!--<el-form :inline="true"  class="demo-form-inline">-->
+                    <!--<el-form-item label="Laebl">-->
+
+                    <!--</el-form-item>-->
+                    <!--<el-form-item label="活动区域">-->
+
+                    <!--</el-form-item>-->
+                    <!--<el-form-item>-->
+
+                    <!--</el-form-item>-->
+                    <!--</el-form>-->
+
+                </div>
             </div>
             <el-table :data="data" border style="width: 100%" ref="multipleTable" @selection-change="handleSelectionChange">
                 <el-table-column type="selection" width="55"></el-table-column>
@@ -31,7 +83,15 @@
                 </el-table-column>
             </el-table>
             <div class="pagination">
-                <el-pagination @current-change="handleCurrentChange" layout="prev, pager, next" :total="1000">
+                <el-pagination
+                        @size-change="handleSizeChange"
+                        @current-change="handleCurrentChange"
+                        :current-page="pagination.currentPage"
+                        :page-sizes="[10, 20, 30, 40]"
+                        :page-size="pagination.pagesize"
+                        background
+                        layout="total, sizes, prev, pager, next, jumper"
+                        :total="pagination.total">
                 </el-pagination>
             </div>
         </div>
@@ -67,8 +127,10 @@
 </template>
 
 <script>
+  import { pages } from '../mixins/page.js'
     export default {
         name: 'basetable',
+      mixins: [pages],
         data() {
             return {
                 url: '../static/vuetable.json',
@@ -86,7 +148,11 @@
                     date: '',
                     address: ''
                 },
-                idx: -1
+                idx: -1,
+               isExpand :false,
+                query:'',
+              type:'',
+              status:'',
             }
         },
         created() {
@@ -115,6 +181,11 @@
         },
         methods: {
             // 分页导航
+          exeQuery(){
+          },
+          reset(){
+
+          },
             handleCurrentChange(val) {
                 this.cur_page = val;
                 this.getData();
@@ -228,7 +299,11 @@
                 this.tableData.splice(this.idx, 1);
                 this.$message.success('删除成功');
                 this.delVisible = false;
-            }
+            },
+              handleExpand(){
+                this.isExpand =! this.isExpand;
+              },
+
         }
     }
 
@@ -250,5 +325,19 @@
     .del-dialog-cnt{
         font-size: 16px;
         text-align: center
+    }
+    .pagination{
+        margin: 10px;
+    }
+    .query{
+        margin: 10px auto;
+    }
+    .text-size {
+        font-size: 14px;
+        height: 40px;
+        line-height: 40px;
+    }
+    .row-bg {
+        padding: 10px;
     }
 </style>

@@ -220,6 +220,16 @@ export default new Router({
           name: 'renderindex',
           component: () => import("../pagers/field/renderindex"),
         },
+        {
+          path: '/jsonEditor',
+          name: 'jsonEditor',
+          component: () => import("../pagers/jsonEditor/index"),
+        },
+        {
+          path: '/transfer',
+          name: 'transfer',
+          component: () => import("../pagers/element-demo/transferDemo"),
+        },
       ]
     }
   ]

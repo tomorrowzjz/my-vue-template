@@ -30,7 +30,7 @@
             <tr>
               <td v-if="index%form.type.length==0" :rowspan="form.type.length" class="td">{{form.resource[index/form.type.length]}}</td>
               <td v-for="(ln,ind) in tableHeader.length-1" class="td">
-                <span v-if="ind==0">{{form.type[index%form.type.length]}}</span>
+                <span v-if="ind==0">{{JSON.parse(form.type[index%form.type.length]).size}}</span>
                 <el-input v-else v-model="model[index][ind-1]" placeholder="test"></el-input>
                 <!--{{index}}-->
                 <!--{{ind}}-->

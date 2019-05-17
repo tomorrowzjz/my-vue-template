@@ -23,29 +23,6 @@
                 <el-button size="small" type="info" :disabled="specification.length >= 5" @click="addSpec">添加规格项目</el-button>
             </div>
         </div>
-        <el-form ref="form" :model="form" label-width="120px">
-            <el-form-item label="Resources">
-                <el-checkbox-group v-model="form.resource" @change="addSpecTag(index)">
-                    <el-checkbox label="红色" name="type"/>
-                    <el-checkbox label="蓝色" name="type"/>
-                    <el-checkbox label="绿色" name="type"/>
-                </el-checkbox-group>
-            </el-form-item>
-            <el-form-item label="Activity type">
-                <el-checkbox-group v-model="addValues">
-                    <el-checkbox label="S" name="type"/>
-                    <el-checkbox label="L" name="type"/>
-                    <el-checkbox label="XL" name="type"/>
-                    <el-checkbox label="XXl" name="type"/>
-                </el-checkbox-group>
-            </el-form-item>
-
-
-            <!--<el-form-item>-->
-                <!--<el-button type="primary" @click="onSubmit">创建</el-button>-->
-                <!--<el-button @click="onCancel">Cancel</el-button>-->
-            <!--</el-form-item>-->
-        </el-form>
         <div class="example">
             <h4 class="title">产品规格样式一</h4>
             <table class="stock-table">
@@ -61,7 +38,6 @@
                 </tr>
                 </thead>
                 <tbody>
-                {{specification}}
                 <tr v-for="(item, index) in countSum(0)" :key="index">
                     <td
                             v-for="(n, specIndex) in specification.length"
