@@ -11,7 +11,7 @@
                         @logOut="logOut"></Navbar>
             </el-header>
             <el-main>
-                <AppMain></AppMain>
+                <AppMain id="main"></AppMain>
             </el-main>
             <el-footer>Footer</el-footer>
         </el-container>

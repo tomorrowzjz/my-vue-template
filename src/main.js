@@ -198,11 +198,39 @@ router.afterEach(() => {
 })
 
 import VueClipboard from 'vue-clipboard2'
+// var VueScrollactive = require('vue-scrollactive');
+// Vue.use(VueScrollactive);
 Vue.use(VueClipboard)
 
 // 引入mockjs
 require('./mock.js')
 
+
+// var Vue = require('vue');
+var VueScrollTo = require('vue-scrollto');
+
+Vue.use(VueScrollTo)
+
+// You can also pass in the default options
+Vue.use(VueScrollTo, {
+  container: "body",
+  duration: 500,
+  easing: "ease",
+  offset: 0,
+  force: true,
+  cancelable: true,
+  onStart: false,
+  onDone: false,
+  onCancel: false,
+  x: false,
+  y: true
+})
+
+import 'vue-fabric/dist/vue-fabric.min.css';
+import { Fabric } from 'vue-fabric';
+
+Vue.use(Fabric);
+//
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

@@ -230,6 +230,31 @@ export default new Router({
           name: 'transfer',
           component: () => import("../pagers/element-demo/transferDemo"),
         },
+        {
+          path: '/TESTS',
+          name: 'TESTS',
+          component: () => import("../pagers/TESTS"),
+        },
+        {
+          path: '/vue-scrollto',
+          name: 'vue-scrollto',
+          component: () => import("../pagers/third-part/scroll"),
+        },
+        {
+          path: '/vue-fabric',
+          name: 'vue-fabric',
+          component: () => import("../pagers/third-part/vue-fabric"),
+        },
+        {
+          path: '/baidu-map',
+          name: 'baidu-map',
+          component: () => import("../pagers/map/index"),
+        },
+        {
+          path: '/checkboxDemo',
+          name: 'checkboxDemo',
+          component: () => import("../pagers/element-demo/checkboxDemo"),
+        },
       ]
     }
   ]

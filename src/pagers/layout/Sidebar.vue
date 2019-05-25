@@ -25,6 +25,7 @@
           <el-menu-item index="/table">table</el-menu-item>
           <el-menu-item index="/form">form</el-menu-item>
           <el-menu-item index="/transfer">transfer</el-menu-item>
+          <el-menu-item index="/checkboxDemo">checkboxDemo</el-menu-item>
           <el-menu-item index="/validtorForm">validtorForm</el-menu-item>
           <el-menu-item index="/mock">mock</el-menu-item>
           <el-menu-item index="/caneditortable">caneditortable</el-menu-item>
@@ -52,6 +53,9 @@
           <el-menu-item index="/imageEditor">imageEditor</el-menu-item>
           <el-menu-item index="/imagecropper">imagecropper</el-menu-item>
           <el-menu-item index="/vuedraggable">vuedraggable</el-menu-item>
+          <el-menu-item index="/vue-scrollto">vue-scrollto</el-menu-item>
+          <el-menu-item index="/vue-fabric">vue-fabric</el-menu-item>
+          <el-menu-item index="/baidu-map">baidu-map</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
       <el-submenu index="/4">
@@ -61,6 +65,7 @@
           <el-menu-item index="/loading">loading</el-menu-item>
           <el-menu-item index="/scrollTo">scrollTo</el-menu-item>
           <el-menu-item index="/xmForm">xmForm(N)</el-menu-item>
+          <el-menu-item index="/TESTS">vuedraggable</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
       <el-submenu index="/5">
