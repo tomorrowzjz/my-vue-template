@@ -1,6 +1,9 @@
 <template>
   <!--地图容器-->
-  <div id="zjz" class="XSDFXPage"></div>
+  <div>
+    <div id="zjz"></div>
+  </div>
+
 </template>
 <script>
   import {MP} from '../../utils/util.js'
@@ -14,12 +17,11 @@
     mounted() {
       this.$nextTick(()=>{
         MP("pmUD5DVFwlMkovvjeqxWB9Y4obSunR8e").then(BMap => {
-          console.log(BMap);
           // 百度地图API功能
           // 创建Map实例
           var map = new BMap.Map("zjz");
           // 初始化地图,设置中心点坐标和地图级别
-          map.centerAndZoom(new BMap.Point(116.4035,39.915), 11);
+          map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);
           // 添加地图类型控件
           map.addControl(new BMap.MapTypeControl());
           // 设置地图显示的城市 此项是必须设置的
@@ -28,7 +30,7 @@
           map.enableScrollWheelZoom(true);
           // 设置定时器，对地图进行自动移动
           setTimeout(function(){
-            map.panTo(new BMap.Point(113.262232,23.154345));
+            map.panTo(new BMap.Point(116.404, 39.915));
           }, 2000);
           setTimeout(function(){
             map.setZoom(14);
@@ -156,7 +158,7 @@
   }
 </script>
 <style scoped>
-  .XSDFXPage{
+  #zjz{
     width: 100%;
     height: 600px;
     overflow: hidden;
