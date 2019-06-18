@@ -11,11 +11,11 @@
                 prop="name"
                 label="姓名"
                 width="180">
-            <template slot-scope="scope" @click="edit">
-                <el-input v-if="scope.row.isEdit && scope.row.status === 0" v-model="scope.row.name" ></el-input>
+            <div slot-scope="scope" @click="edit(scope.row)">
+                <el-input v-if="scope.row.isEdit && scope.row.status === 0" v-model="scope.row.name" @blur="blur(scope.row)"></el-input>
                 <label v-if="scope.row.status === 1" class="indisable">{{scope.row.name +'(已禁用)' || '--'}}</label>
                 <label v-if="!scope.row.isEdit && scope.row.status === 0">{{scope.row.name || '--'}}</label>
-            </template>
+            </div>
         </el-table-column>
         <el-table-column
                 prop="address"
@@ -62,6 +62,9 @@
         console.log(val);
         this.initUpdateVal = val.name
         val.isEdit = true
+      },
+      blur(val){
+        val.isEdit = false
       }
     }
   }

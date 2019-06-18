@@ -58,16 +58,6 @@ export default new Router({
           component: () => import("../pagers/betterTables"),
         },
         {
-          path: '/vuedraggable',
-          name: 'vuedraggable',
-          component: () => import("../pagers/vuedraggable"),
-        },
-        {
-          path: '/vuedraggable_test',
-          name: 'vuedraggable_test',
-          component: () => import("../pagers/vuedraggable_test"),
-        },
-        {
           path: '/mergeTable',
           name: 'mergeTable',
           component: () => import("../pagers/mergeTable"),
@@ -211,6 +201,11 @@ export default new Router({
           component: () => import("../pagers/vue-demo/attrListener/index"),
         },
         {
+          path: '/extendTable',
+          name: 'attrListener',
+          component: () => import("../pagers/vue-demo/table/extendTable"),
+        },
+        {
           path: '/render',
           name: 'render',
           component: () => import("../pagers/field/index"),
@@ -251,9 +246,19 @@ export default new Router({
           component: () => import("../pagers/map/index"),
         },
         {
+          path: '/NativeDrag',
+          name: 'NativeDrag',
+          component: () => import("../pagers/own/NativeDrag"),
+        },
+        {
           path: '/checkboxDemo',
           name: 'checkboxDemo',
           component: () => import("../pagers/element-demo/checkboxDemo"),
+        },
+        {
+          path: '*',
+          name: '404',
+          component: () => import("../pagers/404"),
         },
       ]
     }

@@ -206,10 +206,18 @@ Vue.use(VueClipboard)
 require('./mock.js')
 
 
-// var Vue = require('vue');
+// vues-crollto
 var VueScrollTo = require('vue-scrollto');
-
 Vue.use(VueScrollTo)
+import echarts from 'echarts'
+Vue.prototype.$echarts = echarts
+//vue-echarts
+// import VueECharts from 'vue-echarts'
+// Vue.component('chart', VueECharts);
+
+// import chinaMap from "./assets/china.json";
+// VueECharts.registerMap("china", chinaMap);
+
 
 // You can also pass in the default options
 Vue.use(VueScrollTo, {

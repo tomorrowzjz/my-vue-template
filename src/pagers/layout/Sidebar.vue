@@ -16,6 +16,8 @@
           <el-menu-item index="/directive">directive</el-menu-item>
           <el-menu-item index="/provideInject">provideInject</el-menu-item>
           <el-menu-item index="/attrListener">attrListener</el-menu-item>
+          <el-menu-item index="/NativeDrag">NativeDrag</el-menu-item>
+          <el-menu-item index="/extendTable">extendTable</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
       <el-submenu index="/2">
@@ -31,7 +33,6 @@
           <el-menu-item index="/caneditortable">caneditortable</el-menu-item>
           <el-menu-item index="/eleeditortable">eleeditortable</el-menu-item>
           <el-menu-item index="/fatherdrag">fatherdrag</el-menu-item>
-          <el-menu-item index="/vuedraggable_test">vuedraggable_test</el-menu-item>
           <el-menu-item index="/mergeTable">mergeTable</el-menu-item>
           <el-menu-item index="/betterTables">betterTables</el-menu-item>
           <el-menu-item index="/two-lists">two-lists</el-menu-item>
@@ -52,7 +53,6 @@
           <el-menu-item index="/qrcode">二维码</el-menu-item>
           <el-menu-item index="/imageEditor">imageEditor</el-menu-item>
           <el-menu-item index="/imagecropper">imagecropper</el-menu-item>
-          <el-menu-item index="/vuedraggable">vuedraggable</el-menu-item>
           <el-menu-item index="/vue-scrollto">vue-scrollto</el-menu-item>
           <el-menu-item index="/vue-fabric">vue-fabric</el-menu-item>
           <el-menu-item index="/baidu-map">baidu-map</el-menu-item>
@@ -73,7 +73,8 @@
         </template>
         <el-menu-item-group>
           <el-menu-item index="/menu">menu</el-menu-item>
-          <el-submenu index="//">
+          <!--<el-menu-item index="/vueScrollTo">menu</el-menu-item>-->
+          <el-submenu index="/">
             <template slot="title">兄弟组件传值</template>
             <el-menu-item index="/brotherone">brotherone</el-menu-item>
             <el-menu-item index="/brothertwo">brothertwo</el-menu-item>

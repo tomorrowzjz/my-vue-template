@@ -130,7 +130,7 @@
   import { pages } from '../mixins/page.js'
     export default {
         name: 'basetable',
-      mixins: [pages],
+        mixins: [pages],
         data() {
             return {
                 url: '../static/vuetable.json',
