@@ -241,6 +241,11 @@ export default new Router({
           component: () => import("../pagers/third-part/vue-fabric"),
         },
         {
+          path: '/mergeImages',
+          name: 'mergeImages',
+          component: () => import("../pagers/third-part/mergeImages"),
+        },
+        {
           path: '/baidu-map',
           name: 'baidu-map',
           component: () => import("../pagers/map/index"),

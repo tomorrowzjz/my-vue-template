@@ -55,6 +55,7 @@
           <el-menu-item index="/imagecropper">imagecropper</el-menu-item>
           <el-menu-item index="/vue-scrollto">vue-scrollto</el-menu-item>
           <el-menu-item index="/vue-fabric">vue-fabric</el-menu-item>
+          <el-menu-item index="/mergeImages">mergeImages</el-menu-item>
           <el-menu-item index="/baidu-map">baidu-map</el-menu-item>
         </el-menu-item-group>
       </el-submenu>

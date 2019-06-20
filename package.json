@@ -25,6 +25,7 @@
     "handsontable-pro": "^6.2.2",
     "html2canvas": "^1.0.0-alpha.12",
     "jsoneditor": "^5.32.5",
+    "merge-images": "^1.1.0",
     "normalize.css": "^8.0.0",
     "nprogress": "^0.2.0",
     "plop": "^2.3.0",

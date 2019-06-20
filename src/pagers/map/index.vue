@@ -104,7 +104,7 @@
            添加新图标
            *************************************************/
             //定义新图标
-          var myIcon = new BMap.Icon("http://developer.baidu.com/map/jsdemo/img/fox.gif",new BMap.Size(300,157));
+          var myIcon = new BMap.Icon("https://developer.baidu.com/map/jsdemo/img/fox.gif",new BMap.Size(300,157));
           //创建标注
           var marker = new BMap.Marker(pointHK,{icon:myIcon});
           var marker1 = new BMap.Marker(pointGZ,{icon:myIcon});
@@ -128,9 +128,9 @@
             taiwanPosition=new BMap.Point(121.491121,25.127053);
           var point = [beijingPosition,hangzhouPosition,taiwanPosition];
 
-          var curve = new BMapLib.CurveLine(point, {strokeColor:"blue", strokeWeight:3, strokeOpacity:0.5});//创建弧线
-          map.addOverlay(curve);//添加到地图上
-          curve.enableEditing();//开启编辑功能
+//          var curve = new BMapLib.CurveLine(point, {strokeColor:"blue", strokeWeight:3, strokeOpacity:0.5});//创建弧线
+//          map.addOverlay(curve);//添加到地图上
+//          curve.enableEditing();//开启编辑功能
 
           /************************************************
            给地图添加右键菜单
