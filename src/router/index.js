@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
+import HelloWorld1 from '@/components/HelloWorld1'
+import echartsMap from '@/components/echartsMap'
 
 Vue.use(Router)
 
@@ -27,6 +29,16 @@ export default new Router({
           path: '/helloworld',
           name: 'HelloWorld',
           component: HelloWorld
+        },
+        {
+          path: '/helloworld1',
+          name: 'HelloWorld1',
+          component: HelloWorld1
+        },
+        {
+          path: '/echartsMap',
+          name: 'echartsMap',
+          component: echartsMap
         },
         {
           path: '/testv-model',

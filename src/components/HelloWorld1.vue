@@ -19,7 +19,7 @@
       </el-col>
     </el-row>
     <el-row>
-      <div id="chinaMap" ref="myEchart" :style="{width: '100%', height: 'auto'}"></div>
+      <div id="chinaMap" ref="myEchart" :style="{width: '100%', height: '600px'}"></div>
     </el-row>
   </div>
 </template>
