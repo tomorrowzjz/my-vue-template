@@ -7,6 +7,7 @@ const path = require('path')
 const baseWebpackConfig = require('./webpack.base.conf')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+// const { SkeletonPlugin } = require('page-skeleton-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 // const DropConsoleWebpackPlugin = require('drop-console-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
@@ -59,6 +60,11 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       template: 'index.html',
       inject: true
     }),
+    // new SkeletonPlugin({
+    //   pathname: path.resolve(__dirname, `${customPath}`), // 用来存储 shell 文件的地址
+    //   staticDir: path.resolve(__dirname, './dist'), // 最好和 `output.path` 相同
+    //   routes: ['/waterfall', '/SKU'], // 将需要生成骨架屏的路由添加到数组中
+    // }),
     // copy custom static assets
     new CopyWebpackPlugin([
       {
