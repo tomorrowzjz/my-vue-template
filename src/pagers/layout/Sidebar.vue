@@ -57,6 +57,7 @@
           <el-menu-item index="/vue-fabric">vue-fabric</el-menu-item>
           <el-menu-item index="/mergeImages">mergeImages</el-menu-item>
           <el-menu-item index="/baidu-map">baidu-map</el-menu-item>
+          <el-menu-item index="/animate">animate</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
       <el-submenu index="/4">
