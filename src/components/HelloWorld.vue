@@ -35,6 +35,7 @@
         </el-col>
       </draggable>
     </el-row>
+    {{mag}}
   </div>
 </template>
 
@@ -50,10 +51,11 @@
           { name: "Jean", text: "", id: 2 },
           { name: "zjz", text: "", id: 3 },
         ],
+        mag:[1,2,3]
       };
     },
     mounted() {
-
+      console.log(this.mag,this.list);
     },
     methods: {
 

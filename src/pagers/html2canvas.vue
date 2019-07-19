@@ -32,6 +32,7 @@
 
 <script>
   import html2canvas from 'html2canvas'
+  import jsPDF from 'jspdf';
   export default {
     name: '',
     data () {
@@ -78,6 +79,10 @@
           userCORS:true,//保证跨域图片的显示
         }).then((canvas) => {
           let dataURL = canvas.toDataURL("image/png");
+          var doc = new jsPDF()
+
+          doc.addImage(dataURL, 'JPEG', 15, 40, 180, 180);
+          doc.save('two-by-four.pdf')
           this.dataURL = dataURL;
         });
       },

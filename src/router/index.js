@@ -87,9 +87,19 @@ export const sidebarRoutes = [
         component: () => import("../pagers/BaseTable"),
       },
       {
+        path: '/myUI',
+        name: 'myUI',
+        component: () => import("../pagers/myUI/index"),
+      },
+      {
         path: '/form',
         name: 'form',
         component: () => import("../pagers/form"),
+      },
+      {
+        path: '/Tree',
+        name: 'Tree',
+        component: () => import("../pagers/element-demo/treeDemo"),
       },
       {
         path: '/transfer',
@@ -212,6 +222,16 @@ export const sidebarRoutes = [
         path: '/vue-scrollto',
         name: 'vue-scrollto',
         component: () => import("../pagers/third-part/scroll"),
+      },
+      {
+        path: '/photoswipe',
+        name: 'photoswipe',
+        component: () => import("../pagers/third-part/PhotoSwipe"),
+      },
+      {
+        path: '/jsPDF',
+        name: 'jsPDF',
+        component: () => import("../pagers/third-part/jsPDF"),
       },
       {
         path: '/vue-fabric',

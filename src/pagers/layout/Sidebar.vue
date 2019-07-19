@@ -115,6 +115,7 @@
     },
     mounted(){
       console.log(sidebarRoutes);
+      console.log(this.$router.options.routes);
       this.sidebarRoutes = sidebarRoutes
       console.log(this.activeNav);
     }
