@@ -16,6 +16,7 @@
 
         </div>
         <img :src="dataURL " alt="" />
+        <div id="canvasImg" ref="canvasImg"></div>
         <el-button @click="toImage">canvas</el-button>
 
         <div>------复制------</div>
@@ -33,6 +34,7 @@
 <script>
   import html2canvas from 'html2canvas'
   import jsPDF from 'jspdf';
+  import SimpleDrawingBoard from 'simple-drawing-board'
   export default {
     name: '',
     data () {
@@ -79,6 +81,17 @@
           userCORS:true,//保证跨域图片的显示
         }).then((canvas) => {
           let dataURL = canvas.toDataURL("image/png");
+          let that = this
+          let canvasdom = that.$refs.canvasImg;
+          canvas.setAttribute('style', 'width:100%');
+          canvasdom.appendChild(canvas)
+          window.sdb = new SimpleDrawingBoard(
+            canvasdom.getElementsByTagName('canvas')[0],
+            {
+              lineColor: '#ff0000',
+              lineSize: 4
+            }
+          )
           var doc = new jsPDF()
 
           doc.addImage(dataURL, 'JPEG', 15, 40, 180, 180);
@@ -99,6 +112,11 @@
 </script>
 
 <style scoped>
+    #canvasImg {
+        cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAABGdBTUEAALGPC/xhBQAAARpJREFUOBGdkr1KA0EUhTcxEkSQQIpAihQWPoedD2BnIVsZQiBVEkiR7SwtBDsJqXwBLQwEgoWNjY2FjYUQ38Ei5Oc7sBeGLTKze+Djzsyecxh2N4ryq0zkHpYQQ2H1SW5TNsxukaZzQsewACvTvIBg3eFUaABHMEv3OruBIN3icm8wZl+FZ3iBQ/AqweGW2FrlKlChV0McFsxOvaegm/T2lLzzTC/dqzaO7A1s/8GzE28Dhhj0f1jQnZ+c18CrKxxrcMO2/uK87m3AcAkrsKA7vzlvQJAmuNywrX84bwY1YBrBATyCFWj+QguCJKNCU1DZQ7r/Y55CsK5x2i2eWFcggTPIJd3Eiv5Zd3KlU3OJOQd9lVd4A5Xl1g4YG2GGhwRfegAAAABJRU5ErkJggg==)
+        0 17,
+        default;
+    }
     .text {
         font-size: 14px;
     }

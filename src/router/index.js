@@ -303,6 +303,16 @@ export const sidebarRoutes = [
         component: () => import("../pagers/menu"),
       },
       {
+        path: '/xiaoguo',
+        name: 'xiaoguo',
+        component: () => import("../pagers/example/xiaoguo"),
+      },
+      {
+        path: '/yanzheng',
+        name: 'yanzheng',
+        component: () => import("../pagers/example/yanzheng"),
+      },
+      {
         path: '/brotherone',
         name: 'brotherone',
         component: () => import("../pagers/brotherone"),

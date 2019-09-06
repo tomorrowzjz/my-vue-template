@@ -1,31 +1,28 @@
 <template>
-    <div style="height: 600px" ref="ddd">
-      和mock冲突
+    <div>
         <vueCropper ref="cropper"
-                    :img="img"
-                    :output-size="option.size"
-                    :output-type="option.outputType"
+                    :img="option.img"
+                    :outputSize="option.size"
+                    :outputType="option.outputType"
                     :info="true"
                     :full="option.full"
-                    :can-scale='option.canScale'
-                    :can-move="option.canMove"
-                    :can-move-box="option.canMoveBox"
-                    :fixed-box="option.fixedBox"
+                    :canMove="option.canMove"
+                    :canMoveBox="option.canMoveBox"
+                    :fixedBox="option.fixedBox"
                     :original="option.original"
-                    :auto-crop="option.autoCrop"
-                    :auto-crop-width="option.autoCropWidth"
-                    :auto-crop-height="option.autoCropHeight"
-                    :center-box="option.centerBox"
+                    :autoCrop="option.autoCrop"
+                    :autoCropWidth="option.autoCropWidth"
+                    :autoCropHeight="option.autoCropHeight"
+                    :centerBox="option.centerBox"
                     :high="option.high"
-                    :mode="option.mode"
-                    @imgLoad="imgLoad"
+                    :infoTrue="option.infoTrue"
+                    :enlarge="option.enlarge"
                         ></vueCropper>
         <!--<el-button-->
                     <!--v-if="!isShowCropper"-->
                    <!--type="danger"-->
                     <!--style="position: fixed;z-index: 9999; bottom: 0"-->
                    <!--@click="onCubeImg">确定裁剪图片</el-button>-->
-        <!--<img :src="option.img" alt="" width="500px">-->
         <!--<div v-if="isShowCropper" >-->
             <!--<img :src="option.img" alt="" ref="newimg"  @dblclick="test" width="1000px">-->
             <!--<el-button-->
@@ -39,7 +36,8 @@
 </template>
 
 <script>
-  import { VueCropper }  from 'vue-cropper'
+  import  VueCropper   from 'vue-cropper'
+  import { fabric }  from 'fabric'
   export default {
     name: '',
     components: {
@@ -49,23 +47,6 @@
       return {
         msg: 'Welcome to Your Vue.js App',
         isShowCropper: true,            //是否显示截图框
-        option: {
-          size: 1,
-          full: false,
-          outputType: 'jpg',
-          canMove: false,
-          canScale: true,
-          fixedBox: false,
-          original: false,
-          canMoveBox: true,
-          autoCrop: true,
-          autoCropWidth: 150,
-          autoCropHeight: 150,
-          centerBox: false,
-          high: true,
-          mode:'auto'
-        },
-        img: 'https://preview.qiantucdn.com/58pic/35/09/72/86U58PICX87kDF9Pk3K9x_PIC2018.jpg!w1024_small',
 //        option: {
 //          img: 'http://img.zcool.cn/community/01c8e3554473d80000019ae9961675.jpg',                         //裁剪图片的地址
 //          info: true,                      //裁剪框的大小信息
@@ -80,6 +61,25 @@
 //          fixed: false,                    //是否开启截图框宽高固定比例
 //          fixedNumber: [4, 4]              //截图框的宽高比例
 //        },
+        option:{
+          img: "http://cdn.xyxiao.cn/Landscape_1.jpg",
+          size: 1,
+          full: false,
+          outputType: "jpeg",
+          canMove: true,
+          fixedBox: false,
+          original: false,
+          canMoveBox: true,
+          autoCrop: true,
+          // 只有自动截图开启 宽度高度才生效
+          autoCropWidth: 200,
+          autoCropHeight: 150,
+          centerBox: false,
+          high: false,
+          enlarge: 1,
+          mode: 'contain',
+          maxImgSize: 2000,
+        },
         url:""
       }
     },
@@ -87,30 +87,6 @@
 //      console.log(this.option);
     },
     methods:{
-      imgLoad(e){
-        if (e !== 'success') {
-          return
-        }
-
-        let {x1,x2,y1,y2} = this.$refs.cropper.getImgAxis()
-        this.cropOffsetX = 100;
-        this.cropOffsetY = 200;
-//        if (this.cropOffsetX) {
-//        console.log(this.$refs.cropper,this.$refs.cropper.cropOffsetX,this.$refs.cropper.cropOffsetY,x1,y1);
-        this.$nextTick(()=>{
-          this.$refs.cropper.cropOffsertX = this.cropOffsetX + x1
-          this.$refs.cropper.cropOffsertY = this.cropOffsetY + y1
-          this.$refs.cropper.moveCrop(null, true);
-        })
-//          this.$refs.cropper.changeScale(this.scale);
-//          this.cropOffsetX = 0;
-//          this.cropOffsetY = 0;
-//        }
-
-//        this.$refs.cropper.scale = this.scale;
-//        this.option.autoCropWidth = crop[2];
-//        this.option.autoCropHeight = crop[3];
-      },
       test(){
         this.isShowCropper = !this.isShowCropper;
       },

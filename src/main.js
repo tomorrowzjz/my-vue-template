@@ -204,7 +204,7 @@ import VueClipboard from 'vue-clipboard2'
 Vue.use(VueClipboard)
 
 // 引入mockjs
-require('./mock.js')
+// require('./mock.js')
 
 
 // vues-crollto

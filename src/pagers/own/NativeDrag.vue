@@ -16,7 +16,7 @@
     },
     methods:{
       dragEnter(e){
-        this.$message.error("zjz");
+//        this.$message.error("zjz");
         console.log("zjz");
       },
       //取消默认行为
@@ -48,7 +48,7 @@
         // console.log('sort');
 
         this.lists = arr;
-
+        console.log(this.lists);
       }
     }
   }

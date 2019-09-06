@@ -6,7 +6,8 @@
                     <li v-for="(menu,index) in classify"
                         @dragenter="dragEnter($event,index)"
                         @click="menuPlateformClick(index)"
-                        :class="{active:currentActive == index}">
+                        :class="{active:current == index}">
+                        {{current}}
                         <span ref="menuText" v-scroll-to="{ el: '#'+menu,container: '.el-main', }">{{menu}}</span>
                     </li>
                 </ul>
@@ -16,7 +17,7 @@
         <el-col :span="20">
             <div  v-for="(item,index) in classify">
                 <div class="title">
-                    <h3 :id="item"> {{item}}</h3>
+                    <h3 :id="item" ref="plateform"> {{item}}</h3>
                     <el-popover
                             placement="top-start"
                             title=""
@@ -59,6 +60,8 @@
         timeout:null,
         currentActive:-1,
         falgs: 'article',
+        listItemHeight:[],
+        scrollTop: 0,
         list: [{id: 1, name: 1}, {id: 2, name: 2}, {id: 3, name: 3},
           {id: 4, name: 4}, {id: 5, name: 5}, {id: 6, name: 6},
           {id: 7, name: 7}, {id: 8, name: 8}, {id: 9, name: 9}, {id: 10, name: 10},
@@ -70,10 +73,49 @@
         ],
       }
     },
+    computed:{
+      current(){
+        console.log(this.listItemHeight);
+        for(let i = 0;i<= this.listItemHeight.length;i++){
+//          console.log(111111111111111);
+          if(this.listItemHeight[i]<=this.scrollTop&&this.scrollTop<=this.listItemHeight[i+1]){
+            return i
+          }
+        }
+        return this.listItemHeight.length-1
+      },
+    },
     mounted(){
+      setTimeout(()=>{
+        this._calculateHeight();
 
+      },200)
+      document.querySelector('.el-main').addEventListener('scroll',this.handelScroll, false)
     },
     methods:{
+      handelScroll(){
+//        console.dir(document.querySelector('.el-main').scrollTop);
+        this.scrollTop = document.querySelector('.el-main').scrollTop+100
+//        console.log(this.scrollTop);
+      },
+      _calculateHeight () {
+        let plateformList = this.$refs.plateform;
+        console.log(plateformList);
+        let height = 0
+        this.listItemHeight = []
+        this.listItemHeight.push(height)
+        if (!plateformList) {
+          return
+        }
+        for (var i = 0; i < plateformList.length - 1; i++) {
+          let item = plateformList[i]
+          console.log(item.clientHeight);
+          let cal = item.clientHeight + 130;
+          height += cal
+          this.listItemHeight.push(height)
+        }
+        console.log(this.listItemHeight);
+      },
       dragEnter(e,index){
         if(this.timeout !== null)   clearTimeout(this.timeout);
         this.timeout = setTimeout(()=>{
@@ -87,7 +129,10 @@
     },
     components:{
        draggable
-    }
+    },
+    beforeDestroy(){
+      document.removeEventListener('scroll',this.handelScroll, false);
+    },
   }
 </script>
 
