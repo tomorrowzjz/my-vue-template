@@ -100,26 +100,26 @@
 </template>
 
 <script>
-  import { sidebarRoutes } from '../../router/index'
-  export default {
-    name: 'Sidebar',
-    props:{
-      activeNav:String,
-      isCollapse:Boolean
-    },
-    data () {
-      return {
-        msg: 'Welcome to Your Vue.js App',
-        sidebarRoutes:[]
-      }
-    },
-    mounted(){
-      console.log(sidebarRoutes);
-      console.log(this.$router.options.routes);
-      this.sidebarRoutes = sidebarRoutes
-      console.log(this.activeNav);
-    }
-  }
+import {sidebarRoutes} from '../../router/index';
+export default {
+  name: 'Sidebar',
+  props: {
+    activeNav: String,
+    isCollapse: Boolean,
+  },
+  data() {
+    return {
+      msg: 'Welcome to Your Vue.js App',
+      sidebarRoutes: [],
+    };
+  },
+  mounted() {
+    console.log(sidebarRoutes);
+    console.log(this.$router.options.routes);
+    this.sidebarRoutes = sidebarRoutes;
+    console.log(this.activeNav);
+  },
+};
 </script>
 
 <style scoped>

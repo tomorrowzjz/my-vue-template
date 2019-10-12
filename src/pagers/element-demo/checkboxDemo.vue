@@ -28,54 +28,54 @@
 </template>
 <script>
 
-  const cityOptions = [{name:'上海'},{name: '北京'}, {name:'广州'}, {name:'深圳'}];
-  export default {
-    data() {
-      return {
-        checkAll: false,
-//        checkedCities: [{name:'上海'}, {name:'北京'}],
-        checkedCities: ['上海', '北京'],
-        cities: cityOptions,
-        isIndeterminate: true,
-        search:'',
-        isFocus:false
-      };
+const cityOptions = [{name: '上海'}, {name: '北京'}, {name: '广州'}, {name: '深圳'}];
+export default {
+  data() {
+    return {
+      checkAll: false,
+      //        checkedCities: [{name:'上海'}, {name:'北京'}],
+      checkedCities: ['上海', '北京'],
+      cities: cityOptions,
+      isIndeterminate: true,
+      search: '',
+      isFocus: false,
+    };
+  },
+  computed: {
+    isHotPlace: function() {
+      return this.isFocus&&!this.search;
     },
-    computed:{
-      isHotPlace:function(){
-        return this.isFocus&&!this.search
-      },
-      isSearchList:function(){
-        return this.isFocus&&this.search
-      }
+    isSearchList: function() {
+      return this.isFocus&&this.search;
     },
-    methods: {
-      handleCheckAllChange(val) {
-        this.checkedCities = val ? cityOptions : [];
-        this.isIndeterminate = false;
-      },
-      handleCheckedCitiesChange(value) {
-        let checkedCount = value.length;
-        this.checkAll = checkedCount === this.cities.length;
-        this.isIndeterminate = checkedCount > 0 && checkedCount < this.cities.length;
-      },
-      focus:function(){
-        this.isFocus=true
-      },
-      blur:function(){
-        let self=this;
-        setTimeout(function(){
-          self.isFocus=false
-        },200)
-      },
-      input(){
+  },
+  methods: {
+    handleCheckAllChange(val) {
+      this.checkedCities = val ? cityOptions : [];
+      this.isIndeterminate = false;
+    },
+    handleCheckedCitiesChange(value) {
+      const checkedCount = value.length;
+      this.checkAll = checkedCount === this.cities.length;
+      this.isIndeterminate = checkedCount > 0 && checkedCount < this.cities.length;
+    },
+    focus: function() {
+      this.isFocus=true;
+    },
+    blur: function() {
+      const self=this;
+      setTimeout(function() {
+        self.isFocus=false;
+      }, 200);
+    },
+    input() {
 
-      },
-      hotSearch(){
-        console.log("hotSearch");
-      }
-    }
-  };
+    },
+    hotSearch() {
+      console.log('hotSearch');
+    },
+  },
+};
 </script>
 
 <style scope>

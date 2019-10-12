@@ -164,39 +164,38 @@
 </style>
 
 <script>
-  export default {
-    data() {
-      const item = {
-        date: '2016-05-02',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
-      };
-      return {
-        tableData: Array(20).fill(item),
-        isCollapse: false,
-        activeNav: this.$route.path
-      }
+export default {
+  data() {
+    const item = {
+      date: '2016-05-02',
+      name: '王小虎',
+      address: '上海市普陀区金沙江路 1518 弄',
+    };
+    return {
+      tableData: Array(20).fill(item),
+      isCollapse: false,
+      activeNav: this.$route.path,
+    };
+  },
+  methods: {
+    logOut() {
+      this.$router.push({path: '/login'});
     },
-    methods:{
-      logOut(){
-        this.$router.push({path:'/login'})
-      },
-      isCollapseMethod(){
-        this.isCollapse = !this.isCollapse;
-//        console.log(this.$refs['aside'].$el.style.width);
-//        if(this.isCollapse){
-//          this.$refs['aside'].$el.style.width = 'auto'
-//        }
-//        console.log(this.$refs['aside'].$el.style.width);
-      }
+    isCollapseMethod() {
+      this.isCollapse = !this.isCollapse;
+      //        console.log(this.$refs['aside'].$el.style.width);
+      //        if(this.isCollapse){
+      //          this.$refs['aside'].$el.style.width = 'auto'
+      //        }
+      //        console.log(this.$refs['aside'].$el.style.width);
     },
-    mounted(){
-
-      console.log(this.$router.history.current.path);
-//      console.log(this.$route);
-//      this.activeNav = this.$route.path;
-      this.activeNav = this.$router.history.current.path;
-      console.log(this.$router.path);
-    }
-  };
+  },
+  mounted() {
+    console.log(this.$router.history.current.path);
+    //      console.log(this.$route);
+    //      this.activeNav = this.$route.path;
+    this.activeNav = this.$router.history.current.path;
+    console.log(this.$router.path);
+  },
+};
 </script>

@@ -66,9 +66,9 @@
 </template>
 
 <script>
-  import 'photoswipe/dist/photoswipe.css'
-  import 'photoswipe/dist/default-skin/default-skin.css'
-  export default{
-  }
+import 'photoswipe/dist/photoswipe.css';
+import 'photoswipe/dist/default-skin/default-skin.css';
+export default {
+};
 
 </script>

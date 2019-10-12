@@ -9,24 +9,24 @@
 </template>
 
 <script>
-  import attrListenerChild from './components/attrListenerChild.vue'
-  export default {
-    name: 'attrListener',
-    data () {
-      return {
-        msg: 'mag',
-        attr: 'attr11111'
-      }
+import attrListenerChild from './components/attrListenerChild.vue';
+export default {
+  name: 'attrListener',
+  data() {
+    return {
+      msg: 'mag',
+      attr: 'attr11111',
+    };
+  },
+  methods: {
+    reciveRocket() {
+      console.log('listener');
     },
-    methods:{
-      reciveRocket(){
-        console.log("listener");
-      }
-    },
-    components:{
-      attrListenerChild
-    }
-  }
+  },
+  components: {
+    attrListenerChild,
+  },
+};
 </script>
 
 <style scoped>

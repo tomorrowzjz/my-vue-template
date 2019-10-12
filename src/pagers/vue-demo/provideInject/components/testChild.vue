@@ -9,15 +9,15 @@
 </template>
 
 <script>
-  export default {
-    name: '',
-    inject:['testProvide'],
-    data () {
-      return {
-        msg: this.testProvide
-      }
-    }
-  }
+export default {
+  name: '',
+  inject: ['testProvide'],
+  data() {
+    return {
+      msg: this.testProvide,
+    };
+  },
+};
 </script>
 
 <style scoped>

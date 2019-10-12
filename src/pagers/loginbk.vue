@@ -45,22 +45,22 @@
 </template>
 
 <script>
-import { isvalidUsername } from '@/utils/validate'
-import {getcategories} from '@/api/login'
-import { removeToken } from '@/utils/auth'
-import { getToken } from '@/utils/auth'
+import {isvalidUsername} from '@/utils/validate';
+import {getcategories} from '@/api/login';
+import {removeToken} from '@/utils/auth';
+import {getToken} from '@/utils/auth';
 
 export default {
   name: 'Login',
   data() {
-   const passpattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/; 
-   const validateUsername = (rule, value, callback) => {
-     if (value === undefined) {
-       callback(new Error('请输入用户名'))
-     } else {
-       callback()
-     }
-   }
+    const passpattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/;
+    const validateUsername = (rule, value, callback) => {
+      if (value === undefined) {
+        callback(new Error('请输入用户名'));
+      } else {
+        callback();
+      }
+    };
     // const validatePass = (rule, value, callback) => {
     //   if (value === undefined) {
     //      callback(new Error('请输入密码'))
@@ -74,10 +74,10 @@ export default {
       loginForm: {
         username: '',
         password: '',
-        auth_type: 'password'
+        auth_type: 'password',
       },
       loginRules: {
-       username: [{  trigger: 'blur', validator: validateUsername }],
+        username: [{trigger: 'blur', validator: validateUsername}],
       //  password: [{  trigger: 'blur', validator: validatePass }]
       },
       form: {
@@ -85,81 +85,81 @@ export default {
         region: '',
       },
       formLabelWidth: '120px',
-//      forgerPassworddialogVisible:false,
+      //      forgerPassworddialogVisible:false,
       loading: false,
       pwdType: 'password',
-      redirect: undefined
-    }
+      redirect: undefined,
+    };
   },
-  mounted(){
+  mounted() {
     this.loginForm = this.$route.params;
     removeToken();
   },
   watch: {
     $route: {
       handler: function(route) {
-        this.redirect = route.query && route.query.redirect
+        this.redirect = route.query && route.query.redirect;
       },
-      immediate: true
-    }
+      immediate: true,
+    },
   },
   methods: {
-    forgetPassword(){
-//      this.forgerPassworddialogVisible = true;
+    forgetPassword() {
+      //      this.forgerPassworddialogVisible = true;
       this.$router.push( {
-        path: "/forgetPassword"
+        path: '/forgetPassword',
       });
     },
-    registerbtn(){
+    registerbtn() {
       this.$router.push( {
-        path: "/register"
+        path: '/register',
       });
     },
     showPwd() {
       if (this.pwdType === 'password') {
-        this.pwdType = ''
+        this.pwdType = '';
       } else {
-        this.pwdType = 'password'
+        this.pwdType = 'password';
       }
     },
     handleLogin(loginForm) {
-      this.$refs.loginForm.validate(valid => {
+      this.$refs.loginForm.validate((valid) => {
         if (valid) {
-          this.loading = true
+          this.loading = true;
           this.loginForm.auth_type = 'password';
-          this.$store.dispatch('userLogin',this.loginForm).then(res => {
-            if(res.code == 0){
-              this.loading = false
-              let token = getToken();
-              let str = JSON.parse(window.atob(token.split('.')[1]));
+          this.$store.dispatch('userLogin', this.loginForm).then((res) => {
+            if (res.code == 0) {
+              this.loading = false;
+              const token = getToken();
+              const str = JSON.parse(window.atob(token.split('.')[1]));
               console.log(str);
-              let user_status = str.user_status
-              let roles = str.user_roles[0];
+              const user_status = str.user_status;
+              const roles = str.user_roles[0];
               if (roles == 'admin') {
                 if (user_status == 'enabled') {
-                  this.$router.push({ path: this.redirect || '/' })
-                }else {
-                  this.$router.push({ path: 'usercenter/index'})
+                  this.$router.push({path: this.redirect || '/'});
+                } else {
+                  this.$router.push({path: 'usercenter/index'});
                 }
-              }else {
-                this.$router.push({ path: this.redirect || '/' })
+              } else {
+                this.$router.push({path: this.redirect || '/'});
               }
 
-//              this.$router.push({ path: this.redirect || '/' })
-            }else {
-              this.loading = false
-              this.$message.error(res.message)
+              //              this.$router.push({ path: this.redirect || '/' })
+            } else {
+              this.loading = false;
+              this.$message.error(res.message);
             }
           }).catch(() => {
-            this.loading = false
-          })
+            this.loading = false;
+          });
         } else {
-          return false
+          return false;
         }
-      })
-    }
-  }
-}
+      });
+    },
+  },
+};
 </script>
 
 <style rel="stylesheet/scss" lang="scss">

@@ -39,126 +39,125 @@
 </template>
 
 <script>
-  import { isCardNo } from '@/utils/validate'
-  export default{
-    name: "validatorForm",
-    data(){
-      let validCardNo = (rule, value, callback) => {
-        if (!value) {
-          return callback(new Error('身份证号不能为空'));
-        }
-        if (!Number.isInteger(parseInt(value))) {
-          callback(new Error('请输入数字'));
-        } else if(!isCardNo(value)){
-          callback(new Error('身份证号码为15位或者18位'));
-        }else {
-          callback()
-        }
-      };
-//    let validName = (rule, value, callback) => {
-//      if (!value) {
-//        return callback(new Error('姓名不能为空'));
-//      }else {
-//        callback()
-//      }
-//    };
-      let validSocialCreditCode = (rule, value, callback) => {
-        if (!validSocialCredit(value)) {
-          return callback(new Error('只能包括字母、数字、—，8-30个字符'));
-        }else {
-          callback()
-        }
-      };
-      return{
-        dialogidentityVisible: true,
-        formpersonal: {
-          type:'personal',
-          name: '',
-          id_card_number: '',
-          id_card_front_photo: '',
-          id_card_back_photo: '',
-          holding_id_card_photo: ''
-        },
-        formLabelWidth: '230px',
-        labelPosition: 'left',
-        fullFacePhoto: '',
+import {isCardNo} from '@/utils/validate';
+export default {
+  name: 'validatorForm',
+  data() {
+    const validCardNo = (rule, value, callback) => {
+      if (!value) {
+        return callback(new Error('身份证号不能为空'));
+      }
+      if (!Number.isInteger(parseInt(value))) {
+        callback(new Error('请输入数字'));
+      } else if (!isCardNo(value)) {
+        callback(new Error('身份证号码为15位或者18位'));
+      } else {
+        callback();
+      }
+    };
+    //    let validName = (rule, value, callback) => {
+    //      if (!value) {
+    //        return callback(new Error('姓名不能为空'));
+    //      }else {
+    //        callback()
+    //      }
+    //    };
+    const validSocialCreditCode = (rule, value, callback) => {
+      if (!validSocialCredit(value)) {
+        return callback(new Error('只能包括字母、数字、—，8-30个字符'));
+      } else {
+        callback();
+      }
+    };
+    return {
+      dialogidentityVisible: true,
+      formpersonal: {
         type: 'personal',
-        BASE_API:'',
-//        header:{
-//          'Authorization': 'Bearer '+ getToken(),
-//        },
-        rules: {
-          name:[
-            { required: true, message: '姓名不能为空', trigger: 'blur' }
-          ],
-          id_card_front_photo:[
-            { required: true, message: '身份证正面照不能为空', trigger: 'blur' }
-          ],
-          id_card_number: [
-            { required: true, message: '身份证号不能为空', trigger: 'blur' },
-            { validator: validCardNo, trigger: 'blur' }
-          ]
-        },
+        name: '',
+        id_card_number: '',
+        id_card_front_photo: '',
+        id_card_back_photo: '',
+        holding_id_card_photo: '',
+      },
+      formLabelWidth: '230px',
+      labelPosition: 'left',
+      fullFacePhoto: '',
+      type: 'personal',
+      BASE_API: '',
+      //        header:{
+      //          'Authorization': 'Bearer '+ getToken(),
+      //        },
+      rules: {
+        name: [
+          {required: true, message: '姓名不能为空', trigger: 'blur'},
+        ],
+        id_card_front_photo: [
+          {required: true, message: '身份证正面照不能为空', trigger: 'blur'},
+        ],
+        id_card_number: [
+          {required: true, message: '身份证号不能为空', trigger: 'blur'},
+          {validator: validCardNo, trigger: 'blur'},
+        ],
+      },
+    };
+  },
+  methods: {
+    beforeUploadCheck(file) {
+      const isJPG = (file.type === 'image/jpeg')||(file.type === 'image/png');
+      const isLt5M = file.size / 1024 / 1024 < 5;
+      if (!isJPG) {
+        this.$message.error('上传头像图片只能是 JPG 格式!');
       }
+      if (!isLt5M) {
+        this.$message.error('上传头像图片大小不能超过 2MB!');
+      }
+      return isJPG && isLt5M;
     },
-    methods:{
-      beforeUploadCheck(file){
-        const isJPG = (file.type === 'image/jpeg')||(file.type === 'image/png');
-        const isLt5M = file.size / 1024 / 1024 < 5;
-        if (!isJPG) {
-          this.$message.error('上传头像图片只能是 JPG 格式!');
-        }
-        if (!isLt5M) {
-          this.$message.error('上传头像图片大小不能超过 2MB!');
-        }
-        return isJPG && isLt5M;
-      },
-      beforeAvatarUpload(file) {
-        return this.beforeUploadCheck(file);
-      },
-      // 上传文件
-      uploadFile(param) {
-        let that = this;
-        return new Promise((resolve, reject) => {
-          let reader = new FileReader();
-          reader.onload = function(e) {
-            let data = e.target.result;
-            let img = new Image();
-            img.src = data;
-            img.onload = function() {
-              console.log(img.width)
-              that.businessLicenseSuccess1(param.file, img.width, img.height);
-            };
+    beforeAvatarUpload(file) {
+      return this.beforeUploadCheck(file);
+    },
+    // 上传文件
+    uploadFile(param) {
+      const that = this;
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const data = e.target.result;
+          const img = new Image();
+          img.src = data;
+          img.onload = function() {
+            console.log(img.width);
+            that.businessLicenseSuccess1(param.file, img.width, img.height);
           };
-          reader.readAsDataURL(param.file);
-        });
-      },
-      // 上传成功
-      businessLicenseSuccess1(item, width, height) {
-//        let uploadData = new FormData();
-//        uploadData.append("upload_file", item);
-//        ulpoad(uploadData, width, height).then(res => {
-//          if (res.code == 0) {
-//            this.fullFacePhoto = res.data.url;
-//            this.formpersonal.id_card_front_photo = res.data.upload_id;
-//          }
-//        });
-      },
-      applicationCertification(formName){
-        this.$refs[formName].validate((valid) => {
-          if (valid) {
-            console.log(valid);
-          } else {
-            return false;
-          }
-        });
+        };
+        reader.readAsDataURL(param.file);
+      });
+    },
+    // 上传成功
+    businessLicenseSuccess1(item, width, height) {
+      //        let uploadData = new FormData();
+      //        uploadData.append("upload_file", item);
+      //        ulpoad(uploadData, width, height).then(res => {
+      //          if (res.code == 0) {
+      //            this.fullFacePhoto = res.data.url;
+      //            this.formpersonal.id_card_front_photo = res.data.upload_id;
+      //          }
+      //        });
+    },
+    applicationCertification(formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          console.log(valid);
+        } else {
+          return false;
+        }
+      });
+    },
+    cancelCertification() {
 
-      },
-      cancelCertification(){
-
-      }
-    }
-  }
+    },
+  },
+};
 </script>
 
 

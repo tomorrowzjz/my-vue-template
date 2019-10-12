@@ -6,25 +6,25 @@
 </template>
 
 <script>
-  export default {
-    name: 'field',
+export default {
+  name: 'field',
 
-    props: ['type', 'label'],
+  props: ['type', 'label'],
 
-    created() {
-      this.$slots.default = [ this.renderField() ]
+  created() {
+    this.$slots.default = [this.renderField()];
+  },
+
+  methods: {
+    renderField() {
+      const h = this.$createElement;
+      const tag = this.type === 'textarea' ? 'textarea' : 'input';
+      const type = this.type === 'textarea' ? '' : this.type;
+
+      return h(tag, {props: {type}});
     },
-
-    methods: {
-      renderField() {
-        const h = this.$createElement
-        const tag = this.type === 'textarea' ? 'textarea' : 'input'
-        const type = this.type === 'textarea' ? '' : this.type
-
-        return h(tag, { props: { type } })
-      }
-    }
-  }
+  },
+};
 </script>
 
 <style scoped>

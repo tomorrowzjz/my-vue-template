@@ -23,21 +23,21 @@
 </template>
 
 <script>
-  export default {
-    name: '',
-    data () {
-      return {
-      }
+export default {
+  name: '',
+  data() {
+    return {
+    };
+  },
+  methods: {
+    isCollapseMethod() {
+      this.$emit('isCollapseMethod');
     },
-    methods:{
-      isCollapseMethod(){
-        this.$emit('isCollapseMethod')
-      },
-      logOut(){
-        this.$emit('logOut')
-      }
-    }
-  }
+    logOut() {
+      this.$emit('logOut');
+    },
+  },
+};
 </script>
 
 <style scoped>

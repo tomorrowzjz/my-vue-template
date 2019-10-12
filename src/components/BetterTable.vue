@@ -8,14 +8,14 @@
 </template>
 
 <script>
-  export default {
-    props: {
-      colConfigs: Array,
-      tableData: Array
-    },
-    data () {
-      return {
-      }
-    }
-  }
+export default {
+  props: {
+    colConfigs: Array,
+    tableData: Array,
+  },
+  data() {
+    return {
+    };
+  },
+};
 </script>

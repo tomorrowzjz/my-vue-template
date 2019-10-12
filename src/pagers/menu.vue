@@ -51,89 +51,88 @@
 </template>
 
 <script>
-  import draggable from "vuedraggable";
-  export default {
-    name: '',
-    data () {
-      return {
-        classify:['第一','第二','第三','第四'],
-        timeout:null,
-        currentActive:-1,
-        falgs: 'article',
-        listItemHeight:[],
-        scrollTop: 0,
-        list: [{id: 1, name: 1}, {id: 2, name: 2}, {id: 3, name: 3},
-          {id: 4, name: 4}, {id: 5, name: 5}, {id: 6, name: 6},
-          {id: 7, name: 7}, {id: 8, name: 8}, {id: 9, name: 9}, {id: 10, name: 10},
-          {id: 11, name: 11}, {id: 12, name: 12}, {id: 13, name: 13},
-          {id: 14, name: 14}, {id: 15, name: 15}, {id: 16, name: 16},
-          {id: 17, name: 17}, {id: 18, name: 18}, {id: 19, name: 19}, {id: 20, name: 20},{id: 21, name: 21}, {id: 22, name: 22}, {id: 23, name: 23},
-          {id: 24, name: 24}, {id: 25, name: 25}, {id: 26, name: 26},
-          {id: 27, name: 27}, {id: 28, name: 28}, {id: 29, name: 29}, {id: 30, name:30}
-        ],
+import draggable from 'vuedraggable';
+export default {
+  name: '',
+  data() {
+    return {
+      classify: ['第一', '第二', '第三', '第四'],
+      timeout: null,
+      currentActive: -1,
+      falgs: 'article',
+      listItemHeight: [],
+      scrollTop: 0,
+      list: [{id: 1, name: 1}, {id: 2, name: 2}, {id: 3, name: 3},
+        {id: 4, name: 4}, {id: 5, name: 5}, {id: 6, name: 6},
+        {id: 7, name: 7}, {id: 8, name: 8}, {id: 9, name: 9}, {id: 10, name: 10},
+        {id: 11, name: 11}, {id: 12, name: 12}, {id: 13, name: 13},
+        {id: 14, name: 14}, {id: 15, name: 15}, {id: 16, name: 16},
+        {id: 17, name: 17}, {id: 18, name: 18}, {id: 19, name: 19}, {id: 20, name: 20}, {id: 21, name: 21}, {id: 22, name: 22}, {id: 23, name: 23},
+        {id: 24, name: 24}, {id: 25, name: 25}, {id: 26, name: 26},
+        {id: 27, name: 27}, {id: 28, name: 28}, {id: 29, name: 29}, {id: 30, name: 30},
+      ],
+    };
+  },
+  computed: {
+    current() {
+      console.log(this.listItemHeight);
+      for (let i = 0; i<= this.listItemHeight.length; i++) {
+        //          console.log(111111111111111);
+        if (this.listItemHeight[i]<=this.scrollTop&&this.scrollTop<=this.listItemHeight[i+1]) {
+          return i;
+        }
       }
+      return this.listItemHeight.length-1;
     },
-    computed:{
-      current(){
-        console.log(this.listItemHeight);
-        for(let i = 0;i<= this.listItemHeight.length;i++){
-//          console.log(111111111111111);
-          if(this.listItemHeight[i]<=this.scrollTop&&this.scrollTop<=this.listItemHeight[i+1]){
-            return i
-          }
-        }
-        return this.listItemHeight.length-1
-      },
+  },
+  mounted() {
+    setTimeout(()=>{
+      this._calculateHeight();
+    }, 200);
+    document.querySelector('.el-main').addEventListener('scroll', this.handelScroll, false);
+  },
+  methods: {
+    handelScroll() {
+      //        console.dir(document.querySelector('.el-main').scrollTop);
+      this.scrollTop = document.querySelector('.el-main').scrollTop+100;
+      //        console.log(this.scrollTop);
     },
-    mounted(){
-      setTimeout(()=>{
-        this._calculateHeight();
-
-      },200)
-      document.querySelector('.el-main').addEventListener('scroll',this.handelScroll, false)
-    },
-    methods:{
-      handelScroll(){
-//        console.dir(document.querySelector('.el-main').scrollTop);
-        this.scrollTop = document.querySelector('.el-main').scrollTop+100
-//        console.log(this.scrollTop);
-      },
-      _calculateHeight () {
-        let plateformList = this.$refs.plateform;
-        console.log(plateformList);
-        let height = 0
-        this.listItemHeight = []
-        this.listItemHeight.push(height)
-        if (!plateformList) {
-          return
-        }
-        for (var i = 0; i < plateformList.length - 1; i++) {
-          let item = plateformList[i]
-          console.log(item.clientHeight);
-          let cal = item.clientHeight + 130;
-          height += cal
-          this.listItemHeight.push(height)
-        }
-        console.log(this.listItemHeight);
-      },
-      dragEnter(e,index){
-        if(this.timeout !== null)   clearTimeout(this.timeout);
-        this.timeout = setTimeout(()=>{
-          this.$refs.menuText[index].click();
-        }, 500);
-        this.currentActive = index;
-      },
-      menuPlateformClick(index){
-        this.currentActive = index;
+    _calculateHeight() {
+      const plateformList = this.$refs.plateform;
+      console.log(plateformList);
+      let height = 0;
+      this.listItemHeight = [];
+      this.listItemHeight.push(height);
+      if (!plateformList) {
+        return;
       }
+      for (let i = 0; i < plateformList.length - 1; i++) {
+        const item = plateformList[i];
+        console.log(item.clientHeight);
+        const cal = item.clientHeight + 130;
+        height += cal;
+        this.listItemHeight.push(height);
+      }
+      console.log(this.listItemHeight);
     },
-    components:{
-       draggable
+    dragEnter(e, index) {
+      if (this.timeout !== null) clearTimeout(this.timeout);
+      this.timeout = setTimeout(()=>{
+        this.$refs.menuText[index].click();
+      }, 500);
+      this.currentActive = index;
     },
-    beforeDestroy(){
-      document.removeEventListener('scroll',this.handelScroll, false);
+    menuPlateformClick(index) {
+      this.currentActive = index;
     },
-  }
+  },
+  components: {
+    draggable,
+  },
+  beforeDestroy() {
+    document.removeEventListener('scroll', this.handelScroll, false);
+  },
+};
 </script>
 
 <style lang="scss" scoped="" type="text/css">

@@ -6,26 +6,26 @@
 </template>
 
 <script>
-  export default {
-    name: '',
-    props:{
-      test:{
-        type:Number
-      }
+export default {
+  name: '',
+  props: {
+    test: {
+      type: Number,
     },
+  },
 
-    data () {
-      return {
-        msg: 'Welcome to Your Vue.js App'
-      }
+  data() {
+    return {
+      msg: 'Welcome to Your Vue.js App',
+    };
+  },
+
+  methods: {
+    testmethod() {
+      this.$emit('testmodel', 6);
     },
-
-    methods:{
-      testmethod(){
-        this.$emit("testmodel",6)
-      }
-    }
-  }
+  },
+};
 </script>
 
 <style scoped>

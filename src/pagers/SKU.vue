@@ -73,163 +73,163 @@
 </template>
 
 <script>
-  export default {
-    data () {
-      return {
-        specification: [
-          {
-            name: '颜色',
-            value: []
-          }
-        ],
-        addValues: [], // 用来存储要添加的规格属性
-        form: {
+export default {
+  data() {
+    return {
+      specification: [
+        {
+          name: '颜色',
+          value: [],
+        },
+      ],
+      addValues: [], // 用来存储要添加的规格属性
+      form: {
+        name: '',
+        region: '',
+        date1: '',
+        date2: '',
+        delivery: false,
+        type: [],
+        resource: [],
+        desc: '',
+      },
+    };
+  },
+
+  methods: {
+    // 添加规格项目
+    addSpec() {
+      if (this.specification.length < 5) {
+        this.specification.push({
           name: '',
-          region: '',
-          date1: '',
-          date2: '',
-          delivery: false,
-          type: [],
-          resource: [],
-          desc: ''
-        }
+          value: [],
+        });
       }
     },
 
-    methods: {
-      // 添加规格项目
-      addSpec () {
-        if (this.specification.length < 5) {
-          this.specification.push({
-            name: '',
-            value: []
-          })
-        }
-      },
+    // 删除规格项目
+    delSpec(index) {
+      this.specification.splice(index, 1);
+    },
 
-      // 删除规格项目
-      delSpec (index) {
-        this.specification.splice(index, 1)
-      },
+    // 添加规格属性
+    addSpecTag(index) {
+      const arr = this.addValues[index].trim().split(' ');
+      //        console.log(arr);
+      const obj = {};
+      const newArrs = [];
+      arr.forEach((item) => {
+        this.specification[index].value.push({
+          specParamName: item,
+          spacVoc: {
+            price: this.costPrice, // 原价
+            retailPrice: this.price, // 零售价
+            active: '', // 0 禁用 1，启用
+            specNo: '', // 规格编号
+            inventory: this.inStock, // 库存
+            specImagesId: '', // 图片id
+            virtualSales: '', // 虚拟销量
+            sales: 0, // 销量
+          },
+        });
+      });
+      const res = new Map();
+      const newArr = this.specification[index].value.filter((key) => !res.has(key.specParamName) && res.set(key.specParamName, 1));
+      //        console.log(newArr)
+      // newArr = Array.from(new Set(newArr)) // 去重
+      this.$set(this.specification[index], 'value', newArr);
+      console.log(this.specification);
+      this.clearAddValues(index);
+    },
 
-      // 添加规格属性
-      addSpecTag (index) {
-        let arr = this.addValues[index].trim().split(' ')
-//        console.log(arr);
-        let obj = {};
-        let newArrs = []
-        arr.forEach(item => {
-          this.specification[index].value.push({
-            specParamName: item,
-            spacVoc: {
-              price: this.costPrice, // 原价
-              retailPrice: this.price, // 零售价
-              active: '', // 0 禁用 1，启用
-              specNo: '', //规格编号
-              inventory: this.inStock, //库存
-              specImagesId: '', // 图片id
-              virtualSales: '', // 虚拟销量
-              sales: 0 //销量
-            }
-          })
-        })
-        const res = new Map();
-        let newArr = this.specification[index].value.filter(key => !res.has(key.specParamName) && res.set(key.specParamName, 1))
-//        console.log(newArr)
-        // newArr = Array.from(new Set(newArr)) // 去重
-        this.$set(this.specification[index], 'value', newArr)
-        console.log(this.specification);
-        this.clearAddValues(index)
-      },
+    // 删除规格属性
+    delSpecTag(index, num) {
+      this.specification[index].value.splice(num, 1);
+    },
 
-      // 删除规格属性
-      delSpecTag (index, num) {
-        this.specification[index].value.splice(num, 1)
-      },
+    // 清空 addValues
+    clearAddValues(index) {
+      this.$set(this.addValues, index, '');
+    },
 
-      // 清空 addValues
-      clearAddValues (index) {
-        this.$set(this.addValues, index, '')
-      },
-
-        /*
+    /*
          根据传入的属性值，拿到相应规格的属性
          @params
          specIndex 规格项目在 advancedSpecification 中的序号
          index 所有属性在遍历时的序号
          */
-      getSpecAttr (specIndex, index) {
-        // 获取当前规格项目下的属性值
-        const currentValues = this.specification[specIndex].value
-        let indexCopy
+    getSpecAttr(specIndex, index) {
+      // 获取当前规格项目下的属性值
+      const currentValues = this.specification[specIndex].value;
+      let indexCopy;
 
-        // 判断是否是最后一个规格项目
-        if (this.specification[specIndex + 1] && this.specification[specIndex + 1].value.length) {
-          indexCopy = index / this.countSum(specIndex + 1)
-        } else {
-          indexCopy = index
-        }
+      // 判断是否是最后一个规格项目
+      if (this.specification[specIndex + 1] && this.specification[specIndex + 1].value.length) {
+        indexCopy = index / this.countSum(specIndex + 1);
+      } else {
+        indexCopy = index;
+      }
 
-        const i = indexCopy % currentValues.length
-        if (i.toString() !== 'NaN' && i % 1 === 0) {
-          return currentValues[i].specParamName
-        } else {
-          return ''
-        }
-      },
+      const i = indexCopy % currentValues.length;
+      if (i.toString() !== 'NaN' && i % 1 === 0) {
+        return currentValues[i].specParamName;
+      } else {
+        return '';
+      }
+    },
 
-      getSpecAttr2 (specIndex, index) {
-        // 获取当前规格项目下的属性值
-        const currentValues = this.specification[specIndex].value
-        let indexCopy
+    getSpecAttr2(specIndex, index) {
+      // 获取当前规格项目下的属性值
+      const currentValues = this.specification[specIndex].value;
+      let indexCopy;
 
-        // 判断是否是最后一个规格项目
-        if (this.specification[specIndex + 1] && this.specification[specIndex + 1].value.length) {
-          indexCopy = index / this.countSum(specIndex + 1)
-        } else {
-          indexCopy = index
-        }
+      // 判断是否是最后一个规格项目
+      if (this.specification[specIndex + 1] && this.specification[specIndex + 1].value.length) {
+        indexCopy = index / this.countSum(specIndex + 1);
+      } else {
+        indexCopy = index;
+      }
 
-        const i = Math.floor(indexCopy % currentValues.length)
+      const i = Math.floor(indexCopy % currentValues.length);
 
-        if (i.toString() !== 'NaN') {
-          return currentValues[i]
-        } else {
-          return ''
-        }
-      },
+      if (i.toString() !== 'NaN') {
+        return currentValues[i];
+      } else {
+        return '';
+      }
+    },
 
-        /*
+    /*
          计算属性的乘积
          @params
          specIndex 规格项目在 advancedSpecification 中的序号
          */
-      countSum (specIndex) {
-        let num = 1
-//        console.log(this.specification);
-        this.specification.forEach((item, index) => {
-          if (index >= specIndex && item.value.length) {
-            num *= item.value.length
-          }
-        })
-        console.log(num);
-        return num
-      },
-      // 根据传入的条件，来判断是否显示该td
-      showTd (specIndex, index) {
-        // 如果当前项目下没有属性，则不显示
-        if (!this.specification[specIndex]) {
-          return false
-
-          // 自己悟一下吧
-        } else if (index % this.countSum(specIndex + 1) === 0) {
-          return true
-        } else {
-          return false
+    countSum(specIndex) {
+      let num = 1;
+      //        console.log(this.specification);
+      this.specification.forEach((item, index) => {
+        if (index >= specIndex && item.value.length) {
+          num *= item.value.length;
         }
+      });
+      console.log(num);
+      return num;
+    },
+    // 根据传入的条件，来判断是否显示该td
+    showTd(specIndex, index) {
+      // 如果当前项目下没有属性，则不显示
+      if (!this.specification[specIndex]) {
+        return false;
+
+        // 自己悟一下吧
+      } else if (index % this.countSum(specIndex + 1) === 0) {
+        return true;
+      } else {
+        return false;
       }
-    }
-  }
+    },
+  },
+};
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>

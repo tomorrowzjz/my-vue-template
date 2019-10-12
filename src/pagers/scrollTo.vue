@@ -15,95 +15,95 @@
     </div>
 </template>
 <script>
-  export default {
-    data(){
-      return {
-        scroll: '',
-        list: [{
-          name: "第一条",
-          backgroundcolor: "#90B2A3"
-        }, {
-          name: "第二条",
-          backgroundcolor: "#A593B2"
-        }, {
-          name: "第三条",
-          backgroundcolor: "#A7B293"
-        }, {
-          name: "第四条",
-          backgroundcolor: "#0F2798"
-        }, {
-          name: "第五条",
-          backgroundcolor: "#0A464D"
-        }],
-        navList: [1, 2, 3, 4, 5],
-        box:''
-      }
-    },
+export default {
+  data() {
+    return {
+      scroll: '',
+      list: [{
+        name: '第一条',
+        backgroundcolor: '#90B2A3',
+      }, {
+        name: '第二条',
+        backgroundcolor: '#A593B2',
+      }, {
+        name: '第三条',
+        backgroundcolor: '#A7B293',
+      }, {
+        name: '第四条',
+        backgroundcolor: '#0F2798',
+      }, {
+        name: '第五条',
+        backgroundcolor: '#0A464D',
+      }],
+      navList: [1, 2, 3, 4, 5],
+      box: '',
+    };
+  },
 
-    methods: {
-      handleScroll () {
-        console.log(11111);
-        var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
-        var jump = document.getElementsByClassName('section');
-        console.log(scrollTop, jump);
-      },
-      dataScroll: function () {
-        this.scroll =  window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
-        console.log(1, this.scroll);
-      },
-      jump(index) {
-        let jump = document.getElementsByClassName('section');
-        console.log(jump);
-        // 获取需要滚动的距离
-        let total = jump[index].offsetTop;
-        console.log(total);
-        // Chrome
-        document.body.scrollTop = total;
-        // Firefox
-        document.documentElement.scrollTop = total;
-        // Safari
-        window.pageYOffset = total;
-        console.log(document.body.scrollTop, document.documentElement.scrollTop, window.pageYOffset);
-        // $('html, body').animate({
-        // 'scrollTop': total
-        // }, 400);
-      },
-      loadSroll: function () {
-        var self = this;
-        var $navs = $(".nav1");
-        var sections = document.getElementsByClassName('section');
-        for (var i = sections.length - 1; i >= 0; i--) {
-          if (self.scroll >= sections[i].offsetTop - 100) {
-            $navs.eq(i).addClass("current").siblings().removeClass("current")
-            break;
-          }
+  methods: {
+    handleScroll() {
+      console.log(11111);
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      const jump = document.getElementsByClassName('section');
+      console.log(scrollTop, jump);
+    },
+    dataScroll: function() {
+      this.scroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      console.log(1, this.scroll);
+    },
+    jump(index) {
+      const jump = document.getElementsByClassName('section');
+      console.log(jump);
+      // 获取需要滚动的距离
+      const total = jump[index].offsetTop;
+      console.log(total);
+      // Chrome
+      document.body.scrollTop = total;
+      // Firefox
+      document.documentElement.scrollTop = total;
+      // Safari
+      window.pageYOffset = total;
+      console.log(document.body.scrollTop, document.documentElement.scrollTop, window.pageYOffset);
+      // $('html, body').animate({
+      // 'scrollTop': total
+      // }, 400);
+    },
+    loadSroll: function() {
+      const self = this;
+      const $navs = $('.nav1');
+      const sections = document.getElementsByClassName('section');
+      for (let i = sections.length - 1; i >= 0; i--) {
+        if (self.scroll >= sections[i].offsetTop - 100) {
+          $navs.eq(i).addClass('current').siblings().removeClass('current');
+          break;
         }
       }
     },
-    watch: {
-      scroll: function () {
-        this.loadSroll()
-      }
+  },
+  watch: {
+    scroll: function() {
+      this.loadSroll();
     },
-//    mounted () {
-//      window.addEventListener('scroll', this.handleScroll)
-//    },
-    mounted() {
-      console.log(11111111);
-      console.log(this.$refs.a);
-//      this.$refs.a.addEventListener('scroll', this.dataScroll);
-      // 通过$refs获取dom元素
-      this.box = this.$refs.a
-      // 监听这个dom的scroll事件
-      this.box.addEventListener('scroll', () => {
-        console.log(22222);
-        this.dataScroll();
-      }, false)
-    },
-    destroyed() { //页面离开后销毁，防止切换路由后上一个页面监听scroll滚动事件会在新页面报错问题
-//      this.$refs.a.removeEventListener('scroll', this.dataScroll)
-    }
-  }
+  },
+  //    mounted () {
+  //      window.addEventListener('scroll', this.handleScroll)
+  //    },
+  mounted() {
+    console.log(11111111);
+    console.log(this.$refs.a);
+    //      this.$refs.a.addEventListener('scroll', this.dataScroll);
+    // 通过$refs获取dom元素
+    this.box = this.$refs.a;
+    // 监听这个dom的scroll事件
+    this.box.addEventListener('scroll', () => {
+      console.log(22222);
+      this.dataScroll();
+    }, false);
+  },
+  destroyed() { // 页面离开后销毁，防止切换路由后上一个页面监听scroll滚动事件会在新页面报错问题
+    //      this.$refs.a.removeEventListener('scroll', this.dataScroll)
+  },
+};
 </script>
 
 <style>

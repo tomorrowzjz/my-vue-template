@@ -14,11 +14,11 @@
 </template>
 
 <script>
-  import draggable from 'vuedraggable'
+import draggable from 'vuedraggable';
 
-  export default {
-    name: 'menu-child',
-    props: ['childs'],
-    components: {draggable},
-  }
+export default {
+  name: 'menu-child',
+  props: ['childs'],
+  components: {draggable},
+};
 </script>

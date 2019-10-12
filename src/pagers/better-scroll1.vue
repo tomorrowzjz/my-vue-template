@@ -134,40 +134,40 @@
 </template>
 
 <script>
-  import BScroll from "better-scroll";
-  export default {
-    name: '',
-    data () {
-      return {
-        msg: 'Welcome to Your Vue.js App',
-        menuScroll: "",
-        scroll:""
-      }
+import BScroll from 'better-scroll';
+export default {
+  name: '',
+  data() {
+    return {
+      msg: 'Welcome to Your Vue.js App',
+      menuScroll: '',
+      scroll: '',
+    };
+  },
+  mounted() {
+    this.$nextTick(() => {
+      this.menuScroll = new BScroll(this.$refs.menuWrapper, {
+        click: true,
+      });
+      this.scroll = new BScroll(this.$refs.bscroll, {
+        click: true,
+        probeType: 3,
+      });
+      console.log(this.$refs.test);
+      //        this.scroll.scrollToElement( this.$refs.test, 0)
+    });
+  },
+  methods: {
+    selectMenu(index, event) {
+      const foodList = this.$refs.bscroll.getElementsByClassName('demo');
+      const el = foodList[index];
+      console.dir(event);
+      //        el.clientX
+      this.scroll.scrollToElement( this.$refs.test, 0);
+      //        this.scroll.scrollTo(0,-event.clientY )
     },
-    mounted() {
-      this.$nextTick(() => {
-        this.menuScroll = new BScroll(this.$refs.menuWrapper, {
-          click: true
-        })
-        this.scroll = new BScroll(this.$refs.bscroll, {
-          click: true,
-          probeType: 3
-        })
-        console.log(this.$refs.test);
-//        this.scroll.scrollToElement( this.$refs.test, 0)
-      })
-    },
-    methods:{
-      selectMenu (index, event) {
-        let foodList = this.$refs.bscroll.getElementsByClassName('demo');
-        let el = foodList[index]
-        console.dir(event);
-//        el.clientX
-        this.scroll.scrollToElement( this.$refs.test, 0)
-//        this.scroll.scrollTo(0,-event.clientY )
-      },
-    }
-  }
+  },
+};
 </script>
 
 <style scoped>

@@ -3,30 +3,30 @@
 </template>
 
 <script>
-  import bus from '../js/eventBus'
-  export default {
-    name: '',
-    data () {
-      return {
-        msg: 'test'
-      }
-    },
+import bus from '../js/eventBus';
+export default {
+  name: '',
+  data() {
+    return {
+      msg: 'test',
+    };
+  },
 
-    mounted(){
-      this.getData();
-    },
+  mounted() {
+    this.getData();
+  },
 
-    methods:{
-      getData(){
-        console.log("brothertwo");
-        let that = this;
-       this.bus.$on('brothertest',function (e) {
-          console.log(e);
-          that.msg = e;
-        })
-      }
-    }
-  }
+  methods: {
+    getData() {
+      console.log('brothertwo');
+      const that = this;
+      this.bus.$on('brothertest', function(e) {
+        console.log(e);
+        that.msg = e;
+      });
+    },
+  },
+};
 </script>
 
 <style scoped>

@@ -8,23 +8,23 @@
     </label>
 </template>
 <script>
-  export default {
-    name: "form-item",
-    props: {
-      label: String,
-      prop: String
+export default {
+  name: 'form-item',
+  props: {
+    label: String,
+    prop: String,
+  },
+  data() {
+    return {
+      errorMsg: '',
+    };
+  },
+  methods: {
+    showError(msg) {
+      this.errorMsg = msg;
     },
-    data() {
-      return {
-        errorMsg: ""
-      }
-    },
-    methods: {
-      showError(msg) {
-        this.errorMsg = msg
-      }
-    }
-  }
+  },
+};
 </script>
 
 

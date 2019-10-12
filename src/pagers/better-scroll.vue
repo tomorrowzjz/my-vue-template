@@ -48,87 +48,87 @@
 </template>
 
 <script>
-  import BScroll from 'better-scroll';
-  import Scroll from '../components/Scroll.vue'
-  const ERR_OK = 0;
+import BScroll from 'better-scroll';
+import Scroll from '../components/Scroll.vue';
+const ERR_OK = 0;
 
 
-  export default {
-    data() {
-      return {
-        listHeight: [],
-        scrollY: 0,
-        selectedFood: {},
-        initData: []
-      };
-    },
-    created() {
-      this.getData();
-//          this.$nextTick(() => {
-//            this._initScroll();
-//            this._calculateHeight();
-//          });
-    },
-    computed:{
-      currentIndex () {
-        for (let i = 0; i < this.listHeight.length; i++) {
-          let height1 = this.listHeight[i]
-          let height2 = this.listHeight[i + 1]
-          if (this.scrollY >= height1 && this.scrollY < height2) {
-            return i
-          }
+export default {
+  data() {
+    return {
+      listHeight: [],
+      scrollY: 0,
+      selectedFood: {},
+      initData: [],
+    };
+  },
+  created() {
+    this.getData();
+    //          this.$nextTick(() => {
+    //            this._initScroll();
+    //            this._calculateHeight();
+    //          });
+  },
+  computed: {
+    currentIndex() {
+      for (let i = 0; i < this.listHeight.length; i++) {
+        const height1 = this.listHeight[i];
+        const height2 = this.listHeight[i + 1];
+        if (this.scrollY >= height1 && this.scrollY < height2) {
+          return i;
         }
-        return 0
-      },
+      }
+      return 0;
     },
-    methods: {
-      pullingUp(){
-        console.log("pullingUp");
-      },
-      pullingDown(){
-        console.log("pullingDown");
-        this.initData = this.initData.concat([777]);
-        this.$refs.foodsWrapper.finishPullDown();
-      },
-      testClick(){
-        this.$message.info("click")
-      },
-      getData(){
-        console.log("test");
-        setTimeout(()=>{
-          this.initData = [[1111111111111111],[22222222222222222],[333333333333333333333],[8888888],[999999]]
-        },1000)
-      },
-      selectMenu(index, event) {
-        let foodList = document.querySelectorAll('.demo')
-        let el = foodList[index];
-        this.foodScroll.scrollToElement(el, 300);
-      },
-      _initScroll() {
-        this.foodScroll = new BScroll(this.$refs.foodsWrapper, {
-          click: true,
-          probeType: 3,
-          mouseWheel: true,
-        });
-        this.foodScroll.on('scroll', (pos) => {
-          this.scrollY = Math.abs(Math.round(pos.y))
-        })
-      },
-      _calculateHeight () {
-        let foodList = this.$refs.foodsWrapper.getElementsByClassName('demo')
-        let height = 0
-        this.listHeight.push(height)
-        for (var i = 0; i < foodList.length; i++) {
-          let item = foodList[i]
-          height += item.clientHeight
-          this.listHeight.push(height)
-        }
-      },
+  },
+  methods: {
+    pullingUp() {
+      console.log('pullingUp');
     },
-    components:{
-      Scroll
-    }
-  };
+    pullingDown() {
+      console.log('pullingDown');
+      this.initData = this.initData.concat([777]);
+      this.$refs.foodsWrapper.finishPullDown();
+    },
+    testClick() {
+      this.$message.info('click');
+    },
+    getData() {
+      console.log('test');
+      setTimeout(()=>{
+        this.initData = [[1111111111111111], [22222222222222222], [333333333333333333333], [8888888], [999999]];
+      }, 1000);
+    },
+    selectMenu(index, event) {
+      const foodList = document.querySelectorAll('.demo');
+      const el = foodList[index];
+      this.foodScroll.scrollToElement(el, 300);
+    },
+    _initScroll() {
+      this.foodScroll = new BScroll(this.$refs.foodsWrapper, {
+        click: true,
+        probeType: 3,
+        mouseWheel: true,
+      });
+      this.foodScroll.on('scroll', (pos) => {
+        this.scrollY = Math.abs(Math.round(pos.y));
+      });
+    },
+    _calculateHeight() {
+      const foodList = this.$refs.foodsWrapper.getElementsByClassName('demo');
+      let height = 0;
+      this.listHeight.push(height);
+      for (let i = 0; i < foodList.length; i++) {
+        const item = foodList[i];
+        height += item.clientHeight;
+        this.listHeight.push(height);
+      }
+    },
+  },
+  components: {
+    Scroll,
+  },
+};
 </script>
 <style>
 .menu-wrapper{

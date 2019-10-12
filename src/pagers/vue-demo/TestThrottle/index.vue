@@ -8,23 +8,23 @@
 </template>
 
 <script>
-    import Throttle from '@/components/Throttle/Throttle.js'
-    export default {
-        name: "index",
-        data(){
-          return{
-              count:1
-          }
-        },
-        methods: {
-            clickBtn(){
-                console.log(111);
-            }
-        },
-        components: {
-            Throttle
-        }
-    }
+import Throttle from '@/components/Throttle/Throttle.js';
+export default {
+  name: 'index',
+  data() {
+    return {
+      count: 1,
+    };
+  },
+  methods: {
+    clickBtn() {
+      console.log(111);
+    },
+  },
+  components: {
+    Throttle,
+  },
+};
 </script>
 
 <style scoped>

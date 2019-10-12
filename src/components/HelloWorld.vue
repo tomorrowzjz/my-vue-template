@@ -40,30 +40,30 @@
 </template>
 
 <script>
-  import draggable from "vuedraggable";
-  export default {
-    name: "chinaMap",
-    data() {
-      return {
-        list: [
-          { name: "John", text: "", id: 0 },
-          { name: "Joao", text: "", id: 1 },
-          { name: "Jean", text: "", id: 2 },
-          { name: "zjz", text: "", id: 3 },
-        ],
-        mag:[1,2,3]
-      };
-    },
-    mounted() {
-      console.log(this.mag,this.list);
-    },
-    methods: {
+import draggable from 'vuedraggable';
+export default {
+  name: 'chinaMap',
+  data() {
+    return {
+      list: [
+        {name: 'John', text: '', id: 0},
+        {name: 'Joao', text: '', id: 1},
+        {name: 'Jean', text: '', id: 2},
+        {name: 'zjz', text: '', id: 3},
+      ],
+      mag: [1, 2, 3],
+    };
+  },
+  mounted() {
+    console.log(this.mag, this.list);
+  },
+  methods: {
 
-    },
-    components:{
-      draggable
-    }
-  };
+  },
+  components: {
+    draggable,
+  },
+};
 </script>
 
 <style scoped>

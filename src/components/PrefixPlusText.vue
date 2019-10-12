@@ -7,9 +7,9 @@
 </template>
 
 <script>
-  export default {
-    props: ['colConfig'],
-  }
+export default {
+  props: ['colConfig'],
+};
 </script>
 
 <style>

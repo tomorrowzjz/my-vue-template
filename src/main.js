@@ -1,111 +1,111 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
-import Vue from 'vue'
+import Vue from 'vue';
 // import Vuex from 'vuex'
-import App from './App'
-import router from './router'
-import NProgress from 'nprogress' // progress bar
-import 'nprogress/nprogress.css'// progress bar style
+import App from './App';
+import router from './router';
+import NProgress from 'nprogress'; // progress bar
+import 'nprogress/nprogress.css';// progress bar style
 // import '@/styles/sidebar.scss' // global css
 import axios from 'axios';
-import 'normalize.css/normalize.css'
+import 'normalize.css/normalize.css';
 // import '../static/scrollbar.css'
-import 'element-ui/lib/theme-chalk/index.css'
-import 'babel-polyfill'
-import animate from 'animate.css'
+import 'element-ui/lib/theme-chalk/index.css';
+import 'babel-polyfill';
+import animate from 'animate.css';
 
 
-import store from './store/index'
+import store from './store/index';
 import {
-    Scrollbar,
-    Pagination,
-    Dialog,
-    Autocomplete,
-    Dropdown,
-    DropdownMenu,
-    DropdownItem,
-    Menu,
-    Submenu,
-    MenuItem,
-    MenuItemGroup,
-    Input,
-    InputNumber,
-    Radio,
-    RadioGroup,
-    RadioButton,
-    Checkbox,
-    CheckboxButton,
-    CheckboxGroup,
-    Switch,
-    Select,
-    Option,
-    OptionGroup,
-    Button,
-    ButtonGroup,
-    Table,
-    TableColumn,
-    DatePicker,
-    TimeSelect,
-    TimePicker,
-    Popover,
-    Tooltip,
-    Breadcrumb,
-    BreadcrumbItem,
-    Form,
-    FormItem,
-    Tabs,
-    TabPane,
-    Tag,
-    Tree,
-    Alert,
-    Slider,
-    Icon,
-    Row,
-    Col,
-    Upload,
-    Progress,
-    Badge,
-    Card,
-    Rate,
-    Steps,
-    Step,
-    Carousel,
-    CarouselItem,
-    Collapse,
-    CollapseItem,
-    Cascader,
-    ColorPicker,
-    Transfer,
-    Container,
-    Header,
-    Aside,
-    Main,
-    Footer,
-    Loading,
-    MessageBox,
-    Message,
-    Notification,
-    Divider
+  Scrollbar,
+  Pagination,
+  Dialog,
+  Autocomplete,
+  Dropdown,
+  DropdownMenu,
+  DropdownItem,
+  Menu,
+  Submenu,
+  MenuItem,
+  MenuItemGroup,
+  Input,
+  InputNumber,
+  Radio,
+  RadioGroup,
+  RadioButton,
+  Checkbox,
+  CheckboxButton,
+  CheckboxGroup,
+  Switch,
+  Select,
+  Option,
+  OptionGroup,
+  Button,
+  ButtonGroup,
+  Table,
+  TableColumn,
+  DatePicker,
+  TimeSelect,
+  TimePicker,
+  Popover,
+  Tooltip,
+  Breadcrumb,
+  BreadcrumbItem,
+  Form,
+  FormItem,
+  Tabs,
+  TabPane,
+  Tag,
+  Tree,
+  Alert,
+  Slider,
+  Icon,
+  Row,
+  Col,
+  Upload,
+  Progress,
+  Badge,
+  Card,
+  Rate,
+  Steps,
+  Step,
+  Carousel,
+  CarouselItem,
+  Collapse,
+  CollapseItem,
+  Cascader,
+  ColorPicker,
+  Transfer,
+  Container,
+  Header,
+  Aside,
+  Main,
+  Footer,
+  Loading,
+  MessageBox,
+  Message,
+  Notification,
+  Divider,
 } from 'element-ui';
 
 
-import VueLazyLoad from 'vue-lazyload'
-if (process.env.NODE_ENV === "development") {
-  Vue.use(VueLazyLoad,{
-    error:'./logo.png',
-    loading:'./img-big.png'
-  })
-}else {
-  Vue.use(VueLazyLoad,{
-    error:'/my-vue-template-zjz/static/img/logo.png',
-    loading:'/my-vue-template-zjz/static/img/img-big.png'
-  })
+import VueLazyLoad from 'vue-lazyload';
+if (process.env.NODE_ENV === 'development') {
+  Vue.use(VueLazyLoad, {
+    error: './logo.png',
+    loading: './img-big.png',
+  });
+} else {
+  Vue.use(VueLazyLoad, {
+    error: '/my-vue-template-zjz/static/img/logo.png',
+    loading: '/my-vue-template-zjz/static/img/img-big.png',
+  });
 }
 
 
-//父子组件传值总线
-let bus = new Vue()
-Vue.prototype.bus = bus
+// 父子组件传值总线
+const bus = new Vue();
+Vue.prototype.bus = bus;
 
 Vue.use(Pagination);
 Vue.use(Scrollbar);
@@ -187,32 +187,32 @@ Vue.prototype.$message = Message;
 Vue.config.productionTip = false;
 
 Vue.prototype.$axios = axios;
-NProgress.configure({ showSpinner: false })
+NProgress.configure({showSpinner: false});
 router.beforeEach((to, from, next) => {
-  NProgress.start()
+  NProgress.start();
   next();
-})
+});
 
 
 router.afterEach(() => {
-  NProgress.done()
-})
+  NProgress.done();
+});
 
-import VueClipboard from 'vue-clipboard2'
+import VueClipboard from 'vue-clipboard2';
 // var VueScrollactive = require('vue-scrollactive');
 // Vue.use(VueScrollactive);
-Vue.use(VueClipboard)
+Vue.use(VueClipboard);
 
 // 引入mockjs
 // require('./mock.js')
 
 
 // vues-crollto
-var VueScrollTo = require('vue-scrollto');
-Vue.use(VueScrollTo)
-import echarts from 'echarts'
-Vue.prototype.$echarts = echarts
-//vue-echarts
+const VueScrollTo = require('vue-scrollto');
+Vue.use(VueScrollTo);
+import echarts from 'echarts';
+Vue.prototype.$echarts = echarts;
+// vue-echarts
 // import VueECharts from 'vue-echarts'
 // Vue.component('chart', VueECharts);
 
@@ -222,9 +222,9 @@ Vue.prototype.$echarts = echarts
 
 // You can also pass in the default options
 Vue.use(VueScrollTo, {
-  container: "body",
+  container: 'body',
   duration: 500,
-  easing: "ease",
+  easing: 'ease',
   offset: 0,
   force: true,
   cancelable: true,
@@ -232,11 +232,11 @@ Vue.use(VueScrollTo, {
   onDone: false,
   onCancel: false,
   x: false,
-  y: true
-})
+  y: true,
+});
 
 import 'vue-fabric/dist/vue-fabric.min.css';
-import { Fabric } from 'vue-fabric';
+import {Fabric} from 'vue-fabric';
 
 Vue.use(Fabric);
 //
@@ -245,9 +245,9 @@ new Vue({
   el: '#app',
   router,
   store,
-  components: { App },
-  template: '<App/>'
-})
+  components: {App},
+  template: '<App/>',
+});
 
 // Vue.filter('getYMD', function(input) {
 //   return input.split(' ')[0];

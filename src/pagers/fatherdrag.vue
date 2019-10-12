@@ -14,60 +14,60 @@
 </template>
 
 <script>
-  import draggable from 'vuedraggable'
-  import MenuChild from './nested.vue'
-  export default {
-    props: ['getMenuPages'],
-    components: {draggable, MenuChild},
-    data() {
-      return {
-        pages: [
-          {
-            "id": 2,
-            "title": "About",
-            "nests": [
-              {
-                "id": 12,
-                "title": "East Esperanza12",
-                "nests": [{
-                  "id": 13,
-                  "title": "winborough13",
-                  "nests": null
-                }]
-              }
-            ],
-          },
-          {
-            "id": 5,
-            "title": "East Shaylee",
-            "nests": [{
-              "id": 6,
-              "title": "Einoborough",
-              "nests": [{
-                "id": 7,
-                "title": "East Esperanza",
-                "nests": [{
-                  "id": 8,
-                  "title": "winborough",
-                  "nests": null
-                }]
-              }]
-            },{
-              "id": 9,
-              "title": "Einoborough9",
-              "nests": [{
-                "id": 10,
-                "title": "East Esperanza10",
-                "nests": [{
-                  "id": 11,
-                  "title": "winborough11",
-                  "nests": null
-                }]
-              }]
+import draggable from 'vuedraggable';
+import MenuChild from './nested.vue';
+export default {
+  props: ['getMenuPages'],
+  components: {draggable, MenuChild},
+  data() {
+    return {
+      pages: [
+        {
+          'id': 2,
+          'title': 'About',
+          'nests': [
+            {
+              'id': 12,
+              'title': 'East Esperanza12',
+              'nests': [{
+                'id': 13,
+                'title': 'winborough13',
+                'nests': null,
+              }],
+            },
+          ],
+        },
+        {
+          'id': 5,
+          'title': 'East Shaylee',
+          'nests': [{
+            'id': 6,
+            'title': 'Einoborough',
+            'nests': [{
+              'id': 7,
+              'title': 'East Esperanza',
+              'nests': [{
+                'id': 8,
+                'title': 'winborough',
+                'nests': null,
+              }],
             }],
-          },
-        ]
-      }
-    },
-  }
+          }, {
+            'id': 9,
+            'title': 'Einoborough9',
+            'nests': [{
+              'id': 10,
+              'title': 'East Esperanza10',
+              'nests': [{
+                'id': 11,
+                'title': 'winborough11',
+                'nests': null,
+              }],
+            }],
+          }],
+        },
+      ],
+    };
+  },
+};
 </script>

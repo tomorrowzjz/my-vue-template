@@ -6,26 +6,26 @@
 
 <script>
 
-  export default {
-    name: '',
-    created() {
+export default {
+  name: '',
+  created() {
 
-    },
-    data() {
-      return {
-        msg: 'hello'
-      }
-    },
+  },
+  data() {
+    return {
+      msg: 'hello',
+    };
+  },
 
-    computed: {},
+  computed: {},
 
-    mounted(){
+  mounted() {
 
-    },
-    methods: {},
-    watch: {},
-    components: {},
-  }
+  },
+  methods: {},
+  watch: {},
+  components: {},
+};
 </script>
 
 <style scoped lang="scss">

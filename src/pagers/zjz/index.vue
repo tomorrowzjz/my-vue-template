@@ -7,12 +7,12 @@ export default {
   name: 'zjz',
   props: {},
   data() {
-    return {}
+    return {};
   },
   created() {},
   mounted() {},
-  methods: {}
-}
+  methods: {},
+};
 </script>
 
 <style lang="scss" scoped>

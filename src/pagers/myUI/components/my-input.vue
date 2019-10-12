@@ -6,31 +6,31 @@
 
 <script>
 
-  export default {
-    name: 'myInput',
-    created() {
+export default {
+  name: 'myInput',
+  created() {
 
-    },
-    data() {
-      return {
-        msg: 'hello'
-      }
-    },
+  },
+  data() {
+    return {
+      msg: 'hello',
+    };
+  },
 
-    computed: {},
+  computed: {},
 
-    mounted(){
+  mounted() {
 
+  },
+  methods: {
+    input(e) {
+      this.$emit('input', e.target.value);
+      this.$parent.$emit('doValidate', e.target.value);
     },
-    methods: {
-      input(e){
-        this.$emit('input',e.target.value);
-        this.$parent.$emit('doValidate',e.target.value);
-      }
-    },
-    watch: {},
-    components: {},
-  }
+  },
+  watch: {},
+  components: {},
+};
 </script>
 
 <style scoped lang="scss">

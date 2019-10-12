@@ -12,17 +12,17 @@
 </template>
 
 <script>
-  export default {
-    name: '',
-    data () {
-      return {
-        radio1:'',
-        form:{
+export default {
+  name: '',
+  data() {
+    return {
+      radio1: '',
+      form: {
 
-        }
-      }
-    }
-  }
+      },
+    };
+  },
+};
 </script>
 
 <style scoped>

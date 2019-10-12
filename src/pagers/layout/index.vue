@@ -19,49 +19,49 @@
 </template>
 
 <script>
-  import Navbar from './Navbar.vue'
-  import Sidebar from './Sidebar.vue'
-  import AppMain from './AppMain.vue'
-  const uuidv1 = require('uuid/v4');
-  export default {
-    data() {
-      const item = {
-        date: '2016-05-02',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
-      };
-      return {
-        tableData: Array(20).fill(item),
-        isCollapse: false,
-        activeNav: this.$route.path
-      }
+import Navbar from './Navbar.vue';
+import Sidebar from './Sidebar.vue';
+import AppMain from './AppMain.vue';
+const uuidv1 = require('uuid/v4');
+export default {
+  data() {
+    const item = {
+      date: '2016-05-02',
+      name: '王小虎',
+      address: '上海市普陀区金沙江路 1518 弄',
+    };
+    return {
+      tableData: Array(20).fill(item),
+      isCollapse: false,
+      activeNav: this.$route.path,
+    };
+  },
+  methods: {
+    logOut() {
+      this.$router.push({path: '/login'});
     },
-    methods:{
-      logOut(){
-        this.$router.push({path:'/login'})
-      },
-      isCollapseMethod(){
-        this.isCollapse = !this.isCollapse;
-      }
+    isCollapseMethod() {
+      this.isCollapse = !this.isCollapse;
     },
-    mounted(){
-      console.log(uuidv1());
-      console.log(uuidv1());
-      console.log(uuidv1());
-      console.log(uuidv1());
-      console.log(uuidv1());
-//      console.log(this.$router.history.current.path);
-//      console.log(this.$route);
-//      this.activeNav = this.$route.path;
-      /*this.activeNav = this.$router.history.current.path||this.$router.path;
+  },
+  mounted() {
+    console.log(uuidv1());
+    console.log(uuidv1());
+    console.log(uuidv1());
+    console.log(uuidv1());
+    console.log(uuidv1());
+    //      console.log(this.$router.history.current.path);
+    //      console.log(this.$route);
+    //      this.activeNav = this.$route.path;
+    /* this.activeNav = this.$router.history.current.path||this.$router.path;
       console.log(this.$router.path);*/
-    },
-    components:{
-      Navbar,
-      Sidebar,
-      AppMain
-    }
-  };
+  },
+  components: {
+    Navbar,
+    Sidebar,
+    AppMain,
+  },
+};
 </script>
 
 <style>

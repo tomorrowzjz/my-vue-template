@@ -62,11 +62,11 @@ export default {
         delivery: false,
         type: [],
         resource: [],
-        desc: ''
+        desc: '',
       },
-      tableData:[[1,1,1,1,1,1],[2,2,2,2,1,1],[3,3,3,3,1,1],[4,4,4,4,1,1]],
-      tableHeader:['颜色','尺码','价格','数量','商家编码','商品条形码'],
-      routes11:[
+      tableData: [[1, 1, 1, 1, 1, 1], [2, 2, 2, 2, 1, 1], [3, 3, 3, 3, 1, 1], [4, 4, 4, 4, 1, 1]],
+      tableHeader: ['颜色', '尺码', '价格', '数量', '商家编码', '商品条形码'],
+      routes11: [
         {
           path: '/theme',
         },
@@ -75,61 +75,61 @@ export default {
           children: [
             {
               path: 'index',
-            }
-          ]
+            },
+          ],
         },
-      ]
-    }
+      ],
+    };
   },
-  computed:{
-    model(){
-      let arr = [];
-      for(let i = 0;i < this.form.type.length*this.form.resource.length;i++){
+  computed: {
+    model() {
+      const arr = [];
+      for (let i = 0; i < this.form.type.length*this.form.resource.length; i++) {
         arr[i] = [];
-        for (let j = 0 ;j < this.tableHeader.length-2;j++){
+        for (let j = 0; j < this.tableHeader.length-2; j++) {
           arr[i][j] = 1;
         }
       }
       return arr;
-    }
+    },
   },
-  mounted(){
-//    let test = {...this.routes11}
-//    test[1].zjz = "test"
-//    console.log(test);
-//    console.log(this.routes11);
+  mounted() {
+    //    let test = {...this.routes11}
+    //    test[1].zjz = "test"
+    //    console.log(test);
+    //    console.log(this.routes11);
   },
   methods: {
-    size(e){
+    size(e) {
       console.log(e);
-//      let temparr = [];
-//      e.map((item,index) => {
-//
-//        item = JSON.parse(item);
-//        console.log(item.index * 1 + 1);
-//        console.log(index);
-//        console.log(item.index * 1 + 1 == index);
-//        if (item.index*1 + 1 == index) {
-//          temparr.push(item.size);
-//        }
-//
-//      })
-//      console.log(temparr);
+      //      let temparr = [];
+      //      e.map((item,index) => {
+      //
+      //        item = JSON.parse(item);
+      //        console.log(item.index * 1 + 1);
+      //        console.log(index);
+      //        console.log(item.index * 1 + 1 == index);
+      //        if (item.index*1 + 1 == index) {
+      //          temparr.push(item.size);
+      //        }
+      //
+      //      })
+      //      console.log(temparr);
     },
     onSubmit() {
       console.log(this.form.type);
       console.log(this.form.resource);
       console.log(this.model);
-      this.$message('submit!')
+      this.$message('submit!');
     },
     onCancel() {
       this.$message({
         message: 'cancel!',
-        type: 'warning'
-      })
-    }
-  }
-}
+        type: 'warning',
+      });
+    },
+  },
+};
 </script>
 
 <style scoped>

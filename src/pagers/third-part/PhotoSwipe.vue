@@ -72,53 +72,53 @@
 </template>
 
 <script>
-  import PhotoSwipe from 'photoswipe'
-  import 'photoswipe/dist/photoswipe.css'
-  import 'photoswipe/dist/default-skin/default-skin.css'
-  import PhotoSwipeUI_Default from '../../../static/photoswipe-ui-default.js'
-  export default {
-    name: '',
-    created() {
+import PhotoSwipe from 'photoswipe';
+import 'photoswipe/dist/photoswipe.css';
+import 'photoswipe/dist/default-skin/default-skin.css';
+import PhotoSwipeUI_Default from '../../../static/photoswipe-ui-default.js';
+export default {
+  name: '',
+  created() {
 
-    },
-    data() {
-      return {
-        items : [
-          {
-            src: 'https://placekitten.com/600/400',
-            w: 600,
-            h: 400
-          },
-          {
-            src: 'https://placekitten.com/1200/900',
-            w: 1200,
-            h: 900
-          }
-        ],
-        options : {
-          index: 0
-        }
-      }
-    },
+  },
+  data() {
+    return {
+      items: [
+        {
+          src: 'https://placekitten.com/600/400',
+          w: 600,
+          h: 400,
+        },
+        {
+          src: 'https://placekitten.com/1200/900',
+          w: 1200,
+          h: 900,
+        },
+      ],
+      options: {
+        index: 0,
+      },
+    };
+  },
 
-    computed: {},
+  computed: {},
 
-    mounted(){
-      console.log(this.$route);
-      this.initData()
+  mounted() {
+    console.log(this.$route);
+    this.initData();
+  },
+  methods: {
+    initData() {
+      //        let PhotoSwipeUI_Default = this.$refs.ui;
+      console.dir(PhotoSwipeUI_Default);
+      const pswpElement = document.querySelectorAll('.pswp')[0];
+      const gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, this.items, this.options);
+      gallery.init();
     },
-    methods: {
-      initData(){
-//        let PhotoSwipeUI_Default = this.$refs.ui;
-        console.dir(PhotoSwipeUI_Default);
-        var pswpElement = document.querySelectorAll('.pswp')[0];
-        var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, this.items, this.options);
-        gallery.init();
-      }
-    },
-    watch: {},
-    components: {},
-  }
+  },
+  watch: {},
+  components: {},
+};
 </script>
 
 <style scoped lang="scss">

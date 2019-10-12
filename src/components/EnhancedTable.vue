@@ -14,7 +14,7 @@
 </template>
 
 <script>
-  export default {
-    props: {colConfigs: Array, tableData: Array}
-  }
+export default {
+  props: {colConfigs: Array, tableData: Array},
+};
 </script>

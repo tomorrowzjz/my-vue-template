@@ -22,30 +22,30 @@
 </template>
 
 <script>
-  export default {
-    name: 'NewsCell',
-    props: {
-      newsDate: Object
+export default {
+  name: 'NewsCell',
+  props: {
+    newsDate: Object,
+  },
+  data() {
+    return {
+    };
+  },
+  computed: {
+  },
+  methods: {
+    jumpPage: function() {
+      window.location.href = this.newsDate.url;
     },
-    data () {
-      return {
-      }
+  },
+  // 自定义过滤器，可被用于一些常见的文本格式化。
+  filters: {
+    getYMD(input) {
+      console.log(1);
+      return input.split(' ')[0];
     },
-    computed: {
-    },
-    methods: {
-      jumpPage: function () {
-        window.location.href = this.newsDate.url
-      }
-    },
-    //自定义过滤器，可被用于一些常见的文本格式化。
-    filters:{
-      getYMD(input){
-        console.log(1);
-        return input.split(' ')[0];
-      }
-    }
-  }
+  },
+};
 </script>
 
 <style scoped>

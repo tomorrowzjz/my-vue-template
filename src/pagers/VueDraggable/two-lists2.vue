@@ -46,76 +46,76 @@
 </template>
 
 <script>
-  import draggable from "vuedraggable";
-  const message = [
-    "vue.draggable",
-    "draggable",
-    "component",
-    "for",
-    "vue.js 2.0",
-    "based",
-    "on",
-    "Sortablejs"
-  ];
+import draggable from 'vuedraggable';
+const message = [
+  'vue.draggable',
+  'draggable',
+  'component',
+  'for',
+  'vue.js 2.0',
+  'based',
+  'on',
+  'Sortablejs',
+];
 
-  export default {
-    name: "hello",
-    components: {
-      draggable
+export default {
+  name: 'hello',
+  components: {
+    draggable,
+  },
+  data() {
+    return {
+      list: message.map((name, index) => {
+        return {name, order: index + 1, fixed: false};
+      }),
+      list2: [],
+      editable: true,
+      isDragging: false,
+      delayedDragging: false,
+    };
+  },
+  methods: {
+    orderList() {
+      this.list = this.list.sort((one, two) => {
+        return one.order - two.order;
+      });
     },
-    data() {
+    onMove({relatedContext, draggedContext}) {
+      const relatedElement = relatedContext.element;
+      const draggedElement = draggedContext.element;
+      return (
+        (!relatedElement || !relatedElement.fixed) && !draggedElement.fixed
+      );
+    },
+  },
+  computed: {
+    dragOptions() {
       return {
-        list: message.map((name, index) => {
-          return { name, order: index + 1, fixed: false };
-        }),
-        list2: [],
-        editable: true,
-        isDragging: false,
-        delayedDragging: false
+        animation: 0,
+        group: 'description',
+        disabled: !this.editable,
+        ghostClass: 'ghost',
       };
     },
-    methods: {
-      orderList() {
-        this.list = this.list.sort((one, two) => {
-          return one.order - two.order;
-        });
-      },
-      onMove({ relatedContext, draggedContext }) {
-        const relatedElement = relatedContext.element;
-        const draggedElement = draggedContext.element;
-        return (
-          (!relatedElement || !relatedElement.fixed) && !draggedElement.fixed
-        );
-      }
+    listString() {
+      return JSON.stringify(this.list, null, 2);
     },
-    computed: {
-      dragOptions() {
-        return {
-          animation: 0,
-          group: "description",
-          disabled: !this.editable,
-          ghostClass: "ghost"
-        };
-      },
-      listString() {
-        return JSON.stringify(this.list, null, 2);
-      },
-      list2String() {
-        return JSON.stringify(this.list2, null, 2);
-      }
+    list2String() {
+      return JSON.stringify(this.list2, null, 2);
     },
-    watch: {
-      isDragging(newValue) {
-        if (newValue) {
-          this.delayedDragging = true;
-          return;
-        }
-        this.$nextTick(() => {
-          this.delayedDragging = false;
-        });
+  },
+  watch: {
+    isDragging(newValue) {
+      if (newValue) {
+        this.delayedDragging = true;
+        return;
       }
-    }
-  };
+      this.$nextTick(() => {
+        this.delayedDragging = false;
+      });
+    },
+  },
+};
 </script>
 
 <style>

@@ -10,20 +10,20 @@
 </template>
 
 <script>
-  export default {
-    name: 'testChild',
-    props:['attr'],
-    data () {
-      return {
-        msg:''
-      }
+export default {
+  name: 'testChild',
+  props: ['attr'],
+  data() {
+    return {
+      msg: '',
+    };
+  },
+  methods: {
+    startUpRocket() {
+      this.$emit('upRocket');
     },
-    methods:{
-      startUpRocket() {
-        this.$emit("upRocket");
-      }
-    }
-  }
+  },
+};
 </script>
 
 <style scoped>

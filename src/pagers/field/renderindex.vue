@@ -6,18 +6,18 @@
 </template>
 
 <script>
-  import field from './slot-render.vue'
-  export default {
-    name: '',
-    data () {
-      return {
-        msg: 'Welcome to Your Vue.js App'
-      }
-    },
-    components:{
-      field
-    }
-  }
+import field from './slot-render.vue';
+export default {
+  name: '',
+  data() {
+    return {
+      msg: 'Welcome to Your Vue.js App',
+    };
+  },
+  components: {
+    field,
+  },
+};
 </script>
 
 <style scoped>

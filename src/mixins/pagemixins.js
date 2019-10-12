@@ -1,19 +1,19 @@
 export default {
-  data () {
+  data() {
     return {
-      pagination:{
+      pagination: {
         currentPage: 1,
-        total:1,
-        pagesize:10
+        total: 1,
+        pagesize: 10,
       },
-    }
+    };
   },
 
-  mounted(){
+  mounted() {
     console.log(this.msg);
   },
 
-  methods:{
+  methods: {
     handleSizeChange(val) {
       this.pagesize = val;
 
@@ -24,8 +24,8 @@ export default {
       this.getPageInfo();
     },
     getPageInfo() {
-      throw new Error('component must implement getPageInfo method')
-    }
-  }
-}
+      throw new Error('component must implement getPageInfo method');
+    },
+  },
+};
 

@@ -5,65 +5,65 @@
 
 <script>
 
-import JSONEditor from 'jsoneditor/dist/jsoneditor.min.js'
-import 'jsoneditor/dist/jsoneditor.min.css'
-import _ from 'lodash'
+import JSONEditor from 'jsoneditor/dist/jsoneditor.min.js';
+import 'jsoneditor/dist/jsoneditor.min.css';
+import _ from 'lodash';
 
 export default {
   name: 'json-editor',
-  data () {
+  data() {
     return {
-      editor: null
-    }
+      editor: null,
+    };
   },
   props: {
     json: {
-      required: true
+      required: true,
     },
     options: {
       type: Object,
       default: () => {
-        return {}
-      }
+        return {};
+      },
     },
     onChange: {
-      type: Function
-    }
+      type: Function,
+    },
   },
   watch: {
     json: {
-      handler (newJson) {
+      handler(newJson) {
         if (this.editor) {
-          this.editor.set(newJson)
+          this.editor.set(newJson);
         }
       },
-      deep: true
-    }
+      deep: true,
+    },
   },
   methods: {
-    _onChange (e) {
+    _onChange(e) {
       if (this.onChange && this.editor) {
-        this.onChange(this.editor.get())
+        this.onChange(this.editor.get());
       }
-    }
+    },
   },
-  mounted () {
-    const container = this.$refs.jsoneditor
+  mounted() {
+    const container = this.$refs.jsoneditor;
     const options = _.extend({
-      onChange: this._onChange
-    }, this.options)
+      onChange: this._onChange,
+    }, this.options);
 
-    this.editor = new JSONEditor(container, options)
-    this.editor.editor.setOptions({minLines: 20, maxLines: 100})
-    this.editor.set(this.json)
+    this.editor = new JSONEditor(container, options);
+    this.editor.editor.setOptions({minLines: 20, maxLines: 100});
+    this.editor.set(this.json);
   },
-  beforeDestroy () {
+  beforeDestroy() {
     if (this.editor) {
-      this.editor.destroy()
-      this.editor = null
+      this.editor.destroy();
+      this.editor = null;
     }
-  }
-}
+  },
+};
 </script>
 
 <style>

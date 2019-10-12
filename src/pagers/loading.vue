@@ -12,52 +12,52 @@
 </template>
 
 <script>
-  export default {
-    name: "Loading",
-    props: {
-      text: {
-        type: String,
-        default: "拼命加载中..."
+export default {
+  name: 'Loading',
+  props: {
+    text: {
+      type: String,
+      default: '拼命加载中...',
+    },
+    textStyle: {
+      type: Object,
+      default: function() {
+        return {
+          fontSize: '14px',
+          color: '#fff',
+        };
       },
-      textStyle: {
-        type: Object,
-        default: function() {
-          return {
-            fontSize: "14px",
-            color: "#fff"
-          };
-        }
+    },
+    ringStyle: {
+      type: Object,
+      default: function() {
+        return {
+          width: '100px',
+          height: '100px',
+          color: '#407af3',
+        };
       },
-      ringStyle: {
-        type: Object,
-        default: function() {
-          return {
-            width: "100px",
-            height: "100px",
-            color: "#407af3"
-          };
-        }
-      }
     },
-    methods: {
-      preventDefault(e) {
-        // 禁止body的滚动
-        console.log(e);
-        e.preventDefault();
-        e.stopPropagation();
-      }
+  },
+  methods: {
+    preventDefault(e) {
+      // 禁止body的滚动
+      console.log(e);
+      e.preventDefault();
+      e.stopPropagation();
     },
-    mounted() {
-      document
-        .querySelector("body")
-        .addEventListener("touchmove", this.preventDefault);
-    },
-    destroyed() {
-      document
-        .querySelector("body")
-        .removeEventListener("touchmove", this.preventDefault);
-    }
-  };
+  },
+  mounted() {
+    document
+        .querySelector('body')
+        .addEventListener('touchmove', this.preventDefault);
+  },
+  destroyed() {
+    document
+        .querySelector('body')
+        .removeEventListener('touchmove', this.preventDefault);
+  },
+};
 </script>
 
 <style lang="scss" scoped>

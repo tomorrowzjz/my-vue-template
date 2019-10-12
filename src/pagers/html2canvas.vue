@@ -32,83 +32,83 @@
 </template>
 
 <script>
-  import html2canvas from 'html2canvas'
-  import jsPDF from 'jspdf';
-  import SimpleDrawingBoard from 'simple-drawing-board'
-  export default {
-    name: '',
-    data () {
-      return {
-        dataURL: '',
-        sysAppIds: 'zjzjzz'
-      }
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
+import SimpleDrawingBoard from 'simple-drawing-board';
+export default {
+  name: '',
+  data() {
+    return {
+      dataURL: '',
+      sysAppIds: 'zjzjzz',
+    };
+  },
+  methods: {
+    backTop() {
+      console.log(1);
+      //        let top = document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset
+      //        console.log(top);
+      //
+      //        document.documentElement.scrollTop = 0;
+      //        console.dir(document.documentElement);
+      const total = 100;
+      const top = document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset;
+      document.body.scrollTop = 0;
+      // Firefox
+      document.documentElement.scrollTop = 0;
+      // Safari
+      window.pageYOffset = 0;
+
+      console.log(top);
+      //        console.log(document.body);
     },
-    methods: {
-      backTop(){
-        console.log(1);
-//        let top = document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset
-//        console.log(top);
-//
-//        document.documentElement.scrollTop = 0;
-//        console.dir(document.documentElement);
-        let total = 100
-        let top = document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset
-        document.body.scrollTop = 0
-        // Firefox
-        document.documentElement.scrollTop = 0
-        // Safari
-        window.pageYOffset = 0
+    //      let opts = {
+    //        scale: scale, // 添加的scale 参数
+    //        canvas: canvas, //自定义 canvas
+    //        logging: false, //日志开关，便于查看html2canvas的内部执行流程
+    //        width: width, //dom 原始宽度   canvas窗口的宽度
+    //        height: height, //canvas窗口的高度
+    //        windowsHeight: document.body.scrollHeight, //获取X方向滚动条的内容
+    //        windowsWidth: document.body.scrollWidth, //获取Y方向滚动条的内容
+    //        x: 0, //获取Y方向滚动条的内容
+    //        y: window.pageYOffset, //页面在垂直方向的滚动距离
+    //        useCORS: true // 【重要】开启跨域配置
+    //      };
 
-        console.log(top);
-//        console.log(document.body);
-      },
-//      let opts = {
-//        scale: scale, // 添加的scale 参数
-//        canvas: canvas, //自定义 canvas
-//        logging: false, //日志开关，便于查看html2canvas的内部执行流程
-//        width: width, //dom 原始宽度   canvas窗口的宽度
-//        height: height, //canvas窗口的高度
-//        windowsHeight: document.body.scrollHeight, //获取X方向滚动条的内容
-//        windowsWidth: document.body.scrollWidth, //获取Y方向滚动条的内容
-//        x: 0, //获取Y方向滚动条的内容
-//        y: window.pageYOffset, //页面在垂直方向的滚动距离
-//        useCORS: true // 【重要】开启跨域配置
-//      };
-
-  toImage() {
-        html2canvas(this.$refs.imageWrapper,{
-          backgroundColor: null,
-          userCORS:true,//保证跨域图片的显示
-        }).then((canvas) => {
-          let dataURL = canvas.toDataURL("image/png");
-          let that = this
-          let canvasdom = that.$refs.canvasImg;
-          canvas.setAttribute('style', 'width:100%');
-          canvasdom.appendChild(canvas)
-          window.sdb = new SimpleDrawingBoard(
+    toImage() {
+      html2canvas(this.$refs.imageWrapper, {
+        backgroundColor: null,
+        userCORS: true, // 保证跨域图片的显示
+      }).then((canvas) => {
+        const dataURL = canvas.toDataURL('image/png');
+        const that = this;
+        const canvasdom = that.$refs.canvasImg;
+        canvas.setAttribute('style', 'width:100%');
+        canvasdom.appendChild(canvas);
+        window.sdb = new SimpleDrawingBoard(
             canvasdom.getElementsByTagName('canvas')[0],
             {
               lineColor: '#ff0000',
-              lineSize: 4
+              lineSize: 4,
             }
-          )
-          var doc = new jsPDF()
+        );
+        const doc = new jsPDF();
 
-          doc.addImage(dataURL, 'JPEG', 15, 40, 180, 180);
-          doc.save('two-by-four.pdf')
-          this.dataURL = dataURL;
-        });
-      },
-      // 复制成功
-      onCopy(e){
-        console.log(e.text);
-      },
-      // 复制失败
-      onError(e){
-        alert("失败");
-      },
-    }
-  }
+        doc.addImage(dataURL, 'JPEG', 15, 40, 180, 180);
+        doc.save('two-by-four.pdf');
+        this.dataURL = dataURL;
+      });
+    },
+    // 复制成功
+    onCopy(e) {
+      console.log(e.text);
+    },
+    // 复制失败
+    onError(e) {
+      alert('失败');
+    },
+  },
+};
 </script>
 
 <style scoped>
