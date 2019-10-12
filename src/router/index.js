@@ -59,6 +59,11 @@ export const sidebarRoutes = [
         name: 'attrListener',
         component: () => import("../pagers/vue-demo/attrListener/index"),
       },
+        {
+        path: '/testThrottle',
+        name: 'testThrottle',
+        component: () => import("../pagers/vue-demo/testThrottle/index"),
+      },
       {
         path: '/NativeDrag',
         name: 'NativeDrag',
