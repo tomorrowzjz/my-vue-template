@@ -4,22 +4,22 @@
 
 <script>
 //    import bus from '../js/eventBus'
-export default {
-  name: '',
-  data() {
-    return {
-      msg: 'bortherone',
-    };
-  },
+    export default {
+        name: '',
+        data() {
+            return {
+                msg: 'bortherone'
+            }
+        },
 
-  methods: {
-    test() {
-      console.log('brotherone');
-      // 重点在keep-alive包裹起来<router-view/>或者一个页面中两个不同的组件直接的传值
-      this.bus.$emit('brothertest', 'zjz');
-    },
-  },
-};
+        methods: {
+            test() {
+                console.log('brotherone')
+                // 重点在keep-alive包裹起来<router-view/>或者一个页面中两个不同的组件直接的传值
+                this.bus.$emit('brothertest', 'zjz')
+            }
+        }
+    }
 </script>
 
 <style scoped>

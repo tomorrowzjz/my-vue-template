@@ -1,63 +1,63 @@
 <template>
     <div id="loading-wrapper">
-        <div class="loading-ring" :style="ringStyle">
+        <div :style="ringStyle" class="loading-ring">
             <div class="outer" />
             <div class="middle" />
             <div class="inner" />
         </div>
-        <div class="text" :style="textStyle" v-if="text">
+        <div v-if="text" :style="textStyle" class="text">
             {{ text }}
         </div>
     </div>
 </template>
 
 <script>
-export default {
-  name: 'Loading',
-  props: {
-    text: {
-      type: String,
-      default: '拼命加载中...',
-    },
-    textStyle: {
-      type: Object,
-      default: function() {
-        return {
-          fontSize: '14px',
-          color: '#fff',
-        };
-      },
-    },
-    ringStyle: {
-      type: Object,
-      default: function() {
-        return {
-          width: '100px',
-          height: '100px',
-          color: '#407af3',
-        };
-      },
-    },
-  },
-  methods: {
-    preventDefault(e) {
-      // 禁止body的滚动
-      console.log(e);
-      e.preventDefault();
-      e.stopPropagation();
-    },
-  },
-  mounted() {
-    document
-        .querySelector('body')
-        .addEventListener('touchmove', this.preventDefault);
-  },
-  destroyed() {
-    document
-        .querySelector('body')
-        .removeEventListener('touchmove', this.preventDefault);
-  },
-};
+    export default {
+        name: 'Loading',
+        props: {
+            text: {
+                type: String,
+                default: '拼命加载中...'
+            },
+            textStyle: {
+                type: Object,
+                default: function() {
+                    return {
+                        fontSize: '14px',
+                        color: '#fff'
+                    }
+                }
+            },
+            ringStyle: {
+                type: Object,
+                default: function() {
+                    return {
+                        width: '100px',
+                        height: '100px',
+                        color: '#407af3'
+                    }
+                }
+            }
+        },
+        mounted() {
+            document
+                .querySelector('body')
+                .addEventListener('touchmove', this.preventDefault)
+        },
+        destroyed() {
+            document
+                .querySelector('body')
+                .removeEventListener('touchmove', this.preventDefault)
+        },
+        methods: {
+            preventDefault(e) {
+                // 禁止body的滚动
+                console.log(e)
+                e.preventDefault()
+                e.stopPropagation()
+            }
+        }
+    }
 </script>
 
 <style lang="scss" scoped>

@@ -1,75 +1,82 @@
 <template>
     <el-container>
-        <el-aside width="" class="aside" style="background-color: rgb(84 , 92, 100); transition: width 2s;" ref="aside">
+        <el-aside ref="aside" width="" class="aside" style="background-color: rgb(84 , 92, 100); transition: width 2s;">
             <el-scrollbar wrap-class="scrollbar-wrapper" style="height: 100%">
-                <el-menu :default-active="activeNav" router :collapse="isCollapse" class="el-menu-vertical-demo"
-                     background-color="#545c64"
-                     text-color="#fff" active-text-color="#ffd04b" style="border: none">
-                <el-submenu index="1">
-                    <template slot="title"><i class="el-icon-message navigation"></i><span slot="title">导航一</span>
-                    </template>
-                    <el-menu-item-group>
-                        <el-menu-item index="/table">table</el-menu-item>
-                        <el-menu-item index="/form">form</el-menu-item>
-                        <el-menu-item index="echarts">echarts</el-menu-item>
-                        <el-menu-item index="waterfall">waterfall</el-menu-item>
-                        <el-menu-item index="enlarge">enlarge</el-menu-item>
-                        <el-menu-item index="mock">mock</el-menu-item>
-                        <el-menu-item index="directive">directive</el-menu-item>
-                        <el-menu-item index="imageEditor">imageEditor</el-menu-item>
-                        <el-menu-item index="imagecropper">imagecropper</el-menu-item>
-                        <el-menu-item index="vuedraggable">vuedraggable</el-menu-item>
-                        <el-menu-item index="menu">menu</el-menu-item>
-                        <el-menu-item index="caneditortable">caneditortable</el-menu-item>
-                        <el-menu-item index="eleeditortable">eleeditortable</el-menu-item>
-                        <el-menu-item index="better-scroll">better-scroll</el-menu-item>
-                        <el-menu-item index="handsontable">handsontable</el-menu-item>
-                        <el-menu-item index="fatherdrag">fatherdrag</el-menu-item>
-                        <el-menu-item index="scrollTo">scrollTo</el-menu-item>
-                        <el-menu-item index="vuedraggable_test">vuedraggable_test</el-menu-item>
-                        <el-menu-item index="mergeTable">mergeTable</el-menu-item>
-                        <el-menu-item index="SKU">SKU</el-menu-item>
-                        <el-menu-item index="betterTables">betterTables</el-menu-item>
-                        <el-menu-item index="testv-model">testv-model</el-menu-item>
-                        <el-menu-item index="testcascader">testcascader</el-menu-item>
-                        <el-menu-item index="brotherone">brotherone</el-menu-item>
-                        <el-menu-item index="brothertwo">brothertwo</el-menu-item>
-                        <el-menu-item index="image-lazy">image-lazy</el-menu-item>
-                        <el-menu-item index="mixins">mixins</el-menu-item>
-                        <el-menu-item index="html2canvas">html2canvas</el-menu-item>
-                        <el-menu-item index="loading">loading</el-menu-item>
-                        <el-menu-item index="validtorForm">validtorForm</el-menu-item>
-                        <el-menu-item index="xmForm">xmForm</el-menu-item>
-                        <el-menu-item index="sync">sync</el-menu-item>
-                        <el-menu-item index="transitions">transitions</el-menu-item>
-                        <el-menu-item index="two-lists">two-lists</el-menu-item>
-                    </el-menu-item-group>
-                </el-submenu>
-                <el-submenu index="2">
-                    <template slot="title"><i class="el-icon-menu navigation"></i><span slot="title">导航二</span>
-                    </template>
-                    <el-menu-item-group>
-                        <el-menu-item index="2-1">选项1</el-menu-item>
-                        <el-menu-item index="2-2">选项2</el-menu-item>
-                    </el-menu-item-group>
-                    <el-submenu index="2-4">
-                        <el-menu-item index="2-4-1">选项4-1</el-menu-item>
+                <el-menu
+                    :default-active="activeNav"
+                    :collapse="isCollapse"
+                    router
+                    class="el-menu-vertical-demo"
+                    background-color="#545c64"
+                    text-color="#fff"
+                    active-text-color="#ffd04b"
+                    style="border: none">
+                    <el-submenu index="1">
+                        <template slot="title"><i class="el-icon-message navigation"/><span slot="title">导航一</span>
+                        </template>
+                        <el-menu-item-group>
+                            <el-menu-item index="/table">table</el-menu-item>
+                            <el-menu-item index="/form">form</el-menu-item>
+                            <el-menu-item index="echarts">echarts</el-menu-item>
+                            <el-menu-item index="waterfall">waterfall</el-menu-item>
+                            <el-menu-item index="enlarge">enlarge</el-menu-item>
+                            <el-menu-item index="mock">mock</el-menu-item>
+                            <el-menu-item index="directive">directive</el-menu-item>
+                            <el-menu-item index="imageEditor">imageEditor</el-menu-item>
+                            <el-menu-item index="imagecropper">imagecropper</el-menu-item>
+                            <el-menu-item index="vuedraggable">vuedraggable</el-menu-item>
+                            <el-menu-item index="menu">menu</el-menu-item>
+                            <el-menu-item index="caneditortable">caneditortable</el-menu-item>
+                            <el-menu-item index="eleeditortable">eleeditortable</el-menu-item>
+                            <el-menu-item index="better-scroll">better-scroll</el-menu-item>
+                            <el-menu-item index="handsontable">handsontable</el-menu-item>
+                            <el-menu-item index="fatherdrag">fatherdrag</el-menu-item>
+                            <el-menu-item index="scrollTo">scrollTo</el-menu-item>
+                            <el-menu-item index="vuedraggable_test">vuedraggable_test</el-menu-item>
+                            <el-menu-item index="mergeTable">mergeTable</el-menu-item>
+                            <el-menu-item index="SKU">SKU</el-menu-item>
+                            <el-menu-item index="betterTables">betterTables</el-menu-item>
+                            <el-menu-item index="testv-model">testv-model</el-menu-item>
+                            <el-menu-item index="testcascader">testcascader</el-menu-item>
+                            <el-menu-item index="brotherone">brotherone</el-menu-item>
+                            <el-menu-item index="brothertwo">brothertwo</el-menu-item>
+                            <el-menu-item index="image-lazy">image-lazy</el-menu-item>
+                            <el-menu-item index="mixins">mixins</el-menu-item>
+                            <el-menu-item index="html2canvas">html2canvas</el-menu-item>
+                            <el-menu-item index="loading">loading</el-menu-item>
+                            <el-menu-item index="validtorForm">validtorForm</el-menu-item>
+                            <el-menu-item index="xmForm">xmForm</el-menu-item>
+                            <el-menu-item index="sync">sync</el-menu-item>
+                            <el-menu-item index="transitions">transitions</el-menu-item>
+                            <el-menu-item index="two-lists">two-lists</el-menu-item>
+                        </el-menu-item-group>
                     </el-submenu>
-                </el-submenu>
-            </el-menu>
+                    <el-submenu index="2">
+                        <template slot="title"><i class="el-icon-menu navigation"/><span slot="title">导航二</span>
+                        </template>
+                        <el-menu-item-group>
+                            <el-menu-item index="2-1">选项1</el-menu-item>
+                            <el-menu-item index="2-2">选项2</el-menu-item>
+                        </el-menu-item-group>
+                        <el-submenu index="2-4">
+                            <el-menu-item index="2-4-1">选项4-1</el-menu-item>
+                        </el-submenu>
+                    </el-submenu>
+                </el-menu>
             </el-scrollbar>
         </el-aside>
 
         <el-container>
             <el-header class="header">
-                <div class="isCollapse"
-                     @click="isCollapseMethod">
-                    <i class="el-icon-menu"></i>
+                <div
+                    class="isCollapse"
+                    @click="isCollapseMethod">
+                    <i class="el-icon-menu"/>
                 </div>
                 <div>
                     <el-dropdown trigger="click" style="cursor:pointer">
                         <span class="el-dropdown-link">
-                            王小虎<i class="el-icon-arrow-down el-icon--right"></i>
+                            王小虎<i class="el-icon-arrow-down el-icon--right"/>
                         </span>
                         <el-dropdown-menu slot="dropdown">
                             <router-link class="homepage" to="/table">
@@ -164,38 +171,38 @@
 </style>
 
 <script>
-export default {
-  data() {
-    const item = {
-      date: '2016-05-02',
-      name: '王小虎',
-      address: '上海市普陀区金沙江路 1518 弄',
-    };
-    return {
-      tableData: Array(20).fill(item),
-      isCollapse: false,
-      activeNav: this.$route.path,
-    };
-  },
-  methods: {
-    logOut() {
-      this.$router.push({path: '/login'});
-    },
-    isCollapseMethod() {
-      this.isCollapse = !this.isCollapse;
-      //        console.log(this.$refs['aside'].$el.style.width);
-      //        if(this.isCollapse){
-      //          this.$refs['aside'].$el.style.width = 'auto'
-      //        }
-      //        console.log(this.$refs['aside'].$el.style.width);
-    },
-  },
-  mounted() {
-    console.log(this.$router.history.current.path);
-    //      console.log(this.$route);
-    //      this.activeNav = this.$route.path;
-    this.activeNav = this.$router.history.current.path;
-    console.log(this.$router.path);
-  },
-};
+    export default {
+        data() {
+            const item = {
+                date: '2016-05-02',
+                name: '王小虎',
+                address: '上海市普陀区金沙江路 1518 弄'
+            }
+            return {
+                tableData: Array(20).fill(item),
+                isCollapse: false,
+                activeNav: this.$route.path
+            }
+        },
+        mounted() {
+            console.log(this.$router.history.current.path)
+            //      console.log(this.$route);
+            //      this.activeNav = this.$route.path;
+            this.activeNav = this.$router.history.current.path
+            console.log(this.$router.path)
+        },
+        methods: {
+            logOut() {
+                this.$router.push({ path: '/login' })
+            },
+            isCollapseMethod() {
+                this.isCollapse = !this.isCollapse
+                //        console.log(this.$refs['aside'].$el.style.width);
+                //        if(this.isCollapse){
+                //          this.$refs['aside'].$el.style.width = 'auto'
+                //        }
+                //        console.log(this.$refs['aside'].$el.style.width);
+            }
+        }
+    }
 </script>

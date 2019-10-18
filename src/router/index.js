@@ -17,6 +17,7 @@ export const sidebarRoutes = [
       icon: 'message',
     },
     redirect: '/helloworld',
+    // eslint-disable-next-line
     component: () => import("../pagers/layout/index"),
     children: [
       {

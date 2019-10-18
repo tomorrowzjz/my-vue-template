@@ -1,51 +1,51 @@
 <template>
     <div class="index">
-        <div v-for="(item, key) in newsListShow">
+        <div v-for="(item, key) in newsListShow" :key="key">
             <news
-                    :newsDate="item"
-                    :key="key"
-            ></news>
+                :news-date="item"
+                :key="key"
+            />
         </div>
     </div>
 </template>
 
 <script>
-import api from '../api/api.js';
-import News from './NewsCell.vue';
+    import api from '../api/api.js'
+    import News from './NewsCell.vue'
 
-export default {
-  name: 'index',
-  data() {
-    return {
-      newsListShow: [],
-    };
-  },
-  components: {
-    News,
-  },
-  created() {
-    this.testNewsApi();
-  },
-  mounted() {
-    this.test();
-  },
-  methods: {
-    testNewsApi: function() {
-      api.post_news('/news/index', 'type=top&key=123456')
-          .then((res) => {
-            console.log(res);
-            this.newsListShow = res.articles;
-          });
-    },
-    test() {
-      api.Test('/api/test').then(
-          (res)=> {
-            console.log(res);
-          }
-      );
-    },
-  },
-};
+    export default {
+        name: 'Index',
+        components: {
+            News
+        },
+        data() {
+            return {
+                newsListShow: []
+            }
+        },
+        created() {
+            this.testNewsApi()
+        },
+        mounted() {
+            this.test()
+        },
+        methods: {
+            testNewsApi: function() {
+                api.post_news('/news/index', 'type=top&key=123456')
+                    .then((res) => {
+                        console.log(res)
+                        this.newsListShow = res.articles
+                    })
+            },
+            test() {
+                api.Test('/api/test').then(
+                    (res) => {
+                        console.log(res)
+                    }
+                )
+            }
+        }
+    }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

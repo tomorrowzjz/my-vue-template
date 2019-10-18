@@ -2,50 +2,55 @@
     <section class="financial-list">
         <section class="collect" @click="jumpPage">
             <aside>
-                <h2>{{newsDate.title}}</h2>
+                <h2>{{ newsDate.title }}</h2>
                 <section class="Cleft clearfix">
                     <img class="fl" src="./../assets/img-big.jpg" style="width:24px;height:20px;">
-                    <span class="fl">{{newsDate.author_name}}</span>
+                    <span class="fl">{{ newsDate.author_name }}</span>
                 </section>
                 <section class="Cright">
                     <img src="./../assets/img-small.jpg" style="width:20px;height:20px;">
-                    <span>{{newsDate.date | getYMD}}</span>
+                    <span>{{ newsDate.date | getYMD }}</span>
                 </section>
-                <div style="clear: both"></div>
+                <div style="clear: both"/>
             </aside>
             <aside>
                 <img :src="newsDate.thumbnail_pic_s" style="border-radius: 2px;">
             </aside>
-            <div style="clear: both"></div>
+            <div style="clear: both"/>
         </section>
     </section>
 </template>
 
 <script>
-export default {
-  name: 'NewsCell',
-  props: {
-    newsDate: Object,
-  },
-  data() {
-    return {
-    };
-  },
-  computed: {
-  },
-  methods: {
-    jumpPage: function() {
-      window.location.href = this.newsDate.url;
-    },
-  },
-  // 自定义过滤器，可被用于一些常见的文本格式化。
-  filters: {
-    getYMD(input) {
-      console.log(1);
-      return input.split(' ')[0];
-    },
-  },
-};
+    export default {
+        name: 'NewsCell',
+        // 自定义过滤器，可被用于一些常见的文本格式化。
+        filters: {
+            getYMD(input) {
+                console.log(1)
+                return input.split(' ')[0]
+            }
+        },
+        props: {
+            newsDate: {
+                type: Object,
+                default: () => {
+                    return {}
+                }
+            }
+        },
+        data() {
+            return {
+            }
+        },
+        computed: {
+        },
+        methods: {
+            jumpPage: function() {
+                window.location.href = this.newsDate.url
+            }
+        }
+    }
 </script>
 
 <style scoped>

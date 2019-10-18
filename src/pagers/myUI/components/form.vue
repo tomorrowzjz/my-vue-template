@@ -40,6 +40,7 @@ export default {
     formItemAdd(formItem) {
       this.formItemList.push(formItem);
     },
+    // eslint-disable-next-line
     async validate(callback) {
       const res = this.formItemList.map((item)=>{
         return item.doValidate();
@@ -52,10 +53,8 @@ export default {
         }
       });
       callback(ret);
-    },
-  },
-  watch: {},
-  components: {},
+    }
+  }
 };
 </script>
 
