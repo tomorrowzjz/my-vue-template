@@ -1,17 +1,19 @@
 <template>
     <el-container>
-        <el-aside width="" class="aside" style="background-color: rgb(84 , 92, 100); transition: width 2s;" ref="aside">
-            <Sidebar :isCollapse="isCollapse"
-                     :activeNav="activeNav"></Sidebar>
+        <el-aside ref="aside" width="" class="aside" style="background-color: rgb(84 , 92, 100); transition: width 2s;">
+            <Sidebar
+                :is-collapse="isCollapse"
+                :active-nav="activeNav"/>
         </el-aside>
         <el-container>
             <el-header>
-                <Navbar class="header"
-                        @isCollapseMethod="isCollapseMethod"
-                        @logOut="logOut"></Navbar>
+                <Navbar
+                    class="header"
+                    @isCollapseMethod="isCollapseMethod"
+                    @logOut="logOut"/>
             </el-header>
             <el-main>
-                <AppMain id="main"></AppMain>
+                <AppMain id="main"/>
             </el-main>
             <el-footer>Footer</el-footer>
         </el-container>
@@ -19,49 +21,49 @@
 </template>
 
 <script>
-  import Navbar from './Navbar.vue'
-  import Sidebar from './Sidebar.vue'
-  import AppMain from './AppMain.vue'
-  const uuidv1 = require('uuid/v4');
-  export default {
-    data() {
-      const item = {
-        date: '2016-05-02',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
-      };
-      return {
-        tableData: Array(20).fill(item),
-        isCollapse: false,
-        activeNav: this.$route.path
-      }
-    },
-    methods:{
-      logOut(){
-        this.$router.push({path:'/login'})
-      },
-      isCollapseMethod(){
-        this.isCollapse = !this.isCollapse;
-      }
-    },
-    mounted(){
-      console.log(uuidv1());
-      console.log(uuidv1());
-      console.log(uuidv1());
-      console.log(uuidv1());
-      console.log(uuidv1());
-//      console.log(this.$router.history.current.path);
-//      console.log(this.$route);
-//      this.activeNav = this.$route.path;
-      /*this.activeNav = this.$router.history.current.path||this.$router.path;
+    import Navbar from './Navbar.vue'
+    import Sidebar from './Sidebar.vue'
+    import AppMain from './AppMain.vue'
+    const uuidv1 = require('uuid/v4')
+    export default {
+        components: {
+            Navbar,
+            Sidebar,
+            AppMain
+        },
+        data() {
+            const item = {
+                date: '2016-05-02',
+                name: '王小虎',
+                address: '上海市普陀区金沙江路 1518 弄'
+            }
+            return {
+                tableData: Array(20).fill(item),
+                isCollapse: false,
+                activeNav: this.$route.path
+            }
+        },
+        mounted() {
+            console.log(uuidv1())
+            console.log(uuidv1())
+            console.log(uuidv1())
+            console.log(uuidv1())
+            console.log(uuidv1())
+            //      console.log(this.$router.history.current.path);
+            //      console.log(this.$route);
+            //      this.activeNav = this.$route.path;
+            /* this.activeNav = this.$router.history.current.path||this.$router.path;
       console.log(this.$router.path);*/
-    },
-    components:{
-      Navbar,
-      Sidebar,
-      AppMain
+        },
+        methods: {
+            logOut() {
+                this.$router.push({ path: '/login' })
+            },
+            isCollapseMethod() {
+                this.isCollapse = !this.isCollapse
+            }
+        }
     }
-  };
 </script>
 
 <style>

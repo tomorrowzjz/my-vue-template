@@ -1,68 +1,67 @@
 <template>
     <div class="index">
         <div>
-            <test :test="test" @testmodel="testmodel"></test>
-            <testone v-model="testone"></testone>
+            <test :test="test" @testmodel="testmodel"/>
+            <testone v-model="testone"/>
         </div>
         <el-button @click="hello">testv-model</el-button>
         <el-divider content-position="center">双向绑定 vuex</el-divider>
-        {{testbind}}
-        <el-input v-model="testbind"></el-input>
+        {{ testbind }}
+        <el-input v-model="testbind"/>
     </div>
 </template>
 
 <script>
-  import api from '../api/api.js'
-  import test from './test.vue'
-  import testone from './test1.vue'
+    import test from './test.vue'
+    import testone from './test1.vue'
 
-  export default {
-    name: 'index',
-
-    data () {
-      return {
-        newsListShow: [],
-        test:3,
-        testone:666
-      }
-    },
-    computed:{
-      testbind:{
-        get(){
-          return this.$store.state.testbind;
+    export default {
+        name: 'Index',
+        components: {
+            test,
+            testone
         },
-        set(val){
-          this.$store.commit("TESTBIND",val)
+
+        data() {
+            return {
+                newsListShow: [],
+                test: 3,
+                testone: 666
+            }
+        },
+        computed: {
+            testbind: {
+                get() {
+                    return this.$store.state.testbind
+                },
+                set(val) {
+                    this.$store.commit('TESTBIND', val)
+                }
+            }
+        },
+        created() {
+
+        },
+        mounted() {
+            //      console.log(this.testbind);
+            //      console.log(this.$store.state);
+        },
+        methods: {
+            testmodel(e) {
+                console.log(e)
+                this.test = e
+            },
+
+            hello() {
+                console.log(this.testone)
+            }
         }
-      }
-    },
-    components: {
-      test,
-      testone
-    },
-    created() {
-
-    },
-    mounted() {
-//      console.log(this.testbind);
-//      console.log(this.$store.state);
-    },
-    methods:{
-      testmodel(e){
-        console.log(e);
-        this.test = e;
-      },
-
-      hello(){
-        console.log(this.testone);
-      }
-    },
-//    watch:{
-//      testone(val,old){
-//        console.log(val, old);
-//      }
-//    }
-  }
+        //    watch:{
+        //      testone(val,old){
+        //        console.log(val, old);
+        //      }
+        //    }
+    }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

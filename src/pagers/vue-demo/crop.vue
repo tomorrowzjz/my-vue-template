@@ -1,31 +1,29 @@
 <template>
-  <div class="">
-
-  </div>
+    <div class=""/>
 </template>
 
 <script>
 
-  export default {
-    name: '',
-    created() {
+    export default {
+        name: '',
+        components: {},
+        data() {
+            return {
+                msg: 'hello'
+            }
+        },
 
-    },
-    data() {
-      return {
-        msg: 'hello'
-      }
-    },
+        computed: {},
+        watch: {},
+        created() {
 
-    computed: {},
+        },
 
-    mounted(){
+        mounted() {
 
-    },
-    methods: {},
-    watch: {},
-    components: {},
-  }
+        },
+        methods: {}
+    }
 </script>
 
 <style scoped lang="scss">

@@ -1,69 +1,72 @@
 <template>
-  <div>
-    <el-row :gutter="30">
-      <el-col :span="6" class="panel-animation">
-        <i class="el-icon-user"></i>
-        <p>访客</p>
-      </el-col>
-      <el-col :span="6" class="panel-animation">
-        <i class="el-icon-bell"></i>
-        <p>代办</p>
-      </el-col>
-      <el-col :span="6" class="panel-animation">
-        <i class="el-icon-date"></i>
-        <p>提醒</p>
-      </el-col>
-      <el-col :span="6" class="panel-animation">
-        <i class="el-icon-chat-dot-round"></i>
-        <p>消息</p>
-      </el-col>
-    </el-row>
-    <el-row :gutter="30">
-      <draggable ghost-class="ghost"
-                 :list="list"
-                 v-bind="{animation:500}"
-                 handle=".handle">
-        <el-col :span="12" class="list-group-item"
-                v-for="(element, idx) in list"
-                :key="element.name">
-          <div class="content-display panel-animation">
-            <div class="header">
-              {{element.name}}
-              <i class="el-icon-rank handle"></i>
-            </div>
-            <img src="../assets/timg.jpg" width="auto"/></div>
-        </el-col>
-      </draggable>
-    </el-row>
-    {{mag}}
-  </div>
+    <div>
+        <el-row :gutter="30">
+            <el-col :span="6" class="panel-animation">
+                <i class="el-icon-user"/>
+                <p>访客</p>
+            </el-col>
+            <el-col :span="6" class="panel-animation">
+                <i class="el-icon-bell"/>
+                <p>代办</p>
+            </el-col>
+            <el-col :span="6" class="panel-animation">
+                <i class="el-icon-date"/>
+                <p>提醒</p>
+            </el-col>
+            <el-col :span="6" class="panel-animation">
+                <i class="el-icon-chat-dot-round"/>
+                <p>消息</p>
+            </el-col>
+        </el-row>
+        <el-row :gutter="30">
+            <draggable
+                :list="list"
+                v-bind="{animation:500}"
+                ghost-class="ghost"
+                handle=".handle">
+                <el-col
+                    v-for="element in list"
+                    :span="12"
+                    :key="element.name"
+                    class="list-group-item">
+                    <div class="content-display panel-animation">
+                        <div class="header">
+                            {{ element.name }}
+                            <i class="el-icon-rank handle"/>
+                        </div>
+                    <img src="../assets/timg.jpg" width="auto"></div>
+                </el-col>
+            </draggable>
+        </el-row>
+        {{ mag }}
+    </div>
 </template>
 
 <script>
-  import draggable from "vuedraggable";
-  export default {
-    name: "chinaMap",
-    data() {
-      return {
-        list: [
-          { name: "John", text: "", id: 0 },
-          { name: "Joao", text: "", id: 1 },
-          { name: "Jean", text: "", id: 2 },
-          { name: "zjz", text: "", id: 3 },
-        ],
-        mag:[1,2,3]
-      };
-    },
-    mounted() {
-      console.log(this.mag,this.list);
-    },
-    methods: {
+    import draggable from 'vuedraggable'
+    export default {
+        name: 'ChinaMap',
+        components: {
+            draggable
+        },
+        data() {
+            return {
+                list: [
+                    { name: 'John', text: '', id: 0 },
+                    { name: 'Joao', text: '', id: 1 },
+                    { name: 'Jean', text: '', id: 2 },
+                    { name: 'zjz', text: '', id: 3 }
+                ],
+                mag: [1, 2, 3]
+            }
+        },
+        mounted() {
+            console.log(this.mag, this.list)
+        },
+        methods: {
 
-    },
-    components:{
-      draggable
+        }
     }
-  };
 </script>
 
 <style scoped>
@@ -108,6 +111,5 @@
       transform: scaleX(1)
     }
   }
-
 
 </style>

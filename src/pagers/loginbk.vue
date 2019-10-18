@@ -1,165 +1,162 @@
 <template>
-  <div class="login-container">
-    <div class="login-box">
-      <div class="login-logo">
-        <img src="../../assets/login-logo.png" height="54" width="46"/>
-      </div>
-      <p class="title">ECPro智能上货系统</p>
-      <el-form ref="loginForm" :model="loginForm" :rules="loginRules"  class="login-form" label-position="left">
-        <p class="title-user">用户登录</p>
-        <el-form-item prop="username">
-        <span class="svg-container">
-          <svg-icon icon-class="user" />
-        </span>
-          <el-input v-model="loginForm.username" name="username" type="text" auto-complete="on" placeholder="用户名" />
-        </el-form-item>
-        <el-form-item prop="password">
-        <span class="svg-container">
-          <svg-icon icon-class="password" />
-        </span>
-          <el-input
-                  :type="pwdType"
-                  v-model="loginForm.password"
-                  name="password"
-                  auto-complete="on"
-                  placeholder="密码"
-                  @keyup.enter.native="handleLogin" />
-          <span class="show-pwd" @click="showPwd">
-          <svg-icon icon-class="eye" />
-        </span>
-        </el-form-item>
-        <div class="tips">
-          <el-button type="text" class="loginbtn" @click="registerbtn">注册</el-button>
-          <el-button type="text" class="loginbtn" @click="forgetPassword">忘记密码?</el-button>
+    <div class="login-container">
+        <div class="login-box">
+            <div class="login-logo">
+                <img src="../../assets/login-logo.png" height="54" width="46">
+            </div>
+            <p class="title">ECPro智能上货系统</p>
+            <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" label-position="left">
+                <p class="title-user">用户登录</p>
+                <el-form-item prop="username">
+                    <span class="svg-container">
+                        <svg-icon icon-class="user" />
+                    </span>
+                    <el-input v-model="loginForm.username" name="username" type="text" auto-complete="on" placeholder="用户名" />
+                </el-form-item>
+                <el-form-item prop="password">
+                    <span class="svg-container">
+                        <svg-icon icon-class="password" />
+                    </span>
+                    <el-input
+                        :type="pwdType"
+                        v-model="loginForm.password"
+                        name="password"
+                        auto-complete="on"
+                        placeholder="密码"
+                        @keyup.enter.native="handleLogin" />
+                    <span class="show-pwd" @click="showPwd">
+                        <svg-icon icon-class="eye" />
+                    </span>
+                </el-form-item>
+                <div class="tips">
+                    <el-button type="text" class="loginbtn" @click="registerbtn">注册</el-button>
+                    <el-button type="text" class="loginbtn" @click="forgetPassword">忘记密码?</el-button>
+                </div>
+                <el-form-item>
+                    <el-button :loading="loading" type="primary" style="width:100%;height: 47px" @click.native.prevent="handleLogin(loginForm)">
+                        登录
+                    </el-button>
+                </el-form-item>
+
+            </el-form>
         </div>
-        <el-form-item>
-          <el-button :loading="loading" type="primary" style="width:100%;height: 47px" @click.native.prevent="handleLogin(loginForm)">
-            登录
-          </el-button>
-        </el-form-item>
 
-      </el-form>
     </div>
-
-  </div>
 </template>
 
 <script>
-import { isvalidUsername } from '@/utils/validate'
-import {getcategories} from '@/api/login'
-import { removeToken } from '@/utils/auth'
-import { getToken } from '@/utils/auth'
+    import { removeToken } from '@/utils/auth'
+    import { getToken } from '@/utils/auth'
 
-export default {
-  name: 'Login',
-  data() {
-   const passpattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/; 
-   const validateUsername = (rule, value, callback) => {
-     if (value === undefined) {
-       callback(new Error('请输入用户名'))
-     } else {
-       callback()
-     }
-   }
-    // const validatePass = (rule, value, callback) => {
-    //   if (value === undefined) {
-    //      callback(new Error('请输入密码'))
-    //   } else if(value && !passpattern.test(value)) {
-    //       callback(new Error('密码格式有误,请重新输入!'))
-    //   } else {
-    //       callback()
-    //   }
-    // }
-    return {
-      loginForm: {
-        username: '',
-        password: '',
-        auth_type: 'password'
-      },
-      loginRules: {
-       username: [{  trigger: 'blur', validator: validateUsername }],
-      //  password: [{  trigger: 'blur', validator: validatePass }]
-      },
-      form: {
-        name: '',
-        region: '',
-      },
-      formLabelWidth: '120px',
-//      forgerPassworddialogVisible:false,
-      loading: false,
-      pwdType: 'password',
-      redirect: undefined
-    }
-  },
-  mounted(){
-    this.loginForm = this.$route.params;
-    removeToken();
-  },
-  watch: {
-    $route: {
-      handler: function(route) {
-        this.redirect = route.query && route.query.redirect
-      },
-      immediate: true
-    }
-  },
-  methods: {
-    forgetPassword(){
-//      this.forgerPassworddialogVisible = true;
-      this.$router.push( {
-        path: "/forgetPassword"
-      });
-    },
-    registerbtn(){
-      this.$router.push( {
-        path: "/register"
-      });
-    },
-    showPwd() {
-      if (this.pwdType === 'password') {
-        this.pwdType = ''
-      } else {
-        this.pwdType = 'password'
-      }
-    },
-    handleLogin(loginForm) {
-      this.$refs.loginForm.validate(valid => {
-        if (valid) {
-          this.loading = true
-          this.loginForm.auth_type = 'password';
-          this.$store.dispatch('userLogin',this.loginForm).then(res => {
-            if(res.code == 0){
-              this.loading = false
-              let token = getToken();
-              let str = JSON.parse(window.atob(token.split('.')[1]));
-              console.log(str);
-              let user_status = str.user_status
-              let roles = str.user_roles[0];
-              if (roles == 'admin') {
-                if (user_status == 'enabled') {
-                  this.$router.push({ path: this.redirect || '/' })
-                }else {
-                  this.$router.push({ path: 'usercenter/index'})
+    export default {
+        name: 'Login',
+        data() {
+            const validateUsername = (rule, value, callback) => {
+                if (value === undefined) {
+                    callback(new Error('请输入用户名'))
+                } else {
+                    callback()
                 }
-              }else {
-                this.$router.push({ path: this.redirect || '/' })
-              }
-
-//              this.$router.push({ path: this.redirect || '/' })
-            }else {
-              this.loading = false
-              this.$message.error(res.message)
             }
-          }).catch(() => {
-            this.loading = false
-          })
-        } else {
-          return false
+            // const validatePass = (rule, value, callback) => {
+            //   if (value === undefined) {
+            //      callback(new Error('请输入密码'))
+            //   } else if(value && !passpattern.test(value)) {
+            //       callback(new Error('密码格式有误,请重新输入!'))
+            //   } else {
+            //       callback()
+            //   }
+            // }
+            return {
+                loginForm: {
+                    username: '',
+                    password: '',
+                    auth_type: 'password'
+                },
+                loginRules: {
+                    username: [{ trigger: 'blur', validator: validateUsername }]
+                    //  password: [{  trigger: 'blur', validator: validatePass }]
+                },
+                form: {
+                    name: '',
+                    region: ''
+                },
+                formLabelWidth: '120px',
+                //      forgerPassworddialogVisible:false,
+                loading: false,
+                pwdType: 'password',
+                redirect: undefined
+            }
+        },
+        watch: {
+            $route: {
+                handler: function(route) {
+                    this.redirect = route.query && route.query.redirect
+                },
+                immediate: true
+            }
+        },
+        mounted() {
+            this.loginForm = this.$route.params
+            removeToken()
+        },
+        methods: {
+            forgetPassword() {
+                //      this.forgerPassworddialogVisible = true;
+                this.$router.push({
+                    path: '/forgetPassword'
+                })
+            },
+            registerbtn() {
+                this.$router.push({
+                    path: '/register'
+                })
+            },
+            showPwd() {
+                if (this.pwdType === 'password') {
+                    this.pwdType = ''
+                } else {
+                    this.pwdType = 'password'
+                }
+            },
+            handleLogin(loginForm) {
+                this.$refs.loginForm.validate((valid) => {
+                    if (valid) {
+                        this.loading = true
+                        this.loginForm.auth_type = 'password'
+                        this.$store.dispatch('userLogin', this.loginForm).then((res) => {
+                            if (res.code === 0) {
+                                this.loading = false
+                                const token = getToken()
+                                const str = JSON.parse(window.atob(token.split('.')[1]))
+                                console.log(str)
+                                const user_status = str.user_status
+                                const roles = str.user_roles[0]
+                                if (roles === 'admin') {
+                                    if (user_status === 'enabled') {
+                                        this.$router.push({ path: this.redirect || '/' })
+                                    } else {
+                                        this.$router.push({ path: 'usercenter/index' })
+                                    }
+                                } else {
+                                    this.$router.push({ path: this.redirect || '/' })
+                                }
+
+                                //              this.$router.push({ path: this.redirect || '/' })
+                            } else {
+                                this.loading = false
+                                this.$message.error(res.message)
+                            }
+                        }).catch(() => {
+                            this.loading = false
+                        })
+                    } else {
+                        return false
+                    }
+                })
+            }
         }
-      })
     }
-  }
-}
 </script>
 
 <style rel="stylesheet/scss" lang="scss">

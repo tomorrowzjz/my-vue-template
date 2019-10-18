@@ -5,58 +5,57 @@
 </template>
 
 <script>
-  export default {
-    name: 'myform',
-    created() {
-      this.formItemList = [];
-      this.$on('formItemAdd',this.formItemAdd)
+export default {
+  name: 'myform',
+  created() {
+    this.formItemList = [];
+    this.$on('formItemAdd', this.formItemAdd);
+  },
+  props: {
+    model: {
+      type: Object,
+      required: true,
     },
-    props:{
-      model: {
-        type: Object,
-        required: true
-      },
-      rules: {
-        type: Object
-      }
+    rules: {
+      type: Object,
     },
-    provide(){
-      return {
-        form: this
-      }
-    },
-    data() {
-      return {
-        msg: 'hello'
-      }
-    },
+  },
+  provide() {
+    return {
+      form: this,
+    };
+  },
+  data() {
+    return {
+      msg: 'hello',
+    };
+  },
 
-    computed: {},
+  computed: {},
 
-    mounted(){
+  mounted() {
 
+  },
+  methods: {
+    formItemAdd(formItem) {
+      this.formItemList.push(formItem);
     },
-    methods: {
-      formItemAdd(formItem){
-        this.formItemList.push(formItem)
-      },
-      async validate(callback){
-        let res = this.formItemList.map(item=>{
-          return item.doValidate();
-        })
-        let results = await Promise.all(res)
-        let ret = true;
-        results.map(result=>{
-          if (!result) {
-            ret = false
-          }
-        })
-        callback(ret);
-      }
-    },
-    watch: {},
-    components: {},
+    // eslint-disable-next-line
+    async validate(callback) {
+      const res = this.formItemList.map((item)=>{
+        return item.doValidate();
+      });
+      const results = await Promise.all(res);
+      let ret = true;
+      results.map((result)=>{
+        if (!result) {
+          ret = false;
+        }
+      });
+      callback(ret);
+    }
   }
+};
 </script>
 
 <style scoped lang="scss">

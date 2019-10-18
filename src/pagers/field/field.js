@@ -1,17 +1,17 @@
 export default {
-  name: 'field',
+    name: 'field',
 
-  props: ['type', 'label'],
+    props: ['type', 'label'],
 
-  render (h) {
-    const tag = this.type === 'textarea' ? 'textarea' : 'input'
-    const type = this.type === 'textarea' ? '' : this.type
+    render(h) {
+        const tag = this.type === 'textarea' ? 'textarea' : 'input'
+        const type = this.type === 'textarea' ? '' : this.type
 
-    return (
+        return (
         <div>
         <label>{ this.label }</label>
-        { h(tag, { props: { type } }) }
+        { h(tag, { props: { type }}) }
       </div>
     )
-  }
+    }
 }

@@ -1,15 +1,22 @@
 <template>
     <el-table-column :label="colConfig.label">
-    	<span slot-scope="{ row }">
-      	{{ parseInt(row[colConfig.prop]) > 0 ? '+' + row[colConfig.prop] : row[colConfig.prop] }}
-      </span>
+        <span slot-scope="{ row }">
+            {{ parseInt(row[colConfig.prop]) > 0 ? '+' + row[colConfig.prop] : row[colConfig.prop] }}
+        </span>
     </el-table-column>
 </template>
 
 <script>
-  export default {
-    props: ['colConfig'],
-  }
+    export default {
+        props: {
+            colConfigs: {
+                type: Array,
+                default: () => {
+                    return []
+                }
+            }
+        }
+    }
 </script>
 
 <style>

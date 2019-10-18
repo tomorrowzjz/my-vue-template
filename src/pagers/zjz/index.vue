@@ -1,18 +1,18 @@
 <template>
-  <div class='zjz'><div/>
-</template>
+    <div class="zjz"><div/>
+</div></template>
 
 <script>
-export default {
-  name: 'zjz',
-  props: {},
-  data() {
-    return {}
-  },
-  created() {},
-  mounted() {},
-  methods: {}
-}
+    export default {
+        name: 'Zjz',
+        props: {},
+        data() {
+            return {}
+        },
+        created() {},
+        mounted() {},
+        methods: {}
+    }
 </script>
 
 <style lang="scss" scoped>
