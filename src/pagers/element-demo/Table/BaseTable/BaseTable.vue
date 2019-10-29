@@ -6,15 +6,6 @@
             <!--</el-breadcrumb>-->
         </div>
         <div class="container">
-            <!--<div class="handle-box">-->
-            <!--<el-button type="primary" icon="delete" class="handle-del mr10" @click="delAll">批量删除</el-button>-->
-            <!--<el-select v-model="select_cate" placeholder="筛选省份" class="handle-select mr10">-->
-            <!--<el-option key="1" label="广东省" value="广东省"></el-option>-->
-            <!--<el-option key="2" label="湖南省" value="湖南省"></el-option>-->
-            <!--</el-select>-->
-            <!--<el-input v-model="select_word" placeholder="筛选关键词" class="handle-input mr10"></el-input>-->
-            <!--<el-button type="primary" icon="search" @click="search">搜索</el-button>-->
-            <!--</div>-->
             <div class="handle-box">
                 <div class="query">
                     <el-row >
@@ -53,18 +44,6 @@
                             </span>
                         </el-col>
                     </el-row>
-                    <!--<el-form :inline="true"  class="demo-form-inline">-->
-                    <!--<el-form-item label="Laebl">-->
-
-                    <!--</el-form-item>-->
-                    <!--<el-form-item label="活动区域">-->
-
-                    <!--</el-form-item>-->
-                    <!--<el-form-item>-->
-
-                    <!--</el-form-item>-->
-                    <!--</el-form>-->
-
                 </div>
             </div>
             <el-table ref="multipleTable" :data="data" border style="width: 100%" @selection-change="handleSelectionChange">
@@ -123,7 +102,8 @@
 </template>
 
 <script>
-    import { pages } from '../mixins/page.js'
+    import { pages } from '@/mixins/page.js'
+
     export default {
         name: 'Basetable',
         mixins: [pages],

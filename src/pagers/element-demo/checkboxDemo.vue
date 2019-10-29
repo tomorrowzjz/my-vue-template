@@ -1,8 +1,5 @@
 <template>
     <div>
-
-        <!--<el-button  v-scroll-to="'#element'">Scroll to #element</el-button>-->
-
         <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">全选</el-checkbox>
         <div style="margin: 15px 0;"/>
         <el-checkbox-group v-model="checkedCities" @change="handleCheckedCitiesChange">

@@ -4,11 +4,11 @@
             <aside>
                 <h2>{{ newsDate.title }}</h2>
                 <section class="Cleft clearfix">
-                    <img class="fl" src="./../assets/img-big.jpg" style="width:24px;height:20px;">
+                    <img class="fl" src="../../../assets/img-big.jpg" style="width:24px;height:20px;">
                     <span class="fl">{{ newsDate.author_name }}</span>
                 </section>
                 <section class="Cright">
-                    <img src="./../assets/img-small.jpg" style="width:20px;height:20px;">
+                    <img src="../../../assets/img-small.jpg" style="width:20px;height:20px;">
                     <span>{{ newsDate.date | getYMD }}</span>
                 </section>
                 <div style="clear: both"/>

@@ -9,7 +9,6 @@
     import { HotTable } from '@handsontable/vue'
     import Handsontable from 'handsontable'
     import 'handsontable/languages/zh-CN'
-    import 'handsontable-pro/languages/zh-CN'
     export default {
         components: {
             HotTable

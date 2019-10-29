@@ -4,7 +4,7 @@
     </div>
 </template>
 <script>
-    import MyMagnify from '../components/enlarge.vue'
+    import MyMagnify from '../../components/enlarge.vue'
     export default {
         components: {
             MyMagnify

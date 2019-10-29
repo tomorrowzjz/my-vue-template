@@ -55,7 +55,7 @@
 
 <script>
     import BScroll from 'better-scroll'
-    import Scroll from '../components/Scroll.vue'
+    import Scroll from '../../../components/Scroll.vue'
 
     export default {
         components: {

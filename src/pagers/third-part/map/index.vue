@@ -6,7 +6,7 @@
 
 </template>
 <script>
-    import { MP } from '../../utils/util.js'
+    import { MP } from '../../../utils/util.js'
     export default {
         name: '',
         data() {

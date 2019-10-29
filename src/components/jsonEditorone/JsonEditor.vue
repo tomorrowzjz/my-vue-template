@@ -12,7 +12,7 @@
         name: 'JsonEditor',
         props: {
             json: {
-                type: String,
+                type: Object,
                 required: true
             },
             options: {

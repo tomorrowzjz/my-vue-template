@@ -10,7 +10,7 @@
 </template>
 
 <script>
-    import api from '../api/api.js'
+    import api from '../../../api/api.js'
     import News from './NewsCell.vue'
 
     export default {

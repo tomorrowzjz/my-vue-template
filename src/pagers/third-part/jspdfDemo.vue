@@ -14,21 +14,16 @@
                 msg: 'hello'
             }
         },
-
         computed: {},
         watch: {},
         created() {
-
         },
-
         mounted() {
-
         },
         methods: {
             print() {
                 // eslint-disable-next-line
                 const doc = new jsPDF()
-
                 doc.text('Hello world!', 1, 1)
                 doc.save('two-by-four.pdf')
             }
@@ -37,5 +32,4 @@
 </script>
 
 <style scoped lang="scss">
-
 </style>

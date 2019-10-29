@@ -12,8 +12,8 @@
 </template>
 
 <script>
-    import EnhancedTable from '../components/EnhancedTable'
-    import PrefixPlusText from '../components/PrefixPlusText'
+    import EnhancedTable from '../../../../components/EnhancedTable'
+    import PrefixPlusText from '../../../../components/PrefixPlusText'
 
     export default {
         name: 'App',

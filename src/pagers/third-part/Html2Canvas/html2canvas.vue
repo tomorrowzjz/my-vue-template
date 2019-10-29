@@ -10,7 +10,7 @@
                 <div v-for="o in 4" :key="o" class="text item">
                     {{ '列表内容 ' + o }}
                 </div>
-                <img src="../assets/img-big.jpg" height="600" width="410">
+                <img src="../../../assets/img-big.jpg" height="600" width="410">
             </el-card>
 
         </div>
@@ -35,7 +35,7 @@
 
 <script>
     import html2canvas from 'html2canvas'
-    import jsPDF from 'jspdf'
+    import jsPDF from '../jspdfDemo'
     import SimpleDrawingBoard from 'simple-drawing-board'
 
     export default {

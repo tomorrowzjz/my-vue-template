@@ -9,7 +9,7 @@
 <script>
     export default {
         props: {
-            colConfigs: {
+            colConfig: {
                 type: Array,
                 default: () => {
                     return []

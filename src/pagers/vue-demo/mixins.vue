@@ -14,7 +14,7 @@
 </template>
 
 <script>
-    import pagemixins from '../mixins/pagemixins'
+    import pagemixins from '../../mixins/pagemixins'
     export default {
         name: '',
         mixins: [pagemixins],
