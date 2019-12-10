@@ -25,6 +25,11 @@ export const sidebarRoutes = [
                 component: () => import("../pagers/vue-demo/TestModel/testv-model"),
             },
             {
+                path: '/test-drag',
+                name: 'test-drag',
+                component: () => import("../pagers/vue-demo/drag/drag"),
+            },
+            {
                 path: '/dragReplace',
                 name: 'dragReplace',
                 component: () => import("../pagers/vue-demo/dragReplace"),

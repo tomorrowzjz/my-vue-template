@@ -54,7 +54,15 @@ service.interceptors.request.use(
         // showFullScreenLoading()
         if (config.method === 'get') {
             config.paramsSerializer = function(params) {
-                return qs.stringify(params, { indices: false })
+                //                 1、qs.stringify({ a: ['b', 'c'] }, { arrayFormat: 'indices' })
+                // 输出结果：'a[0]=b&a[1]=c'
+                //                 2、qs.stringify({ a: ['b', 'c'] }, { arrayFormat: 'brackets' })
+                // // 输出结果：'a[]=b&a[]=c'
+                //                 3、qs.stringify({ a: ['b', 'c'] }, { arrayFormat: 'repeat' })
+                // // 输出结果：'a=b&a=c'
+                //                 4、qs.stringify({ a: ['b', 'c'] }, { arrayFormat: 'comma' })
+                // 输出结果：'a=b,c'
+                return qs.stringify(params)
             }
         }
         return config
@@ -101,7 +109,7 @@ service.interceptors.response.use(
         case 401:
             // 跳转登录页
             if (sessionStorage.getItem('count')) {
-                console.log(1);
+                console.log(1)
             } else {
                 sessionStorage.setItem('count', 1)
             }
