@@ -184,6 +184,11 @@ export const sidebarRoutes = [
                 component: () => import("../pagers/third-part/HandSonTable/handsontable"),
             },
             {
+                path: '/clickoutsize',
+                name: 'clickoutsize',
+                component: () => import("../pagers/third-part/ClickOutSize"),
+            },
+            {
                 path: '/image-lazy',
                 name: 'image-lazy',
                 component: () => import("../pagers/third-part/image-lazy"),
@@ -374,6 +379,7 @@ export const sidebarRoutes = [
 ]
 
 export default new Router({
+    mode: 'history',
     routes: [
         {
             path: '/',
@@ -414,6 +420,11 @@ export default new Router({
                 },
             ]
         },
-        ...sidebarRoutes
+        ...sidebarRoutes,
+        {
+            path: '*',
+            name: '404',
+            component: () => import("../pagers/404"),
+        }
     ]
 })

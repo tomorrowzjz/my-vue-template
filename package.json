@@ -39,6 +39,7 @@
     "simple-drawing-board": "^2.0.1",
     "svgjs": "^2.6.2",
     "uuid": "^3.3.2",
+    "v-click-outside": "^3.0.0",
     "vue": "^2.5.2",
     "vue-clipboard2": "^0.3.0",
     "vue-cropper": "^0.4.9",

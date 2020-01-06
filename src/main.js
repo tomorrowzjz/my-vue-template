@@ -14,7 +14,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import 'babel-polyfill'
 // eslint-disable-next-line
 import animate from 'animate.css'
-
+import vco from 'v-click-outside'
 import store from './store/index'
 import {
     Scrollbar,
@@ -100,6 +100,8 @@ if (process.env.NODE_ENV === 'development') {
         loading: '/my-vue-template-zjz/static/img/img-big.png'
     })
 }
+
+Vue.use(vco)
 
 // 父子组件传值总线
 const bus = new Vue()
