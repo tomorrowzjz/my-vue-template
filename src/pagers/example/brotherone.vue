@@ -15,6 +15,7 @@
         methods: {
             test() {
                 console.log('brotherone')
+                console.log('brotherone')
                 // 重点在keep-alive包裹起来<router-view/>或者一个页面中两个不同的组件直接的传值
                 this.bus.$emit('brothertest', 'zjz')
             }
