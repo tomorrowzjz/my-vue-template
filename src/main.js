@@ -237,6 +237,12 @@ import { Fabric } from 'vue-fabric'
 
 Vue.use(Fabric)
 //
+
+if (window.console) {
+    console.log('测试console？\n测试console？\n测试console\n测试console。')
+    console.log('http://www.zhangjz.top", "color:blue;font-weight:bold;')
+    console.log('test%c来自:console", "color:red;font-weight:bold;')
+}
 /* eslint-disable no-new */
 new Vue({
     el: '#app',
