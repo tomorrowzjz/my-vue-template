@@ -323,6 +323,11 @@ export const sidebarRoutes = [
                 component: () => import("../pagers/example/menu"),
             },
             {
+                path: '/vuediff',
+                name: 'vuediff',
+                component: () => import("../pagers/example/vuediff"),
+            },
+            {
                 path: '/xiaoguo',
                 name: 'xiaoguo',
                 component: () => import("../pagers/example/xiaoguo"),
