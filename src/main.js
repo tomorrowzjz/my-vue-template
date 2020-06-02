@@ -6,6 +6,7 @@ import App from './App'
 import router from './router'
 import NProgress from 'nprogress' // progress bar
 import 'nprogress/nprogress.css'// progress bar style
+import { keel, heading, img, text } from 'zx-keel'
 // import '@/styles/sidebar.scss' // global css
 import axios from 'axios'
 import 'normalize.css/normalize.css'
@@ -16,6 +17,7 @@ import 'babel-polyfill'
 import animate from 'animate.css'
 import vco from 'v-click-outside'
 import store from './store/index'
+import { loadingText, messageDuration } from '@/settings'
 import {
     Scrollbar,
     Pagination,
@@ -185,6 +187,46 @@ Vue.prototype.$prompt = MessageBox.prompt
 Vue.prototype.$notify = Notification
 Vue.prototype.$message = Message
 Vue.config.productionTip = false
+/* 全局多彩加载层 */
+Vue.prototype.$baseColorfullLoading = (index, text, callback) => {
+    let loading
+    if (!index) {
+        loading = Loading.service({
+            lock: true,
+            text: text || loadingText,
+            spinner: 'dots-loader',
+            background: 'hsla(0,0%,100%,.8)'
+        })
+    } else {
+        switch (index) {
+        case 1:
+            index = 'dots'
+            break
+        case 2:
+            index = 'gauge'
+            break
+        case 3:
+            index = 'inner-circles'
+            break
+        case 4:
+            index = 'plus'
+            break
+        }
+        loading = Loading.service({
+            lock: true,
+            text: text || loadingText,
+            spinner: index + '-loader',
+            background: 'hsla(0,0%,100%,.8)'
+        })
+    }
+    if (callback) {
+        callback(loading)
+    } else {
+        setTimeout(() => {
+            loading.close()
+        }, messageDuration)
+    }
+}
 
 Vue.prototype.$axios = axios
 NProgress.configure({ showSpinner: false })
@@ -236,6 +278,11 @@ import 'vue-fabric/dist/vue-fabric.min.css'
 import { Fabric } from 'vue-fabric'
 
 Vue.use(Fabric)
+
+Vue.component('byui-keel', keel)
+Vue.component('byui-keel-heading', heading)
+Vue.component('byui-keel-img', img)
+Vue.component('byui-keel-text', text)
 //
 
 if (window.console) {

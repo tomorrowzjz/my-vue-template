@@ -49,6 +49,7 @@
             console.log(uuidv1())
             console.log(uuidv1())
             console.log(uuidv1())
+            // this.$baseColorfullLoading()
             //      console.log(this.$router.history.current.path);
             //      console.log(this.$route);
             //      this.activeNav = this.$route.path;
