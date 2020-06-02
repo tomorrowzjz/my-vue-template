@@ -19,4 +19,25 @@ export function MP(ak) {
         document.head.appendChild(script)
     })
 }
-
+/**
+ * 从url里面的查询字符串中匹配参数返回一个对象
+ * @param {*} str
+ */
+export function parser(str) {
+    const obj = {}
+    str.replace(/([^=&]+)=([^=&]+)/g, function() {
+        obj[arguments[1]] = arguments[2]
+    })
+    return obj
+}
+/**
+ * 把一个对象处理为查询字符串
+ * @param {*} obj
+ */
+export function stringify(obj) {
+    const arr = []
+    for (const key in obj) {
+        arr.push(`${key}=${obj[key]}`)
+    }
+    return arr.join('&')
+}
