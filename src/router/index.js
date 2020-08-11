@@ -25,6 +25,11 @@ export const sidebarRoutes = [
                 component: () => import("../pagers/vue-demo/TestModel/testv-model"),
             },
             {
+                path: '/hoverCard',
+                name: 'hoverCard',
+                component: () => import("../pagers/vue-demo/card/hoverCard"),
+            },
+            {
                 path: '/test-drag',
                 name: 'test-drag',
                 component: () => import("../pagers/vue-demo/drag/drag"),
@@ -58,6 +63,11 @@ export const sidebarRoutes = [
                 path: '/directive',
                 name: 'directive',
                 component: () => import("../pagers/vue-demo/directive"),
+            },
+            {
+                path: '/animation',
+                name: 'animation',
+                component: () => import("../pagers/vue-demo/animation"),
             },
             {
                 path: '/provideInject',
