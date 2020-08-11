@@ -22,10 +22,6 @@
             //      },
             demo: {
                 bind: function(el, binding, vnode) {
-                    console.log('bind')
-                    console.log(el)
-                    console.log(binding)
-                    console.log(vnode)
                     const s = JSON.stringify
                     el.innerHTML =
                         'name: ' + s(binding.name) + '<br>' +
@@ -47,10 +43,6 @@
                     //          }
                 },
                 bind: function(el, binding, vnode) {
-                    console.log('bind')
-                    console.log(el)
-                    console.log(binding.value)
-                    console.log(vnode)
                     //          if(binding.value){
                     //            el.style.display = 'block';
                     //          }else {
@@ -64,12 +56,13 @@
                         el.style.display = 'block'
                     }
                 }
-            }
+            },
         },
         data() {
             return {
                 message: 'Welcome to Your Vue.js App',
-                flag: false
+                flag: false,
+                positionX: 0
             }
         },
 
