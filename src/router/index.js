@@ -25,6 +25,11 @@ export const sidebarRoutes = [
                 component: () => import("../pagers/vue-demo/TestModel/testv-model"),
             },
             {
+                path: '/scrollup',
+                name: 'scrollup',
+                component: () => import("../pagers/vue-demo/scrollup"),
+            },
+            {
                 path: '/hoverCard',
                 name: 'hoverCard',
                 component: () => import("../pagers/vue-demo/card/hoverCard"),
