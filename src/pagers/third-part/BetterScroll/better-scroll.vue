@@ -1,18 +1,11 @@
 <template>
     <div>
         <div class="goods">
-            <div ref="menuWrapper" class="menu-wrapper">
-                <ul>
-                    <li
-                        v-for="(item,index) in 8"
-                        ref="menuList"
-                        :key="index"
-                        :class="{'current': currentIndex === index}"
-                        class="menu-item"
-                        @click="selectMenu(index,$event)">
-                        你好
-                    </li>
-                </ul>
+            <div>
+                下滑加载
+                <el-input-number v-model="scrollVal"/><el-button style="margin-right:100px" @click="scrollTo">滚动到像素</el-button>
+                <el-input-number v-model="position"/>
+                <el-button @click="handleScrollToElement">滚动到具体某个元素位置</el-button>
             </div>
             <Scroll
                 ref="foodsWrapper"
@@ -26,136 +19,100 @@
                 @pullingDown="pullingDown"
                 @pullingUp="pullingUp"
             >
-                <ul class="ul">
-                    <li v-for="(food,index) in initData" ref="foodList" :key="index" class="demo">
-                        <h1>{{ index }}</h1>
-                        <ul>
-                            <li @click.stop="testClick">11111111111111111111111111</li>
-                            <li>11111111111111111111111111</li>
-                            <li>11111111111111111111111111</li>
-                            <li>11111111111111111111111111</li>
-                            <li>11111111111111111111111111</li>
-                            <li>11111111111111111111111111</li>
-                            <li>11111111111111111111111111</li>
-                            <li>11111111111111111111111111</li>
-                            <li>11111111111111111111111111</li>
-                            <li>11111111111111111111111111</li>
-                            <li>11111111111111111111111111</li>
-                            <li>11111111111111111111111111</li>
-                            <li>11111111111111111111111111</li>
-                            <li>11111111111111111111111111</li>
-                            <li>11111111111111111111111111</li>
-                        </ul>
-                    </li>
-                </ul>
+                <div>
+                    <ul class="ul">
+                        <li v-for="(i,index) in initData" :key="index" :id="`bs-item-${index}`" class="demo">
+                            <h3>序号：{{ index }},数字：{{ i }}</h3>
+                        </li>
+                    </ul>
+                    <div v-show="loading" class="loading-box">
+                        <i class="el-icon-loading"/> 正在加载。。。
+                    </div>
+                </div>
             </Scroll>
         </div>
     </div>
 </template>
 
 <script>
-    import BScroll from 'better-scroll'
-    import Scroll from '../../../components/Scroll.vue'
-
+    import Scroll from '@/components/Scroll.vue'
     export default {
         components: {
             Scroll
         },
         data() {
             return {
-                listHeight: [],
-                scrollY: 0,
-                selectedFood: {},
-                initData: []
+                letNum: 40,
+                initData: [],
+                loading: false,
+                scrollVal: 0,
+                position: 0
             }
         },
         computed: {
-            currentIndex() {
-                for (let i = 0; i < this.listHeight.length; i++) {
-                    const height1 = this.listHeight[i]
-                    const height2 = this.listHeight[i + 1]
-                    if (this.scrollY >= height1 && this.scrollY < height2) {
-                        return i
-                    }
-                }
-                return 0
-            }
+
         },
         created() {
             this.getData()
-            //          this.$nextTick(() => {
-            //            this._initScroll();
-            //            this._calculateHeight();
-            //          });
         },
         methods: {
-            pullingUp() {
-                console.log('pullingUp')
-            },
-            pullingDown() {
-                console.log('pullingDown')
-                this.initData = this.initData.concat([777])
-                this.$refs.foodsWrapper.finishPullDown()
-            },
-            testClick() {
-                this.$message.info('click')
-            },
             getData() {
-                console.log('test')
                 setTimeout(() => {
-                    this.initData = [[1111111111111111], [22222222222222222], [333333333333333333333], [8888888], [999999]]
+                    for (let i = 0; i < this.letNum; i++) {
+                        this.initData.push(Math.random())
+                    }
                 }, 1000)
             },
-            selectMenu(index, event) {
-                const foodList = document.querySelectorAll('.demo')
-                const el = foodList[index]
-                this.foodScroll.scrollToElement(el, 300)
-            },
-            _initScroll() {
-                this.foodScroll = new BScroll(this.$refs.foodsWrapper, {
-                    click: true,
-                    probeType: 3,
-                    mouseWheel: true
-                })
-                this.foodScroll.on('scroll', (pos) => {
-                    this.scrollY = Math.abs(Math.round(pos.y))
-                })
-            },
-            _calculateHeight() {
-                const foodList = this.$refs.foodsWrapper.getElementsByClassName('demo')
-                let height = 0
-                this.listHeight.push(height)
-                for (let i = 0; i < foodList.length; i++) {
-                    const item = foodList[i]
-                    height += item.clientHeight
-                    this.listHeight.push(height)
+            pullingUp() {
+                if (this.loading) {
+                    return
                 }
+                this.loading = true
+                setTimeout(() => {
+                    this.loading = false
+                    for (let i = 0; i < 5; i++) {
+                        this.initData.push(Math.random())
+                    }
+                }, 1000)
+            },
+            handleScrollToElement() {
+                if (this.initData.length < this.position) {
+                    this.$message.error('位置不存在')
+                    return
+                }
+                this.$refs.foodsWrapper.handleScrollToElement(`#bs-item-${this.position}`)
+            },
+            scrollTo(val) {
+                this.$refs.foodsWrapper.handleScrollTo(this.scrollVal)
+            },
+            pullingDown() {
+                // console.log('pullingDown')
+                // this.loading = true
+                // setTimeout(() => {
+                //     this.loading = false
+                //     this.initData.shift(Math.random())
+                // }, 1000)
             }
         }
     }
 </script>
 <style>
-.menu-wrapper{
-    height: 100px;
-    /*overflow: hidden;*/
+.ul{
+    overflow: hidden;
 }
-.menu-wrapper li{
+li{
     list-style: none;
-    margin-left: 100px;
-    float: left;
+}
+.loading-box{
+    margin: 10px;
+    text-align: center;
 }
 .foods-wrapper{
 /*必须要有定位*/
     position: absolute;
-    width: 80%;
-    height: 500px;
+    width: calc(100% - 300px);
+    height: calc(100% - 250px);
     overflow: hidden;
-}
-.ul{
-    overflow: hidden;
-}
-.current{
-    background-color: #cccccc;
 }
 </style>
 

@@ -104,6 +104,7 @@
             },
             // 复制成功
             onCopy(e) {
+                this.$messge.success('复制成功')
                 console.log(e.text)
             },
             // 复制失败

@@ -14,7 +14,7 @@ import 'normalize.css/normalize.css'
 import 'element-ui/lib/theme-chalk/index.css'
 import 'babel-polyfill'
 // eslint-disable-next-line
-import animate from 'animate.css'
+// import animate from 'animate.css'
 import vco from 'v-click-outside'
 import store from './store/index'
 import { loadingText, messageDuration } from '@/settings'
