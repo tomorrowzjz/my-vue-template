@@ -18,7 +18,7 @@
     "@handsontable/vue": "^3.1.0",
     "@toast-ui/vue-image-editor": "^1.0.2",
     "animate.css": "^3.7.2",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "babel-polyfill": "^6.26.0",
     "better-scroll": "^1.13.4",
     "drop-console-webpack-plugin": "^3.0.2",
