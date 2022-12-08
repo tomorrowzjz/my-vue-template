@@ -35,7 +35,7 @@
     "photoswipe": "^4.1.3",
     "plop": "^2.3.0",
     "qrcode": "^1.3.3",
-    "qs": "^6.9.1",
+    "qs": "^6.9.7",
     "simple-drawing-board": "^2.0.1",
     "svgjs": "^2.6.2",
     "uuid": "^3.3.2",
